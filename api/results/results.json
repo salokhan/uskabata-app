@@ -1,0 +1,563 @@
+[
+    {
+        "title": "Shaheen Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "DWatson",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Savour",
+        "description" : "The best rice shop in the town that provide all kinds of rice from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Food",
+        "subtype": "Dinein",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Doltana Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Khwaja Nursery",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "nursery",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Saeed Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Salman Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Shaheen Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "DWatson",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Savour",
+        "description" : "The best rice shop in the town that provide all kinds of rice from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Food",
+        "subtype": "Dinein",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Doltana Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Khwaja Nursery",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "nursery",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Saeed Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Salman Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Shaheen Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "DWatson",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Savour",
+        "description" : "The best rice shop in the town that provide all kinds of rice from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Food",
+        "subtype": "Dinein",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Doltana Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Khwaja Nursery",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "nursery",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Saeed Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Salman Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Shaheen Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "DWatson",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Savour",
+        "description" : "The best rice shop in the town that provide all kinds of rice from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Food",
+        "subtype": "Dinein",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Doltana Chemist",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Medical",
+        "subtype": "Pharmacy",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Khwaja Nursery",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "nursery",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Saeed Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    },
+    {
+        "title": "Salman Seeds",
+        "description" : "The best medical store in the town that provide all kinds of medicine from the best pharmasutecial companies all over the country, it also gives best dicounts on the buuings",
+        "type": "Botany",
+        "subtype": "seed shop",
+        "address": {
+            "addressline": "blue area main fazle haq road",
+            "city": "islamabad",
+            "country": "pakistan"
+        },
+        "contactNumber": {
+            "landLine": "124541254",
+            "mobile": "454415478",
+            "others": "45878445"
+        },
+        "manager":"Aslam Khan",
+        "website": "www.google.com",
+        "imageUrl": "https://www.gstatic.com/webp/gallery3/1.png"
+
+    }
+
+]
