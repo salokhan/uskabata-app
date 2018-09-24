@@ -1,5 +1,5 @@
 <div id="products" class="row view-group">
-      <div *ngFor='let result of results' class="item col-xs-4 col-lg-4 list-group-item">
+      <div *ngFor='let result of results' class="item col-xs-4 col-lg-4 list-group-item" (click)="onClick(result)" >
           <div class="thumbnail card">
               <div class="img-event">
                   <img class="group list-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="">
