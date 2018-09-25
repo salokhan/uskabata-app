@@ -11,7 +11,7 @@ import { ResultService } from '../service-result/result.service';
 export class ResultsListViewComponent implements OnInit, OnDestroy {
 
   @Input() results: IResult[];
-  result: IResult;
+  resultSelected: IResult;
   imageHeight = 120;
 
 
@@ -20,14 +20,14 @@ export class ResultsListViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  onClick(result: IResult): void {
-    this.result = result;
+  onClick(resultSelected: IResult): void {
+    this.resultSelected = resultSelected;
     this.router.navigate(['result-detail']);
 
   }
 
   ngOnDestroy() {
-    this._resultService.setResultStorage(this.result);
+    this._resultService.setResultStorage(this.resultSelected);
  }
 
 }

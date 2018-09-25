@@ -33,4 +33,8 @@ export class ResultService {
         return this.resultStorage;
     }
 
+    clearResultStorage(): void {
+        this.resultStorage = null;
+    }
+
 }
