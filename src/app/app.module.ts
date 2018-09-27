@@ -11,6 +11,7 @@ import { ResultsGridviewComponent } from './results/results-gridview/results-gri
 import { TopbarComponent } from './topbar/topbar.component';
 import { PaginationComponent } from './results/shared/pagination/pagination.component';
 import { ResultDetailComponent } from './results/result-detail/result-detail.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
     ResultsGridviewComponent,
     TopbarComponent,
     PaginationComponent,
-    ResultDetailComponent
+    ResultDetailComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

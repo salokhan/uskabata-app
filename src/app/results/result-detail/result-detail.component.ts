@@ -20,7 +20,7 @@ export class ResultDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    //this._resultService.clearResultStorage();
+    // this._resultService.clearResultStorage();
   }
 
 }
