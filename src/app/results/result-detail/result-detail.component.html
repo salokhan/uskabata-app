@@ -1,3 +1,108 @@
-<p>
-  result-detail works!
-</p>
+<div class="container bootstrap snippet">
+  <div class="row ng-scope">
+    <div class="col-md-8">
+      <div class="card p-2">
+        <div class="alert alert-primary text-center m-0 p-0" role="alert">
+          <h2 class="m-0 text-bold">
+            {{result.title}}
+          </h2>
+          <img class="mx-auto d-block rounded-circle thumb96" src="https://bootdey.com/img/Content/avatar/avatar1.png"
+            alt="Card image cap">
+          <a class='btn btn-link' [href]="result.website" [target]="_blank" rel="noopener noreferrer">Visit us</a>
+        </div>
+
+        <div class="card-body p-1">
+          <div class='container p-1'>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-12 bg-dark text-light d-flex  align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Description</p>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-12 bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>{{result.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Type</p>
+              </div>
+              <div class='col-sm-12 col-lg-7  bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>{{result.type}}</p>
+                </div>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Sub Type</p>
+              </div>
+              <div class='col-sm-12 col-lg-7  bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>{{result.subtype}}</p>
+                </div>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-12 bg-dark text-light d-flex  align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Address</p>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Address Line</p>
+              </div>
+              <div class='col-sm-12 col-lg-7  bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>{{result.address.addressline}}</p>
+                </div>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Country</p>
+              </div>
+              <div class='col-sm-12 col-lg-7  bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>{{result.address.country}}</p>
+                </div>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>City</p>
+              </div>
+              <div class='col-sm-12 col-lg-7  bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>{{result.address.city}}</p>
+                </div>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-12 bg-dark text-light d-flex  align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Contact</p>
+              </div>
+            </div>
+            <div class='row p-1'>
+              <div class='col-sm-12 col-lg-5 bg-light text-dark d-flex align-items-center'>
+                <p class='mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Mobile No</p>
+              </div>
+              <!-- <div class='col-sm-12 col-lg-7 mb-2 bg-light text-dark '></div> -->
+              <div class='col-sm-12 col-lg-7 bg-light text-dark '>
+                <div class='col-sm-12 '>
+                  <p class='mx-auto d-block font-weight-light text-sm-center text-lg-left'>03338788887</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      
+    </div>
+  </div>
+</div>
