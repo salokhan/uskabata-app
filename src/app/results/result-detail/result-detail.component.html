@@ -1,6 +1,20 @@
 <div class="container bootstrap snippet">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-sm-12">
+      <div class="btn-group float-right">
+        <button [className]="showDetail ? 'btn btn-success my-2' : 'btn btn-info my-2'" (click)='detailClicked()'>
+          Details
+        </button>
+        <button [className]="showComments ? 'btn btn-success my-2' : 'btn btn-info my-2' " (click)='commentClicked()'>
+          Comments
+        </button>
+        <button *ngIf="!showComments && !showDetail" [className]="showDetail && showComments ? 'btn btn-success my-2' : 'btn btn-info my-2' "
+          (click)='allClicked()'>
+          Show All
+        </button>
+      </div>
+    </div>
+    <div *ngIf="showDetail" [className]="showDetail && showComments ? 'col-md-5' : 'col-md-12' ">
       <div class="card p-2">
         <div class="alert alert-primary text-center m-0 p-0" role="alert">
           <h2 class="m-0 text-bold">
@@ -105,7 +119,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7">
+    <div *ngIf="showComments" [className]="showDetail && showComments ? 'col-md-7' : 'col-md-12' ">
       <app-comments></app-comments>
     </div>
   </div>

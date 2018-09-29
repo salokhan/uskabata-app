@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ResultDetailComponent implements OnInit, OnDestroy {
 
   result: IResult;
+  showComments = true;
+  showDetail = true;
 
   constructor(private _resultService: ResultService, private router: Router) {
   }
@@ -24,6 +26,17 @@ export class ResultDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // this._resultService.clearResultStorage();
+  }
+
+  commentClicked(): void {
+    this.showComments = !this.showComments;
+  }
+  detailClicked(): void {
+    this.showDetail = !this.showDetail;
+  }
+  allClicked(): void {
+    this.showComments = true;
+    this.showDetail = true;
   }
 
 }
