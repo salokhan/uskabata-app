@@ -3,6 +3,9 @@ import { NgModule, Component } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { AppComponent } from './app.component';
 import { ResultsComponent } from './results/results.component';
@@ -13,7 +16,11 @@ import { PaginationComponent } from './results/shared/pagination/pagination.comp
 import { ResultDetailComponent } from './results/result-detail/result-detail.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comments/comment/comment.component';
+import { CommentBoxComponent } from './comments/comment-box/comment-box.component';
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 const routes: Routes = [
   {
@@ -36,14 +43,21 @@ const routes: Routes = [
     PaginationComponent,
     ResultDetailComponent,
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    CommentBoxComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    PerfectScrollbarModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

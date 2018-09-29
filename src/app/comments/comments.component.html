@@ -1,19 +1,30 @@
-<div class="row comment-div">
+<div class="row ">
   <div class="card p-2 col-sm-12 col-lg-12">
     <div class="alert alert-primary text-center m-0 p-0" role="alert">
       <h6 class="m-0 text-bold ">
         Comments
       </h6>
-    </div>
-    <div class="card-body p-0 m-1 scrolly">
-      <div class='container p-1'>
-          <ul class="list-group list-group-flush ">
-              <li class="list-group-item p-0 border-0 "> <app-comment></app-comment> </li>
-              <li class="list-group-item p-0 border-0 "> <app-comment></app-comment> </li>
-              <li class="list-group-item p-0 border-0 "> <app-comment></app-comment> </li>
-            </ul>
+    </div>    
+    <perfect-scrollbar>
+      <div class="card-body p-0 m-1 comment-div">
+        <div class='container p-1'>
+          <ul *ngFor='let comment of comments' class="list-group list-group-flush ">
+            <li class="list-group-item p-0 border-0 ">
+              <app-comment [comment]='comment'></app-comment>
+            </li>
+          </ul>
 
+        </div>
       </div>
+    </perfect-scrollbar>    
+    <div class="card-body p-0 m-1">
+        <div class="container-fluid p-1">
+            <div class="row">
+              <div class="col-sm-12">
+                <app-comment-box></app-comment-box>
+              </div>
+            </div>
+          </div>
     </div>
   </div>
 </div>
