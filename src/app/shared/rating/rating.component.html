@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-9 d-flex justify-content-center">
-      <h3 class="bold padding-bottom-7">4.3 <small>/ 5</small></h3>
+      <h3 class="bold padding-bottom-7">{{calculatedRating}}<small>/ 5</small></h3>
     </div>
     <div class="col-sm-2 d-flex justify-content-center btn" >
         <button type="button" class="btn btn-sm btn-outline-warning" (click)="enableRatingControl()">Rate This</button>
@@ -9,11 +9,11 @@
     <div *ngIf="showRatingControl" class="col-sm-12 align-self-center">
       <div class="alert alert-warning small p-0" role="alert">
         <div class="starrating d-flex justify-content-center flex-row-reverse">
-          <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-          <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-          <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-          <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-          <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+          <input type="radio" id="star5" name="rating" value="5" (click)='ratingClicked(5)'/><label for="star5" title="5 star"></label>
+          <input type="radio" id="star4" name="rating" value="4" (click)='ratingClicked(4)'/><label for="star4" title="4 star"></label>
+          <input type="radio" id="star3" name="rating" value="3" (click)='ratingClicked(3)'/><label for="star3" title="3 star"></label>
+          <input type="radio" id="star2" name="rating" value="2" (click)='ratingClicked(2)'/><label for="star2" title="2 star"></label>
+          <input type="radio" id="star1" name="rating" value="1" (click)='ratingClicked(1)'/><label for="star1" title="1 star"></label>
         </div>
       </div>
     </div>
