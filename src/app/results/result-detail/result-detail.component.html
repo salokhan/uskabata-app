@@ -1,20 +1,18 @@
 <div class="container bootstrap snippet">
   <div class="row">
     <div class="col-sm-12">
-      <div class="btn-group float-right">
-        <button [className]="showDetail ? 'btn btn-success my-2' : 'btn btn-info my-2'" (click)='detailClicked()'>
-          Details
-        </button>
-        <button [className]="showComments ? 'btn btn-success my-2' : 'btn btn-info my-2' " (click)='commentClicked()'>
-          Comments
-        </button>
-        <button *ngIf="!showComments && !showDetail" [className]="showDetail && showComments ? 'btn btn-success my-2' : 'btn btn-info my-2' "
-          (click)='allClicked()'>
-          Show All
-        </button>
+      <div class="card p-1">
+        <div class="btn-group ">
+          <button [className]="showDetail ? 'btn btn-success my-2' : 'btn btn-info my-2'" (click)='selectThisAndHideOther("details")'>
+            Details
+          </button>
+          <button [className]="showComments ? 'btn btn-success my-2' : 'btn btn-info my-2' " (click)='selectThisAndHideOther("comments")'>
+            Comments
+          </button>
+        </div>
       </div>
     </div>
-    <div *ngIf="showDetail" [className]="showDetail && showComments ? 'col-md-5' : 'col-md-12' ">
+    <div *ngIf="showDetail" class="col-sm-12">
       <div class="card p-2">
         <div class="alert alert-primary text-center m-0 p-0" role="alert">
           <h2 class="m-0 text-bold">
@@ -27,14 +25,9 @@
         <div class="card-body p-1">
           <div class='container p-1'>
             <div class='row p-1'>
-              <div class='col-sm-12 col-lg-12 bg-light text-warning d-flex align-items-center'>
-                <p class='small mx-auto d-block font-weight-bold text-sm-center text-lg-right'>Current Rating</p>
-              </div>
-            </div>
-            <div class='row p-1'>
               <div class='small col-sm-12 col-lg-12 bg-light text-dark '>
                 <div class='col-sm-12 '>
-                  <app-rating [ratings]='result.ratings'></app-rating>
+                  <app-rating [showRateThisButton]='showRateThisButton' [ratings]='result.ratings'></app-rating>
                 </div>
               </div>
             </div>
@@ -119,7 +112,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="showComments" [className]="showDetail && showComments ? 'col-md-7' : 'col-md-12' ">
+    <div *ngIf="showComments" class="col-sm-12">
       <app-comments></app-comments>
     </div>
   </div>

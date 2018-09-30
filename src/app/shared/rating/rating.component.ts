@@ -11,6 +11,7 @@ export class RatingComponent implements OnInit, OnChanges {
 
   showRatingControl = false;
   @Input() ratings: IRating;
+  @Input() showRateThisButton: true;
   calculatedRating;
 
   constructor() { }

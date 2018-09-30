@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class ResultDetailComponent implements OnInit, OnDestroy {
 
   result: IResult;
-  showComments = true;
+  showComments = false;
   showDetail = true;
-
+  showRateThisButton = true;
   constructor(private _resultService: ResultService, private router: Router) {
   }
 
@@ -28,11 +28,21 @@ export class ResultDetailComponent implements OnInit, OnDestroy {
     // this._resultService.clearResultStorage();
   }
 
-  commentClicked(): void {
-    this.showComments = !this.showComments;
-  }
-  detailClicked(): void {
-    this.showDetail = !this.showDetail;
+  selectThisAndHideOther(selection: string): void {
+    switch (selection) {
+      case 'comments':
+      {
+        this.showComments = true;
+        this.showDetail = false;
+        break;
+      }
+      case 'details':
+      {
+        this.showDetail = true;
+        this.showComments = false;
+        break;
+      }
+    }
   }
   allClicked(): void {
     this.showComments = true;

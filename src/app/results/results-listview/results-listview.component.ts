@@ -16,6 +16,7 @@ export class ResultsListViewComponent implements OnInit, OnDestroy {
 
 
   constructor(private _resultService: ResultService, private router: Router ) { }
+  showRateThisButton = false;
 
   ngOnInit() {
   }
