@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ResultService } from '../service-result/result.service';
 import { IResult } from '../result';
+import { Router } from '@angular/router';
 
 @Component({
   // selector: 'app-result-detail',
@@ -10,17 +11,42 @@ import { IResult } from '../result';
 export class ResultDetailComponent implements OnInit, OnDestroy {
 
   result: IResult;
-
-  constructor(private _resultService: ResultService) {
+  showComments = false;
+  showDetail = true;
+  showRateThisButton = true;
+  constructor(private _resultService: ResultService, private router: Router) {
   }
 
   ngOnInit() {
     this.result = this._resultService.getResultStorage();
-    console.log(this.result);
+    if (!this.result) {
+      this.router.navigate(['']);
+    }
   }
 
   ngOnDestroy() {
     // this._resultService.clearResultStorage();
+  }
+
+  selectThisAndHideOther(selection: string): void {
+    switch (selection) {
+      case 'comments':
+      {
+        this.showComments = true;
+        this.showDetail = false;
+        break;
+      }
+      case 'details':
+      {
+        this.showDetail = true;
+        this.showComments = false;
+        break;
+      }
+    }
+  }
+  allClicked(): void {
+    this.showComments = true;
+    this.showDetail = true;
   }
 
 }

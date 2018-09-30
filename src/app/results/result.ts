@@ -1,3 +1,5 @@
+import { IRating } from '../shared/rating/rating';
+
 export class IAddress {
     addressLine: string;
     city: string;
@@ -21,6 +23,6 @@ export class IResult {
         manager: string;
         website: string;
         imageUrl: string;
-
+        ratings: IRating;
 
 }
