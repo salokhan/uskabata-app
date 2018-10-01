@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ResultService } from './service-result/result.service';
 import { IResult } from './result';
 
 @Component({
