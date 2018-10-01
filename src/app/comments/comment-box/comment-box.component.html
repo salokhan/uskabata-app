@@ -1,10 +1,10 @@
-<div class="card p-1">
+<div [ngClass]="['card p-1']">
   <form>
-    <div class="form-group">
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div [ngClass]="['form-group']">
+      <textarea [ngClass]="['form-control']" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
   </form>
-  <div class="card-body p-0 m-0 float-right">
-      <div class="float-right"><button type="button" class="btn btn-primary btn-sm">Send</button></div>
+  <div [ngClass]="['card-body p-0 m-0 float-right']">
+      <div [ngClass]="['float-right']"><button type="button" [ngClass]="['btn btn-primary btn-sm']">Send</button></div>
     </div>
 </div>

@@ -1,25 +1,24 @@
-<div id="products" class="row view-group justify-content-center">
-  <div *ngFor='let result of results' class="grid-group-item  col-xs-3 col-lg-3 p-1" (click)="onClick(result)">
-    <div class="thumbnail card">
-      <div class="img-event">
-        <img class="group grid-group-image img-fluid" src="http://placehold.it/400x250/000/fff" alt="" />
+<div id="products" [ngClass]="['row view-group justify-content-center']">
+  <div *ngFor='let result of results' [ngClass]="['grid-group-item  col-xs-3 col-lg-3 p-1']" (click)="onClick(result)">
+    <div [ngClass]="['thumbnail card']">
+      <div [ngClass]="['img-event']">
+        <img [ngClass]="['group grid-group-image img-fluid']" src="http://placehold.it/400x250/000/fff" alt="" />
       </div>
-      <div class="caption card-body">
-        <h4 class="group card-title inner grid-group-item-heading">
+      <div [ngClass]="['caption card-body']">
+        <h4 [ngClass]="['group card-title inner grid-group-item-heading']">
           {{result.title}}</h4>
-        <p class="small group inner grid-group-item-text">
+        <p [ngClass]="['small group inner grid-group-item-text']">
           {{result.description}}
         </p>
-        <div class="row">
-          <div class="col-xs-12 col-md-6">
-            <p class="lead">
+        <div [ngClass]="['row']">
+          <div [ngClass]="['col-xs-12 col-md-6']">
+            <p [ngClass]="['lead']">
               {{result.address.addressline}}</p>
           </div>
         </div>
-        <div class="row">
-
-          <div class="col-xs-12 col-md-6">
-            <a class="btn btn-success" [href]="result.website">Visit Us</a>
+        <div [ngClass]="['row']">
+          <div [ngClass]="['col-xs-12 col-md-6']">
+            <a [ngClass]="['btn btn-success']" [href]="result.website">Visit Us</a>
           </div>
         </div>
       </div>
