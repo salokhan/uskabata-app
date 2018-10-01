@@ -1,23 +1,23 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Fixed navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<nav [ngClass]="['navbar navbar-expand-md navbar-dark fixed-top bg-dark']">
+    <a [ngClass]="['navbar-brand']" href="#">Fixed navbar</a>
+    <button [ngClass]="['navbar-toggler']" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span [ngClass]="['navbar-toggler-icon']"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['result-detail']">Home <span class="sr-only">(current)</span></a>
+    <div [ngClass]="['collapse navbar-collapse']" id="navbarCollapse">
+      <ul [ngClass]="['navbar-nav mr-auto']">
+        <li [ngClass]="['nav-item active']">
+          <a [ngClass]="['nav-link']" [routerLink]="['result-detail']">Home <span [ngClass]="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li [ngClass]="['nav-item']">
+          <a [ngClass]="['nav-link']" href="#">Link</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+        <li [ngClass]="['nav-item']">
+          <a [ngClass]="['nav-link disabled']" href="#">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <form [ngClass]="['form-inline mt-2 mt-md-0']">
+        <input [ngClass]="['form-control mr-sm-2']" type="text" placeholder="Search" aria-label="Search">
+        <button [ngClass]="['btn btn-outline-success my-2 my-sm-0']" type="submit">Search</button>
       </form>
     </div>
   </nav>

@@ -1,26 +1,27 @@
-<div class="row  justify-content-center">
-    <div *ngFor='let result of results' class="col-xs-12 col-lg-12 p-1" (click)="onClick(result)">
-        <div class="card result">
-            <div class="card-body p-2">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="img">
-                            <img class="img-fluid " src="http://placehold.it/400x250/000/fff" alt="">
+<div [ngClass]="['row  justify-content-center']">
+    <div *ngFor='let result of results' [ngClass]="['col-xs-12 col-lg-12 p-1']" (click)="onClick(result)">
+        <div [ngClass]="['card result']">
+            <div [ngClass]="['card-body p-2']">
+                <div [ngClass]="['row']">
+                    <div [ngClass]="['col-sm-3']">
+                        <div [ngClass]="['img']">
+                            <img [ngClass]="['img-fluid']" src="http://placehold.it/400x250/000/fff" alt="">
                         </div>
                     </div>
-                    <div class="col-sm-9">
-                        <div class="row">
-                            <div class="col-sm-9">
-                                <h5 class="card-title">{{result.title}}</h5>
+                    <div [ngClass]="['col-sm-9']">
+                        <div [ngClass]="['row']">
+                            <div [ngClass]="['col-sm-9']">
+                                <h5 [ngClass]="['card-title']">{{result.title}}</h5>
                             </div>
-                            <div class="col-sm-3 small">
+                            <div [ngClass]="['col-sm-3 small']">
                                 <app-rating [showRateThisButton]='showRateThisButton' [ratings]='result.ratings'></app-rating>
                             </div>
                         </div>
-                        <p class="card-text text-wrap text-truncate">{{result.description}}</p>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p class="card-text"><small class="text-muted">{{result.address.country}} |
+                        <p [ngClass]="['card-text text-wrap text-truncate']">{{result.description}}</p>
+                        <div [ngClass]="['row']">
+                            <div [ngClass]="['col-sm-12']">
+                                <p [ngClass]="['card-text']"><small [ngClass]="['text-muted']">{{result.address.country}}
+                                        |
                                         {{result.address.city}} | {{result.address.addressline}} | {{result.website}}</small></p>
                             </div>
                         </div>
