@@ -1,22 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { IResult } from './result';
 import { ResultService } from './service-result/result.service';
+import { PaginationService } from '../../shared_modules/pagination/pagination.service';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss'],
-  providers: [ResultService]
+  styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
 
+  results: IResult[];
   pagedResults: IResult[];
   errorMessage: string;
   isGridView = false;
 
-  constructor() { }
+  constructor(private _resultService: ResultService, private _paginationService: PaginationService) { }
 
   ngOnInit() {
+    this._resultService.getResult().subscribe(results => {
+      this.results = results;
+      this._paginationService.dataSource = this.results;
+      this._paginationService.totalItems = this.results.length;
+      this._paginationService.pagination();
+      this.pagedResults = this._paginationService.pagedResults;
+    },
+    error => {
+      this.errorMessage = <any>error;
+    });
   }
 
   onNotify(pagedResults: IResult[]): void {

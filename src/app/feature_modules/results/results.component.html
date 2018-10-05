@@ -16,6 +16,6 @@
 
   <app-results-gridview *ngIf="isGridView"  [results]='pagedResults'></app-results-gridview>
   <app-results-listview  *ngIf="!isGridView" [results]='pagedResults'></app-results-listview>
-  <app-pagination  (paginationClicked)='onNotify($event)' ></app-pagination> 
+  <app-pagination *ngIf="results.length > this.pagedResults.length"  (paginationClicked)='onNotify($event)' ></app-pagination> 
 
 </div>
