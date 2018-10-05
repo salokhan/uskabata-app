@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges , Input } from '@angular/core';
-import { IRating } from './rating';
+
 import { storeCleanupWithContext } from '@angular/core/src/render3/instructions';
+import { IRating } from '../rating';
 
 @Component({
   selector: 'app-rating',

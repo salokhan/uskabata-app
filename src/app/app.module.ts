@@ -16,8 +16,8 @@ import { ResultDetailComponent } from './results/result-detail/result-detail.com
 import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comments/comment/comment.component';
 import { CommentBoxComponent } from './comments/comment-box/comment-box.component';
-import { RatingComponent } from './shared/rating/rating.component';
 import { TopBarModule } from './core_modules/top-bar/top-bar.module';
+import { RatingModule } from './shared_modules/rating/rating.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -44,14 +44,14 @@ const routes: Routes = [
     ResultDetailComponent,
     CommentsComponent,
     CommentComponent,
-    CommentBoxComponent,
-    RatingComponent
+    CommentBoxComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     PerfectScrollbarModule,
     TopBarModule,
+    RatingModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
