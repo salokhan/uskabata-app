@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy} from '@angular/core';
 import { IResult } from '../result';
-import { ResultService } from '../service-result/result.service';
 import { Router } from '@angular/router';
+import { ResultService } from '../service-result/result.service';
 @Component({
   selector: 'app-results-gridview',
   templateUrl: './results-gridview.component.html',

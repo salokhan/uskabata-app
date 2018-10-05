@@ -1,0 +1,21 @@
+<div [ngClass]="['container']">
+  <div [ngClass]="['row']">
+      <div [ngClass]="['col-lg-12 my-2']">
+          <div [ngClass]="['float-right']">
+              <div [ngClass]="['btn-group']">
+                  <button  [ngClass]="!isGridView ? 'btn btn-danger' : 'btn btn-info'"  id="list" (click)='listViewClicked()'>
+                      List View
+                  </button>
+                  <button [ngClass]="isGridView ? 'btn btn-danger' : 'btn btn-info'"  id="grid" (click)='gridViewClicked()'>
+                      Grid View
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <app-results-gridview *ngIf="isGridView"  [results]='pagedResults'></app-results-gridview>
+  <app-results-listview  *ngIf="!isGridView" [results]='pagedResults'></app-results-listview>
+  <app-pagination  (paginationClicked)='onNotify($event)' ></app-pagination> 
+
+</div>

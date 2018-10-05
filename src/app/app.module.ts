@@ -1,47 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { AppComponent } from './app.component';
-import { ResultsComponent } from './results/results.component';
-import { ResultsListViewComponent } from './results/results-listview/results-listview.component';
-import { ResultsGridviewComponent } from './results/results-gridview/results-gridview.component';
-import { PaginationComponent } from './results/shared/pagination/pagination.component';
-import { ResultDetailComponent } from './results/result-detail/result-detail.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comments/comment/comment.component';
 import { CommentBoxComponent } from './comments/comment-box/comment-box.component';
 import { TopBarModule } from './core_modules/top-bar/top-bar.module';
-import { RatingModule } from './shared_modules/rating/rating.module';
+import { AppRoutingModule } from './app-routing.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ResultsComponent
-  },
-  {
-    path: 'result-detail',
-    component: ResultDetailComponent
-  }
-];
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResultsComponent,
-    ResultsListViewComponent,
-    ResultsGridviewComponent,
-    PaginationComponent,
-    ResultDetailComponent,
     CommentsComponent,
     CommentComponent,
     CommentBoxComponent
@@ -49,10 +29,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
+    AppRoutingModule,
     PerfectScrollbarModule,
-    TopBarModule,
-    RatingModule,
-    RouterModule.forRoot(routes)
+    TopBarModule
   ],
   providers: [
     {

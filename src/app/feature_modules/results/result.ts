@@ -1,4 +1,5 @@
-import { IRating } from '../shared_modules/rating/rating';
+import { IRating } from '../../shared_modules/rating/rating';
+
 
 
 export class IAddress {
