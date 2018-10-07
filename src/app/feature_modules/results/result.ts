@@ -1,4 +1,6 @@
-import { IRating } from '../shared/rating/rating';
+import { IRating } from '../../shared_modules/rating/rating';
+
+
 
 export class IAddress {
     addressLine: string;

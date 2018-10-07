@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResultService } from './service-result/result.service';
 import { IResult } from './result';
+import { ResultService } from './service-result/result.service';
 
 @Component({
   selector: 'app-results',
@@ -9,13 +9,21 @@ import { IResult } from './result';
 })
 export class ResultsComponent implements OnInit {
 
+  results: IResult[];
   pagedResults: IResult[];
   errorMessage: string;
   isGridView = false;
 
-  constructor() { }
+  constructor(private _resultService: ResultService) {
+   }
 
   ngOnInit() {
+    this._resultService.getResult().subscribe(results => {
+      this.results = results;
+    },
+      error => {
+        this.errorMessage = <any>error;
+      });
   }
 
   onNotify(pagedResults: IResult[]): void {

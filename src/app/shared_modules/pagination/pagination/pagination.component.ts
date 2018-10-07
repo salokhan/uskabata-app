@@ -1,6 +1,4 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
-import { IResult } from '../../result';
-import { ResultService } from '../../service-result/result.service';
 
 @Component({
   selector: 'app-pagination',
@@ -9,9 +7,9 @@ import { ResultService } from '../../service-result/result.service';
 })
 export class PaginationComponent implements OnChanges, OnInit {
 
-  @Input() results: IResult[];
-  pagedResults: IResult[];
-  @Output() paginationClicked: EventEmitter<IResult[]> = new EventEmitter<IResult[]>();
+  @Input() results: any[];
+  pagedResults: any[];
+  @Output() paginationClicked: EventEmitter<any[]> = new EventEmitter<any[]>();
 
 
   pageSize = 12;
@@ -25,43 +23,23 @@ export class PaginationComponent implements OnChanges, OnInit {
   pages: any[];
   errorMessage;
 
-  constructor(private _resultService: ResultService) {
+  constructor() {
   }
 
   ngOnChanges() {
-    this._resultService.getResult().subscribe(results => {
-      this.results = results;
-      if (this.results) {
-        this.totalItems = this.results.length;
-        this.pagination();
-        this.paginationClicked.emit(this.pagedResults);
-      }
-    },
-      error => {
-        this.errorMessage = <any>error;
-      });
-
+    if (this.results) {
+      this.totalItems = this.results.length;
+      this.pagination();
+      this.paginationClicked.emit(this.pagedResults);
+    }
   }
 
   ngOnInit() {
-    this._resultService.getResult().subscribe(results => {
-      this.results = results;
-      if (this.results) {
-        this.totalItems = this.results.length;
-        this.pagination();
-        this.paginationClicked.emit(this.pagedResults);
-      }
-    },
-      error => {
-        this.errorMessage = <any>error;
-      });
-
   }
 
   setPage(pageNumber): void {
     this.currentPage = pageNumber;
     this.pagination();
-    this.paginationClicked.emit(this.pagedResults);
   }
 
   pagination() {
@@ -102,6 +80,8 @@ export class PaginationComponent implements OnChanges, OnInit {
 
     // populate the pagged array/results
     this.pagedResults = this.results.slice(this.startIndex, this.endIndex + 1);
+
+    this.paginationClicked.emit(this.pagedResults);
   }
 
 
