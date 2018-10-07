@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
-import { PaginationService } from '../pagination.service';
 
 @Component({
   selector: 'app-pagination',
@@ -13,33 +12,77 @@ export class PaginationComponent implements OnChanges, OnInit {
   @Output() paginationClicked: EventEmitter<any[]> = new EventEmitter<any[]>();
 
 
-  pageSize;
-  currentPage;
-  totalPages;
+  pageSize = 12;
+  startPage;
+  endPage;
+  startIndex = 0;
+  endIndex = this.pageSize - 1;
+  currentPage = 1;
+  totalPages = 0;
+  totalItems = 0;
   pages: any[];
+  errorMessage;
 
-  constructor(public _paginationService: PaginationService) {
+  constructor() {
   }
 
   ngOnChanges() {
+    if (this.results) {
+      this.totalItems = this.results.length;
+      this.pagination();
+      this.paginationClicked.emit(this.pagedResults);
+    }
   }
 
   ngOnInit() {
-    if (this._paginationService.dataSource && this._paginationService.dataSource.length > 0) {
-      this._paginationService.pagination();
-      this.currentPage = this._paginationService.currentPage;
-      this.pageSize = this._paginationService.pageSize;
-      this.totalPages = this._paginationService.totalPages;
-      this.pages = this._paginationService.pages;
-    }
   }
 
   setPage(pageNumber): void {
     this.currentPage = pageNumber;
-    this._paginationService.currentPage = pageNumber;
-    this._paginationService.pagination();
-    this.totalPages = this._paginationService.totalPages;
-    this.pages = this._paginationService.pages;
+    this.pagination();
   }
+
+  pagination() {
+    // calculate total pages
+    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+
+    // ensure current page isn't out of range
+    if (this.currentPage < 1) {
+      this.currentPage = 1;
+    } else if (this.currentPage > this.totalPages) {
+      this.currentPage = this.totalPages;
+    }
+
+    if (this.totalPages <= this.pageSize) {
+      // less than 10 total pages so show all
+      this.startPage = 1;
+      this.endPage = this.totalPages;
+    } else {
+      // more than 10 total pages so calculate start and end pages
+      if (this.currentPage <= 6) {
+        this.startPage = 1;
+        this.endPage = this.pageSize;
+      } else if (this.currentPage + 4 >= this.totalPages) {
+        this.startPage = this.totalPages - 9;
+        this.endPage = this.totalPages;
+      } else {
+        this.startPage = this.currentPage - 5;
+        this.endPage = this.currentPage + 4;
+      }
+    }
+
+    // calculate start and end item indexes
+    this.startIndex = (this.currentPage - 1) * this.pageSize;
+    this.endIndex = Math.min(this.startIndex + this.pageSize - 1, this.totalItems - 1);
+
+    // create an array of pages to ng-repeat in the pager control
+    this.pages = Array.from(Array((this.endPage + 1) - this.startPage).keys()).map(i => this.startPage + i);
+
+    // populate the pagged array/results
+    this.pagedResults = this.results.slice(this.startIndex, this.endIndex + 1);
+
+    this.paginationClicked.emit(this.pagedResults);
+  }
+
 
 }

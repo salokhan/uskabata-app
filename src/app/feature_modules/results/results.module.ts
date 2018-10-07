@@ -12,7 +12,6 @@ import { ResultsRoutingModule } from './results-routing.module';
 import { RatingModule } from '../../shared_modules/rating/rating.module';
 import { PaginationModule } from '../../shared_modules/pagination/pagination.module';
 import { ResultService } from './service-result/result.service';
-import { PaginationService } from '../../shared_modules/pagination/pagination.service';
 
 @NgModule({
   imports: [
@@ -21,7 +20,7 @@ import { PaginationService } from '../../shared_modules/pagination/pagination.se
     RatingModule,
     PaginationModule
   ],
-  providers: [ResultService, PaginationService],
+  providers: [ResultService],
   declarations: [ResultsComponent, ResultsListViewComponent, ResultsGridviewComponent]
 })
 export class ResultsModule { }
