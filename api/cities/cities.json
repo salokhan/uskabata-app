@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "name": "Karachi",
+        "type": "Popular"
+    },
+    {
+        "id": "2",
+        "name": "Lahore",
+        "type": "Popular"
+    },
+    {
+        "id": "3",
+        "name": "Islamabad",
+        "type": "Popular"
+    },
+    {
+        "id": "4",
+        "name": "Rawalpindi",
+        "type": "Popular"
+    },
+    {
+        "id": "5",
+        "name": "Peshawar",
+        "type": "Popular"
+    },
+    {
+        "id": 6,
+        "name": "Batkhela",
+        "type": "Others"
+    },
+    {
+        "id": 7,
+        "name": "Abbotabad",
+        "type": "Others"
+    }
+]

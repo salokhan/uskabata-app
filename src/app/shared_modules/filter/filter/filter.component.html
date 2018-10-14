@@ -1,0 +1,11 @@
+<div [ngClass]="['container']">
+  <div [ngClass]="['row']">
+    <form [ngClass]="['col-sm-12']" [formGroup]='filterForm' (ngSubmit)="onSubmit()">
+      <label>
+        City:
+        <p-dropdown [autoWidth]="true" [style]="{'width':'150px'}" [autofocus]="true" [options]="groupedCities"  [group]="true" [showClear]="true" [filter]="true" placeholder="Select a City" filterBy="value" formControlName="selectedCity"></p-dropdown>
+      </label>
+      <button type="submit" [disabled]="!filterForm.valid">Submit</button>
+    </form>
+  </div>
+</div>
