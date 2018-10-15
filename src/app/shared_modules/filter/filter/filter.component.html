@@ -1,11 +1,62 @@
-<div [ngClass]="['container']">
-  <div [ngClass]="['row']">
-    <form [ngClass]="['col-sm-12']" [formGroup]='filterForm' (ngSubmit)="onSubmit()">
-      <label>
-        City:
-        <p-dropdown [autoWidth]="true" [style]="{'width':'150px'}" [autofocus]="true" [options]="groupedCities"  [group]="true" [showClear]="true" [filter]="true" placeholder="Select a City" filterBy="value" formControlName="selectedCity"></p-dropdown>
-      </label>
-      <button type="submit" [disabled]="!filterForm.valid">Submit</button>
+<div [ngClass]="['col-sm-12 card']">
+  <div [ngClass]="['card-body']">
+    <form [formGroup]='filterForm' (ngSubmit)="onSubmit()">
+      <div [ngClass]="['container']">
+        <div [ngClass]="['row']">
+          <div [ngClass]="['col-sm-12 col-md-4 p-0']">
+            <div [ngClass]="['container-fluid']">
+              <div [ngClass]="['row']">
+                <div [ngClass]="['col-sm-12  p-1']">
+                  <label>City</label>
+                </div>
+                <div [ngClass]="['col-sm-12  p-1']">
+                  <p-dropdown [autoWidth]="true" [style]="{'width':'100%','height':'100%'}" [autofocus]="true"
+                    [options]="groupedCities" [group]="true" [showClear]="true" [filter]="true" placeholder="Select a City"
+                    filterBy="value" formControlName="selectedCity"></p-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [ngClass]="['col-sm-12 col-md-4 p-0']">
+            <div [ngClass]="['container-fluid']">
+              <div [ngClass]="['row']">
+                <div [ngClass]="['col-sm-12  p-1']">
+                  <label>City</label>
+                </div>
+                <div [ngClass]="['col-sm-12  p-1']">
+                  <p-dropdown [autoWidth]="true" [style]="{'width':'100%','height':'100%'}" [autofocus]="true"
+                    [options]="groupedCities" [group]="true" [showClear]="true" [filter]="true" placeholder="Select a City"
+                    filterBy="value" formControlName="selectedCity"></p-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div [ngClass]="['col-sm-12 col-md-4 p-0']">
+            <div [ngClass]="['container-fluid']">
+              <div [ngClass]="['row']">
+                <div [ngClass]="['col-sm-12  p-1']">
+                  <label>City</label>
+                </div>
+                <div [ngClass]="['col-sm-12  p-1']">
+                  <p-dropdown [autoWidth]="true" [style]="{'width':'100%','height':'100%'}" [autofocus]="true"
+                    [options]="groupedCities" [group]="true" [showClear]="true" [filter]="true" placeholder="Select a City"
+                    filterBy="value" formControlName="selectedCity"></p-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div [ngClass]="['col-sm-12 col-md-12 p-0']">
+            <div [ngClass]="['d-flex justify-content-md-end  p-2']">
+                <div><button [ngClass]="['btn btn-lg btn-block btn-success']">Search</button></div>
+              </div>
+          </div> -->
+          <div [ngClass]="['col-sm-12 col-md-12 p-1']">
+              <div [ngClass]="['d-flex justify-content-sm-center flex-sm-column flex-md-row justify-content-md-end']">
+                  <div><button [ngClass]="['btn btn-lg btn-block btn-success']">Search</button></div>
+                </div>
+            </div>
+        </div>
+      </div>
     </form>
   </div>
 </div>
