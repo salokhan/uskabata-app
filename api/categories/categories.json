@@ -1,0 +1,56 @@
+[
+    {
+        "id": "1",
+        "name": "Automobile",
+        "type": "Popular",
+        "experties": 
+        [
+            {
+                "id": "1",
+                "name": "Electrician",
+                "type": "Popular"
+            },
+            {
+                "id": "2",
+                "name": "Mechanic",
+                "type": "Popular"
+            },
+            {
+                "id": "3",
+                "name": "Wheel Alignment",
+                "type": "Popular"
+            },
+            {
+                "id": "4",
+                "name": "Mobil Oil",
+                "type": "Others"
+            }
+
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Medical",
+        "type": "Popular"
+    },
+    {
+        "id": "3",
+        "name": "Education",
+        "type": "Popular"
+    },
+    {
+        "id": "4",
+        "name": "Pet",
+        "type": "Others"
+    },
+    {
+        "id": "5",
+        "name": "Food",
+        "type": "Others"
+    },
+    {
+        "id": "6",
+        "name": "Home",
+        "type": "Others"
+    }
+]
