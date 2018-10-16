@@ -60,6 +60,29 @@ export class FilterComponent implements OnChanges {
     }
   }
 
+  onCategorySelection(): void {
+    const selectedCategoryName = this.filterForm.value.selectedCategory;
+    if (selectedCategoryName) {
+      const categorySelected = this.categories.find(category => category.name === selectedCategoryName);
+      if (categorySelected && categorySelected.experties) {
+        this.experties = categorySelected.experties;
+        const grouped = this.groupBy(this.experties, experty => experty.type);
+        grouped.forEach(element => {
+          this.groupedExperties.push({ 'label': element[0].type, items: [] });
+          element.forEach(experty => {
+            const selectedGroup = this.groupedExperties.filter(x => x.label === experty.type);
+            if (selectedGroup && selectedGroup.length > 0) {
+              selectedGroup[0].items.push({ label: experty.name, value: experty.name });
+            }
+          });
+        });
+      }
+    } else {
+      // clear the array for experties
+      this.groupedExperties = [];
+    }
+  }
+
   groupBy(list, keyGetter): any {
     const map = new Map();
     list.forEach((item) => {
@@ -73,23 +96,4 @@ export class FilterComponent implements OnChanges {
     });
     return map;
   }
-
-  onCategorySelection(): void {
-    const selectedCategoryName = this.filterForm.value.selectedCategory;
-    const categorySelected = this.categories.find(category => category.name === selectedCategoryName);
-    if (categorySelected && categorySelected.experties) {
-      this.experties = categorySelected.experties;
-      const grouped = this.groupBy(this.experties, experty => experty.type);
-      grouped.forEach(element => {
-        this.groupedExperties.push({ 'label': element[0].type, items: [] });
-        element.forEach(experty => {
-          const selectedGroup = this.groupedExperties.filter(x => x.label === experty.type);
-          if (selectedGroup && selectedGroup.length > 0) {
-            selectedGroup[0].items.push({ label: experty.name, value: experty.name });
-          }
-        });
-      });
-    }
-  }
-
 }
