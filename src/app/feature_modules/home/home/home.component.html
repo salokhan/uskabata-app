@@ -1,7 +1,7 @@
 <div [ngClass]="['container']">
     <div [ngClass]="['row']">
         <div [ngClass]="['col-lg-12 my-2']" >
-            <app-filter [cities]='cities' [categories]='categories'></app-filter>
+            <app-filter [cities]='cities' [categories]='categories' (searchClicked)='onNotify($event)'></app-filter>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':city/:category/:experties',
     component: ResultsComponent
   }
 ];

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../service-home/home.service';
 import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
+import { IFilter } from '../../../shared_modules/filter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,7 @@ export class HomeComponent implements OnInit {
   cities: ICity[];
   categories: ICategory[];
   errorMessage;
-  constructor(private _homeService: HomeService) { }
+  constructor(private _homeService: HomeService, private router: Router) { }
 
   ngOnInit() {
     this._homeService.getCities().subscribe(cities => {
@@ -30,6 +32,10 @@ export class HomeComponent implements OnInit {
       error => {
         this.errorMessage = <any>error;
       });
+  }
+
+  onNotify(filter: IFilter): void {
+    this.router.navigate(['results', filter.city, filter.category, filter.experties]);
   }
 
 }

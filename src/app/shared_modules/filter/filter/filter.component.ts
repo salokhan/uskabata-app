@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SelectItemGroup } from 'primeng/api';
 import { ICity } from '../../city';
 import { ICategory } from '../../category';
 import { IExperty } from '../../experty';
 import { BehaviorSubject } from 'rxjs';
+import { IFilter } from '../../filter';
 
 @Component({
   selector: 'app-filter',
@@ -12,6 +13,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
+
+  @Output() searchClicked: EventEmitter<IFilter> = new EventEmitter<IFilter>();
 
   filterForm = new FormGroup({
     selectedCity: new FormControl(),
@@ -83,6 +86,12 @@ export class FilterComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.filterForm.value);
+    const filter: IFilter = new IFilter;
+    filter.city = this.filterForm.value.selectedCity ? this.filterForm.value.selectedCity : '';
+    filter.category = this.filterForm.value.selectedCategory ? this.filterForm.value.selectedCategory : '';
+    filter.experties = this.filterForm.value.selectedExperty ? this.filterForm.value.selectedExperty : '';
+    this.searchClicked.emit(filter);
+
   }
 
   onCategorySelection(): void {

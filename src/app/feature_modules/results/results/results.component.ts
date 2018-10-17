@@ -15,7 +15,7 @@ export class ResultsComponent implements OnInit {
   isGridView = false;
 
   constructor(private _resultService: ResultService) {
-   }
+  }
 
   ngOnInit() {
     this._resultService.getResult().subscribe(results => {
