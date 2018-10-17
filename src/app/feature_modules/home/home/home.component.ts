@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   onNotify(filter: IFilter): void {
-    this.router.navigate(['results', filter.city, filter.category, filter.experties]);
+    this.router.navigate(['results', filter]);
   }
 
 }

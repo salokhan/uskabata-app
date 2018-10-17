@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IResult } from '../result';
 import { ResultService } from '../service-result/result.service';
+import { ActivatedRoute } from '@angular/router';
+import { IFilter } from '../../../shared_modules/filter';
 
 @Component({
   selector: 'app-results',
@@ -9,12 +11,16 @@ import { ResultService } from '../service-result/result.service';
 })
 export class ResultsComponent implements OnInit {
 
+  filter: IFilter;
   results: IResult[];
   pagedResults: IResult[];
   errorMessage: string;
   isGridView = false;
 
-  constructor(private _resultService: ResultService) {
+  constructor(private _resultService: ResultService, private _activeRoutes: ActivatedRoute) {
+    this._activeRoutes.params.subscribe(params => {
+      this.filter = <IFilter>params;
+    });
   }
 
   ngOnInit() {
