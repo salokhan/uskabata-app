@@ -23,7 +23,7 @@ export class ResultsListViewComponent implements OnInit, OnDestroy {
 
   onClick(resultSelected: IResult): void {
     this.resultSelected = resultSelected;
-    this.router.navigate(['result-detail']);
+    this.router.navigate(['results/resultDetail']);
 
   }
 
