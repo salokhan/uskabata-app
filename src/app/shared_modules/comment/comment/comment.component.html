@@ -1,21 +1,28 @@
-<div [ngClass]="['card m-1']">
-  <div [ngClass]="['card-body p-1 m-1']">
-    <div [ngClass]="['row']">
+<div [ngClass]="['row']">
+  <div [ngClass]="['col-sm-12 col-md-12 col-lg-1']">
+    <img [ngClass]="['img-fluid img-circle  thumb36']" src="http://placehold.it/400x250/000/fff" alt="">
+  </div>
+  <div [ngClass]="['col-sm-12 col-md-12 col-lg-11 p-sm-1 p-lg-0']">
+    <div [ngClass]="['card result']">
+      <div [ngClass]="['card-body p-2']">
+        <div [ngClass]="['row']">
+          <div [ngClass]="['col-sm-12']">
+            <div [ngClass]="['row']">
+              <div [ngClass]="['col-sm-12']">
+                <h5 [ngClass]="['card-title']">{{comment.user.name}}</h5>
+              </div>
+              <div [ngClass]="['col-sm-3 small']">
 
-      <div [ngClass]="['col-sm-2 col-md-2']">
-        <img [src]='comment.user.profilePictureUrl' [ngClass]="['img img-rounded thumb36 img-fluid']" />
-      </div>
-      <div [ngClass]="['col-sm-10 col-md-10']">
-        <p>
-          <a [ngClass]="['float-left']" href=""><strong>{{comment.user.name}}</strong></a>
-        </p>
-        <div [ngClass]="['clearfix']"></div>
-      </div>
-      <div [ngClass]="['col-sm-12 col-md-12']">
-        <p [ngClass]="['small']">{{comment.text}}</p>
-      </div>
-      <div [ngClass]="['col-md-12']">
-        <p [ngClass]="['date text-left m-1 text-muted']">Commented on: {{comment.date}}</p>
+              </div>
+            </div>
+            <p [ngClass]="['card-text text-wrap']"><small>{{comment.text}}</small></p>
+            <div [ngClass]="['row']">
+              <div [ngClass]="['col-sm-12']">
+                <p [ngClass]="['card-text']"><small [ngClass]="['text-muted']">Commented on: {{comment.date}}</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

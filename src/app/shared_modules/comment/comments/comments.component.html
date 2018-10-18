@@ -5,8 +5,8 @@
     </h6>
   </div>
    <perfect-scrollbar>
-    <div [ngClass]="['card-body p-0 m-1']">
-      <div [ngClass]="['container p-1']">
+    <div [ngClass]="['card-body p-3 m-1']">
+      <div [ngClass]="['container p-0']">
         <ul *ngFor='let comment of comments' [ngClass]="['list-group list-group-flush ']">
           <li [ngClass]="['list-group-item p-0 border-0 ']">
             <app-comment [comment]='comment'></app-comment>
