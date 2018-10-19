@@ -1,32 +1,15 @@
-// .card-inner{
-//     margin-left: 4rem;
-//   }
-//   .thumb96 {
-//     width: 96px!important;
-//     height: 96px!important;
-//   }
-//   .thumb36 {
-//     width: 36px!important;
-//     height: 36px!important;
-//   }
-//   .date {
-//     font-weight: 100;
-//     font-size: 2.5mm
-//   }
-
-  .card {
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.14),0 2px 2px 0 rgba(0,0,0,.098),0 1px 5px 0 rgba(0,0,0,.084);
-    border-radius: 4px;
-    margin-bottom: 16px;
-    margin-right: 10px;
-    margin-left: 10px;
-    
-  }
-  .thumb36 {
-    width: 40px!important;
-    height: 40px!important;
-  }
-  .result:hover {
-    cursor: pointer;
-    border-color:blue;
-  }
+.card {
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.14),0 2px 2px 0 rgba(0,0,0,.098),0 1px 5px 0 rgba(0,0,0,.084);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.thumb36 {
+  width: 40px!important;
+  height: 40px!important;
+}
+.result:hover {
+  cursor: pointer;
+  border-color:blue;
+}

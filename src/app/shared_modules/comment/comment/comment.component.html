@@ -18,8 +18,8 @@
             <p [ngClass]="['card-text text-wrap']"><small>{{comment.text}}</small></p>
             <div [ngClass]="['row']">
               <div [ngClass]="['col-sm-12']">
-                <p [ngClass]="['card-text']"><small [ngClass]="['text-muted']">Commented on: {{comment.date}}</small></p>
-              </div>
+                <p [ngClass]="['card-text']"><small [ngClass]="['text-muted']" pTooltip="Commented on:{{comment.date}}" tooltipStyleClass="tooltip-custom" tooltipPosition="right">Commented on: {{comment.date}}</small></p>
+              </div>              
             </div>
           </div>
         </div>

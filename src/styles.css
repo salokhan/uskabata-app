@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+
+    padding-top: 4.5rem;
+    /* min-height: 75rem; */
+    /* background-color: #FFFAFA */
+    background-color: #FFFAFA !important;
+  }
+.tooltip-custom.ui-tooltip .ui-tooltip-text {
+    font-weight: 100;
+    font-size: 2.5mm;
+}
