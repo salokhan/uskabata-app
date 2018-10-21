@@ -5,11 +5,15 @@
   margin-right: 10px;
   margin-left: 10px;
 }
-.thumb36 {
-  width: 40px!important;
-  height: 40px!important;
+.thumb26 {
+  width: 2em!important;
+  height: 2em!important;
 }
 .result:hover {
   cursor: pointer;
   border-color:blue;
+}
+.date {
+  font-weight: 100;
+  font-size: 2.5mm;
 }

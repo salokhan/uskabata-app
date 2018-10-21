@@ -4,16 +4,21 @@ import { IResult } from '../result';
 import { Router } from '@angular/router';
 
 @Component({
-  // selector: 'app-result-detail',
+  selector: 'app-result-detail',
   templateUrl: './result-detail.component.html',
   styleUrls: ['./result-detail.component.scss']
 })
 export class ResultDetailComponent implements OnInit, OnDestroy {
 
   result: IResult;
-  showComments = false;
-  showDetail = true;
+  commentsCount = 0;
   showRateThisButton = true;
+  showComments = false;
+
+  showCommentsDialog() {
+    this.showComments = true;
+  }
+
   constructor(private _resultService: ResultService, private router: Router) {
   }
 
@@ -28,25 +33,8 @@ export class ResultDetailComponent implements OnInit, OnDestroy {
     // this._resultService.clearResultStorage();
   }
 
-  selectThisAndHideOther(selection: string): void {
-    switch (selection) {
-      case 'comments':
-      {
-        this.showComments = true;
-        this.showDetail = false;
-        break;
-      }
-      case 'details':
-      {
-        this.showDetail = true;
-        this.showComments = false;
-        break;
-      }
-    }
-  }
-  allClicked(): void {
-    this.showComments = true;
-    this.showDetail = true;
+  getCommentsCount(commentsCount: number): void {
+    this.commentsCount = commentsCount;
   }
 
 }

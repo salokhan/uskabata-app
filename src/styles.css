@@ -10,3 +10,6 @@ body {
     font-weight: 100;
     font-size: 2.5mm;
 }
+.comments-panel.ui-panel .ui-panel-titlebar {
+    background: #cce5ff;
+}
