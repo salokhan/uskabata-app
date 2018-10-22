@@ -1,10 +1,18 @@
-<div [ngClass]="['card p-1']">
-  <form>
-    <div [ngClass]="['form-group']">
-      <textarea [ngClass]="['form-control']" id="exampleFormControlTextarea1" rows="3"></textarea>
+<div [ngClass]="['row p-1']">
+  <!-- <div [ngClass]="['col-2 col-sm-2 col-md-1 col-lg-1']">
+    <img [ngClass]="['img-fluid rounded-circle thumb26']" src="http://placehold.it/400x250/000/fff" alt="">
+  </div> -->
+  <div [ngClass]="['small col-12']">
+    <div [ngClass]="['container']">
+      <div [ngClass]="['row']">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Write your comment here." aria-label="Write your comment here."
+            aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text btn btn-primary" id="basic-addon2">Send</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </form>
-  <div [ngClass]="['card-body p-0 m-0 float-right']">
-      <div [ngClass]="['float-right']"><button type="button" [ngClass]="['btn btn-primary btn-sm']">Send</button></div>
-    </div>
+  </div>
 </div>

@@ -1,11 +1,11 @@
 <div [ngClass]="['container-fluid']">
   <div [ngClass]="['row']">
-    <div [ngClass]="['col-sm-9 d-flex justify-content-center btn']">
+    <div [ngClass]="['col-sm-9 d-flex justify-content-center p-1']">
       <button type="button" [ngClass]="['btn small btn-sm btn-primary']">
           Rating <span [ngClass]="['badge badge-light']">{{calculatedRating}} / 5</span>
         </button>
     </div>
-    <div *ngIf="showRateThisButton" [ngClass]="['col-sm-2 d-flex justify-content-center btn']" >
+    <div *ngIf="showRateThisButton" [ngClass]="['col-sm-2 d-flex justify-content-center p-1']" >
         <button type="button" [ngClass]="['btn btn-sm btn-outline-warning']" (click)="enableRatingControl()">Rate This</button>
     </div>
     <div *ngIf="showRatingControl" [ngClass]="['col-sm-12 align-self-center']">
