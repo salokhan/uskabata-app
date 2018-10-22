@@ -1,18 +1,6 @@
 <div [ngClass]="['container bootstrap snippet']">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
-      <div [ngClass]="['card p-1']">
-        <div [ngClass]="['btn-group']">
-          <button [ngClass]="showDetail ? 'btn btn-success my-2' : 'btn btn-info my-2'" (click)='selectThisAndHideOther("details")'>
-            Details
-          </button>
-          <button [ngClass]="showComments ? 'btn btn-success my-2' : 'btn btn-info my-2' " (click)='selectThisAndHideOther("comments")'>
-            Comments
-          </button>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="showDetail" [ngClass]="['col-sm-12']">
       <div [ngClass]="['card p-2']">
         <div [ngClass]="['alert alert-primary text-center m-0 p-0']" role="alert">
           <h2 [ngClass]="['m-0 text-bold']">
@@ -107,13 +95,24 @@
                 <p [ngClass]="['small mx-auto d-block text-sm-center text-lg-right']">03338788877</p>
               </div>
             </div>
-
           </div>
         </div>
+        <div [ngClass]="['col-12 p-0 d-flex']">
+          <div class="p-2 bd-highlight"><button type="button" (click)="showCommentsDialog()" [ngClass]="['btn btn-primary btn-sm']">Comments
+              ({{commentsCount}})</button>
+          </div>
+        </div>
+
       </div>
-    </div>
-    <div *ngIf="showComments" [ngClass]="['col-sm-12']">
-      <app-comments></app-comments>
     </div>
   </div>
 </div>
+<p-dialog [(visible)]="showComments" [modal]="true" [blockScroll]="true" [responsive]="true" [baseZIndex]="10000">
+  <p-header>
+    Comments
+  </p-header>
+  <app-comments (noOfComments)='getCommentsCount($event)'></app-comments>
+  <p-footer>
+    <app-comment-box></app-comment-box>
+  </p-footer>
+</p-dialog>
