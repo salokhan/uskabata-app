@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {DialogModule} from 'primeng/dialog';
 
 import { ResultsComponent } from './results/results.component';
 import { ResultsListViewComponent } from './results-listview/results-listview.component';
@@ -22,7 +23,8 @@ import { ResultService } from './service-result/result.service';
     ResultsRoutingModule,
     RatingModule,
     PaginationModule,
-    CommentModule
+    CommentModule,
+    DialogModule
   ],
   providers: [ResultService],
   declarations: [ResultsComponent, ResultsListViewComponent, ResultsGridviewComponent, ResultDetailComponent]
