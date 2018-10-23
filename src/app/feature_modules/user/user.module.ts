@@ -7,6 +7,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { UserRoutingModule } from './user-routing.module';
 
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserService } from './service-user/user.service';
 
 
 
@@ -17,6 +18,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     ReactiveFormsModule,
     DropdownModule
   ],
-  declarations: [UserProfileComponent]
+  declarations: [UserProfileComponent],
+  providers: [UserService]
 })
 export class UserModule { }
