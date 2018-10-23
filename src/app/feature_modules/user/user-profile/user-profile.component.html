@@ -15,17 +15,16 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" formConrtilName="email" class="form-control" id="email" placeholder="Email">
+            <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
           </div>
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" formControlName="address" class="form-control" id="address" placeholder="1234 Main St">
-          </div>
-          <div class="form-group">
-            <label for="address2">Address 2</label>
-            <input type="text" formControlName="address2" class="form-control" id="address2" placeholder="Apartment, studio, or floor">
-          </div>
-          <div class="form-row">
+          <div formGroupName="address" class="form-row">
+            <div class="form-group col-md-12">
+              <h3>Address</h3>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="addressLine">Address Line</label>
+              <input type="text" formControlName="addressLine" class="form-control" id="addressLine" placeholder="1234 Main St">
+            </div>
             <div class="form-group col-md-6">
               <label for="state">State</label>
               <select id="state" class="form-control">
@@ -41,7 +40,41 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" >Submit</button>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <h3>Contacts</h3>
+            </div>
+            <div formArrayName="mobileContacts" class="form-group col-md-3" *ngFor="let item of userProfileForm.get('mobileContacts').controls; let i = index;">
+              <div [formGroupName]="i">
+                <label for="mobileNumber">Mobile {{i+1}}</label>
+                <div class="input-group mb-3">
+                  <input type="tel" formControlName="mobileNumber" class="form-control" id="mobileNumber" placeholder="+111111111111">
+                  <div class="input-group-append">
+                    <button *ngIf="i > 0" type="button" for="mobileNumber" [ngClass]="['btn btn-sm btn-danger']"
+                      (click)='removeMobileContact(i)'>-</button>
+                    <button *ngIf="i === 0" type="button" class="btn btn-sm btn-success " (click)='addMobileContact()'>+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div formArrayName="landLineContacts" class="form-group col-md-3" *ngFor="let item of userProfileForm.get('landLineContacts').controls; let i = index;">
+              <div [formGroupName]="i">
+                <label for="landLineNumber">LandLine {{i+1}}</label>
+                <div class="input-group mb-3">
+                  <input type="text" formControlName="landLineNumber" class="form-control" id="landLineNumber"
+                    placeholder="+11111111111">
+                  <div class="input-group-append">
+                    <button *ngIf="i > 0" type="button" for="landLineNumber" [ngClass]="['btn btn-sm btn-danger']"
+                      (click)='removeLandLineContact(i)'>-</button>
+                    <button *ngIf="i === 0" type="button" class="btn btn-sm btn-success " (click)='addLandLineContact()'>+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!userProfileForm.valid">Submit</button>
         </form>
       </div>
     </div>

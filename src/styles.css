@@ -5,11 +5,20 @@ body {
     /* min-height: 50rem; */
     /* background-color: #FFFAFA */
     background-color: #FFFAFA !important;
-  }
-.tooltip-custom.ui-tooltip .ui-tooltip-text {
+}
+
+  .tooltip-custom.ui-tooltip .ui-tooltip-text {
     font-weight: 100;
     font-size: 2.5mm;
 }
+
 .comments-panel.ui-panel .ui-panel-titlebar {
     background: #cce5ff;
+}
+
+.ng-invalid.form-control  {
+    border-left: 5px solid red; /* green */
+}
+.ng-valid.form-control  {
+    border-left: 5px solid green; /* green */
 }
