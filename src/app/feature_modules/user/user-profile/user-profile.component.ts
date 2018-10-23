@@ -22,8 +22,9 @@ export class UserProfileComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       address: new FormGroup({
         addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-        city: new FormControl(''),
-        state: new FormControl('')
+        country: new FormControl('', Validators.required),
+        city: new FormControl('', Validators.required),
+        state: new FormControl('', Validators.required)
       }),
       mobileContacts: this._formBuilder.array([this.createMobileContact()]),
       landLineContacts: this._formBuilder.array([this.createLandLineContact()])
