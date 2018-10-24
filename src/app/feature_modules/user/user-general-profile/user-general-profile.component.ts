@@ -67,9 +67,9 @@ export class UserGeneralProfileComponent implements OnInit {
       about: new FormControl('', Validators.maxLength(200)),
       address: new FormGroup({
         addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-        country: new FormControl('', Validators.required),
-        city: new FormControl('', Validators.required),
-        state: new FormControl('')
+        country: new FormControl(undefined, Validators.required),
+        city: new FormControl(undefined, Validators.required),
+        state: new FormControl(undefined)
       }),
       mobileContacts: this._formBuilder.array([this.createMobileContact()]),
       landLineContacts: this._formBuilder.array([this.createLandLineContact()])
