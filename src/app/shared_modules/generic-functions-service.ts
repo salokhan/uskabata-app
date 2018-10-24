@@ -21,6 +21,7 @@ export class GenericFunctionsService {
     }
 
     getErrorMessage(): string {
+        this.scrollToTop();
         return 'Please fill the red marked fields and provide the correct format';
     }
 

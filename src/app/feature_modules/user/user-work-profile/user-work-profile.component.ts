@@ -105,7 +105,6 @@ export class UserWorkProfileComponent implements OnInit {
 
   showValidationError() {
     this.clearMessages();
-    this._genericFunctionsService.scrollToTop();
     this._messageService.add({
       severity: 'error', summary: 'Error Message',
       detail: this._genericFunctionsService.getErrorMessage()
