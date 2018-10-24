@@ -12,6 +12,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserGeneralProfileComponent } from './user-general-profile/user-general-profile.component';
 import { UserService } from './service-user/user.service';
 import { BaseDataSourcesService } from '../../shared_modules/base-ds-service';
+import { UserWorkProfileComponent } from './user-work-profile/user-work-profile.component';
 
 
 
@@ -24,7 +25,7 @@ import { BaseDataSourcesService } from '../../shared_modules/base-ds-service';
     DropdownModule,
     MessagesModule
   ],
-  declarations: [UserProfileComponent, UserGeneralProfileComponent],
+  declarations: [UserProfileComponent, UserGeneralProfileComponent, UserWorkProfileComponent],
   providers: [UserService, BaseDataSourcesService, MessageService]
 })
 export class UserModule { }

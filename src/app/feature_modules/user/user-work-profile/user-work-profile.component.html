@@ -2,56 +2,17 @@
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
       <div [ngClass]="['card p-2']">
-        <form [formGroup]="userGeneralProfileForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="userWorkProfileForm" (ngSubmit)="onSubmit()">
           <p-messages [(value)]="msgs"></p-messages>
           <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="title">Gender</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" [options]="genders" id="title" class="form-control-dropdown"
-                placeholder="Select a gender" optionLabel="name" formControlName="gender"></p-dropdown>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="title">Title</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" [options]="titles" id="title" class="form-control-dropdown"
-                placeholder="Select a title" optionLabel="name" formControlName="title"></p-dropdown>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="firstName">First Name</label>
-              <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="First Name">
-              <!-- <div *ngIf="userGeneralProfileForm.controls.firstName.errors && userGeneralProfileForm.controls.firstName.invalid && (userGeneralProfileForm.controls.firstName.dirty || userGeneralProfileForm.controls.firstName.touched)" class="alert alert-danger">
-                  <div *ngIf="userGeneralProfileForm.controls.firstName.errors.required">
-                      Name is required.
-                    </div>
-              </div> -->
-            </div>
-            <div class="form-group col-md-6">
-              <label for="lastName">Last Name</label>
-              <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="Last Name">
-            </div>
-          </div>
-          <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="displayName">Display Name</label>
-              <input type="text" formControlName="displayName" class="form-control" id="displayName" placeholder="Display Name">
+              <label for="description">Description</label>
+              <input type="text" formControlName="description" class="form-control" id="description" placeholder="Description...">
             </div>
           </div>
-          <div class="form-row">
+          <div formGroupName="workAddress" class="form-row">
             <div class="form-group col-md-12">
-              <label for="email">Email</label>
-              <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <label for="about">About</label>
-              <input type="text" formControlName="about" class="form-control" id="about" placeholder="About...">
-            </div>
-          </div>
-          <div formGroupName="address" class="form-row">
-            <div class="form-group col-md-12">
-              <h3>Address</h3>
+              <h3>Work Address</h3>
             </div>
             <div class=" col-md-4">
               <label for="country">Country</label>
@@ -71,7 +32,7 @@
                 formControlName="city"></p-dropdown>
             </div>
             <div class="form-group col-md-12">
-              <label for="addressLine">Address Line</label>
+              <label for="addressLine">Work Address Line</label>
               <input type="text" formControlName="addressLine" class="form-control" id="addressLine" placeholder="1234 Main St">
             </div>
           </div>
@@ -79,7 +40,7 @@
             <div class="form-group col-md-12">
               <h3>Contacts</h3>
             </div>
-            <div formArrayName="contacts" class="form-group col-md-3" *ngFor="let item of userGeneralProfileForm.get('contacts').controls; let i = index;">
+            <div formArrayName="contacts" class="form-group col-md-3" *ngFor="let item of userWorkProfileForm.get('contacts').controls; let i = index;">
               <div [formGroupName]="i">
                 <label *ngIf="i==0" for="contactNumber">Contact # {{i+1}}</label>
                 <label *ngIf="i>0" for="contactNumber">Contact # {{i+1}}</label>

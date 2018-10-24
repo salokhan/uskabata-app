@@ -20,6 +20,10 @@ export class GenericFunctionsService {
         }
     }
 
+    getErrorMessage(): string {
+        return 'Please fill the red marked fields and provide the correct format';
+    }
+
 
 
 }
