@@ -5,6 +5,7 @@ import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
+import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 
 @Component({
   selector: 'app-user-general-profile',
@@ -27,7 +28,8 @@ export class UserGeneralProfileComponent implements OnInit {
   genders = [];
 
   constructor(private _userService: UserService, private _basedsService: BaseDataSourcesService,
-    private _formBuilder: FormBuilder, private _messageService: MessageService) { }
+    private _formBuilder: FormBuilder, private _messageService: MessageService,
+     public _genericFunctionsService: GenericFunctionsService) { }
 
   ngOnInit() {
 
@@ -128,7 +130,7 @@ export class UserGeneralProfileComponent implements OnInit {
 
   showValidationError() {
     this.clearMessages();
-    window.scrollTo(0, 0);
+    this._genericFunctionsService.scrollToTop();
     this._messageService.add({
       severity: 'error', summary: 'Error Message',
       detail: 'Please fill the red marked field and provide the correct format'
