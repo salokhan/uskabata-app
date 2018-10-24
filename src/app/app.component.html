@@ -1,15 +1,19 @@
-
 <app-top-bar></app-top-bar>
-<div [ngClass]="['container-fluid']">
+<input #input value="Message">
+<button (click)="popup.showAsComponent(input.value)">Show as component</button>
+<div [ngClass]="['container-fluid']" (scroll)="scrollHandler($event)">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-2 col-md-2 col-lg-2']">
-      
+
     </div>
     <div [ngClass]="['col-sm-8 col-md-8 col-lg-8']">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
+      <!-- <button *ngIf='enableScrollToTop' (click)='onActivate($event)'>top</button> -->
+
     </div>
     <div [ngClass]="['col-sm-2 col-md-2 col-lg-2']">
-      
+
     </div>
   </div>
+
 </div>
