@@ -1,15 +1,61 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 /* You can add global styles to this file, and also import other style files */
 body {
-
     padding-top: 4.5rem;    
     /* min-height: 50rem; */
     /* background-color: #FFFAFA */
     background-color: #FFFAFA !important;
-  }
+}
+
 .tooltip-custom.ui-tooltip .ui-tooltip-text {
     font-weight: 100;
     font-size: 2.5mm;
 }
+
 .comments-panel.ui-panel .ui-panel-titlebar {
     background: #cce5ff;
+}
+
+.ng-invalid.form-control  {
+    border-left: 5px solid red;
+}
+.ng-valid.form-control  {
+    border-left: 5px solid green;
+}
+
+.ng-invalid.form-control-dropdown  {
+    border-left: 5px solid red;
+}
+.ng-valid.form-control-dropdown  {
+    border-left: 5px solid green;
+}
+.form-control-dropdown{
+    display: block;
+    width: 99%;
+    height: calc(2.25rem + 2px);
+    /* padding: .375rem .75rem; */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    /* border: 1px solid #ced4da; */
+    /* border-radius: 0.25rem; */
+    border-radius: 1.25rem;
+    transition: border-color .15s 
+}
+.form-control-no-validation {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
