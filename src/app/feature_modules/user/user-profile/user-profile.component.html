@@ -17,10 +17,10 @@
             <div [ngClass]="['tab-content']" [id]="['v-pills-tabContent']">
               <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-profile']" role="tabpanel"
                 aria-labelledby="v-pills-general-profile-tab">
-                <app-user-general-profile></app-user-general-profile>
+                <app-user-general-profile [cities]='citiesDS' [countries]='countriesDS'></app-user-general-profile>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-profile']" role="tabpanel" aria-labelledby="v-pills-work-profile-tab">
-                <app-user-work-profile></app-user-work-profile>
+                <app-user-work-profile [cities]='citiesDS' [countries]='countriesDS'></app-user-work-profile>
               </div>
             </div>
           </div>

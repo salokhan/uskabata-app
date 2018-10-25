@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '../service-user/user.service';
-import { ICountry } from '../../../shared_modules/country';
-import { ICity } from '../../../shared_modules/city';
 import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-user-work-profile',
@@ -19,14 +17,36 @@ export class UserWorkProfileComponent implements OnInit {
   landLineContacts: FormArray;
   errorMessage: string;
 
-  countries: ICountry[];
-  countriesDS = [];
-  cities: ICity[];
-  citiesDS = [];
   titles = [];
   genders = [];
 
-  constructor(private _userService: UserService, private _basedsService: BaseDataSourcesService,
+  // initialize a private variable cities, it's a BehaviorSubject
+  private _cities = new BehaviorSubject<[]>([]);
+  // change data to use getter and setter
+  @Input()
+  set cities(value) {
+    // set the latest value for _cities BehaviorSubject
+    this._cities.next(value);
+  }
+  get cities() {
+    // get the latest value from _cities BehaviorSubject
+    return this._cities.getValue();
+  }
+
+  // initialize a private variable cities, it's a BehaviorSubject
+  private _countries = new BehaviorSubject<[]>([]);
+  // change data to use getter and setter
+  @Input()
+  set countries(value) {
+    // set the latest value for _cities BehaviorSubject
+    this._countries.next(value);
+  }
+  get countries() {
+    // get the latest value from _cities BehaviorSubject
+    return this._countries.getValue();
+  }
+
+  constructor(private _basedsService: BaseDataSourcesService,
     private _formBuilder: FormBuilder, private _messageService: MessageService,
     public _genericFunctionsService: GenericFunctionsService) { }
 
@@ -35,26 +55,11 @@ export class UserWorkProfileComponent implements OnInit {
     this.titles = this._basedsService.getTitles();
     this.genders = this._basedsService.getGender();
 
-    this._userService.getCountries().subscribe(countries => {
-      this.countries = countries;
-      countries.forEach(country => {
-        this.countriesDS.push({ label: country.name, value: { name: country.name, code: country.code } });
-      });
-    },
-      error => {
-        this.errorMessage = error;
-      });
+    this._cities.subscribe(data => {
+    });
 
-    this._userService.getCities().subscribe(cities => {
-      this.cities = cities;
-      cities.forEach(city => {
-        this.citiesDS.push({ label: city.name, value: { name: city.name } });
-      });
-
-    },
-      error => {
-        this.errorMessage = error;
-      });
+    this._countries.subscribe(data => {
+    });
 
     this.userWorkProfileForm = this._formBuilder.group({
       description: new FormControl('', Validators.maxLength(200)),
