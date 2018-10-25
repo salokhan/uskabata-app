@@ -21,7 +21,7 @@ export class UserGeneralProfileComponent implements OnInit {
   genders = [];
 
   // initialize a private variable cities, it's a BehaviorSubject
-  private _cities = new BehaviorSubject<[]>([]);
+  private _cities = new BehaviorSubject<any[]>([]);
   // change data to use getter and setter
   @Input()
   set cities(value) {
@@ -34,7 +34,7 @@ export class UserGeneralProfileComponent implements OnInit {
   }
 
   // initialize a private variable cities, it's a BehaviorSubject
-  private _countries = new BehaviorSubject<[]>([]);
+  private _countries = new BehaviorSubject<any[]>([]);
   // change data to use getter and setter
   @Input()
   set countries(value) {

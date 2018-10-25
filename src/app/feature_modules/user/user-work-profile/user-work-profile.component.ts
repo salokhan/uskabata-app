@@ -19,9 +19,10 @@ export class UserWorkProfileComponent implements OnInit {
 
   titles = [];
   genders = [];
+  experties = [];
 
   // initialize a private variable cities, it's a BehaviorSubject
-  private _cities = new BehaviorSubject<[]>([]);
+  private _cities = new BehaviorSubject<any[]>([]);
   // change data to use getter and setter
   @Input()
   set cities(value) {
@@ -33,17 +34,30 @@ export class UserWorkProfileComponent implements OnInit {
     return this._cities.getValue();
   }
 
-  // initialize a private variable cities, it's a BehaviorSubject
-  private _countries = new BehaviorSubject<[]>([]);
+  // initialize a private variable countries, it's a BehaviorSubject
+  private _countries = new BehaviorSubject<any[]>([]);
   // change data to use getter and setter
   @Input()
   set countries(value) {
-    // set the latest value for _cities BehaviorSubject
+    // set the latest value for _countries BehaviorSubject
     this._countries.next(value);
   }
   get countries() {
-    // get the latest value from _cities BehaviorSubject
+    // get the latest value from _countries BehaviorSubject
     return this._countries.getValue();
+  }
+
+  // initialize a private variable categories, it's a BehaviorSubject
+  private _categories = new BehaviorSubject<any[]>([]);
+  // change data to use getter and setter
+  @Input()
+  set categories(value) {
+    // set the latest value for _categories BehaviorSubject
+    this._categories.next(value);
+  }
+  get categories() {
+    // get the latest value from _categories BehaviorSubject
+    return this._categories.getValue();
   }
 
   constructor(private _basedsService: BaseDataSourcesService,
@@ -61,8 +75,15 @@ export class UserWorkProfileComponent implements OnInit {
     this._countries.subscribe(data => {
     });
 
+    this._categories.subscribe(data => {
+    });
+
     this.userWorkProfileForm = this._formBuilder.group({
       description: new FormControl('', Validators.maxLength(200)),
+      category: new FormControl(undefined, Validators.required),
+      experty: new FormControl(undefined, Validators.required),
+      categoryOther: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
+      expertyOther: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
       activateProfessionProfile: new FormControl(false),
       workAddress: new FormGroup({
         addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -111,6 +132,46 @@ export class UserWorkProfileComponent implements OnInit {
       severity: 'error', summary: 'Error Message',
       detail: this._genericFunctionsService.getErrorMessage()
     });
+  }
+  onCategorySelection(): void {
+    const selectedCategoryName = this.userWorkProfileForm.value.category;
+    // on selection
+    if (selectedCategoryName) {
+      const categorySelected = this.categories.find(category => category.value.name === selectedCategoryName.name);
+      // if category selected has experties
+      if (categorySelected && categorySelected.value.experties) {
+        if (categorySelected.value.experties === 'Other') {
+          this.experties.push({ label: 'Other', value: 'Other' });
+          this.userWorkProfileForm.controls.experty.setValue('Other');
+        } else {
+          categorySelected.value.experties.forEach(experty => {
+            this.experties.push({ label: experty.name, value: experty.name });
+          });
+          this.userWorkProfileForm.controls.categoryOther.setValue(this.userWorkProfileForm.controls.category.value.name);
+        }
+      } else {
+        // if selected category has no experies
+        this.experties = [];
+        this.experties.push({ label: 'Other', value: 'Other' });
+        this.userWorkProfileForm.controls.categoryOther.setValue(this.userWorkProfileForm.controls.category.value.name);
+        this.userWorkProfileForm.controls.experty.setValue('Other');
+      }
+    } else {
+      // on clear selection
+      // clear the array for experties
+      this.experties = [];
+      this.experties.push({ label: 'Other', value: 'Other' });
+      this.userWorkProfileForm.controls.categoryOther.setValue(undefined);
+      this.userWorkProfileForm.controls.expertyOther.setValue(undefined);
+    }
+  }
+
+  onExpertySelection(): void {
+    if (this.userWorkProfileForm.controls.experty.value) {
+      this.userWorkProfileForm.controls.expertyOther.value.setValue(this.userWorkProfileForm.controls.experty.value);
+    } else {
+      this.userWorkProfileForm.controls.expertyOther.value.setValue(undefined);
+    }
   }
 
 }

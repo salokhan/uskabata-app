@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service-user/user.service';
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
+import { ICategory } from '../../../shared_modules/category';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,6 +17,8 @@ export class UserProfileComponent implements OnInit {
   countriesDS = [];
   cities: ICity[];
   citiesDS = [];
+  categories: ICategory[];
+  categoryDS = [];
 
   constructor(private _userService: UserService) { }
 
@@ -40,6 +43,17 @@ export class UserProfileComponent implements OnInit {
     },
       error => {
         this.errorMessage = error;
+      });
+
+    this._userService.getCategories().subscribe(categories => {
+      this.categories = categories;
+      this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: 'Other' } });
+      categories.forEach(category => {
+        this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
+      });
+    },
+      error => {
+        this.errorMessage = <any>error;
       });
 
   }
