@@ -17,7 +17,6 @@ export class UserWorkProfileComponent implements OnInit {
   userWorkProfileForm: FormGroup;
   contacts: FormArray;
   landLineContacts: FormArray;
-
   errorMessage: string;
 
   countries: ICountry[];
@@ -59,6 +58,7 @@ export class UserWorkProfileComponent implements OnInit {
 
     this.userWorkProfileForm = this._formBuilder.group({
       description: new FormControl('', Validators.maxLength(200)),
+      activateProfessionProfile: new FormControl(false),
       workAddress: new FormGroup({
         addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
         country: new FormControl(undefined, Validators.required),
@@ -98,19 +98,14 @@ export class UserWorkProfileComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     if (this.userWorkProfileForm.status === 'INVALID') {
       this.showValidationError();
-    } else {
-      this.clearMessages();
     }
   }
 
   showValidationError() {
-    this.clearMessages();
     this._messageService.add({
       severity: 'error', summary: 'Error Message',
       detail: this._genericFunctionsService.getErrorMessage()
     });
   }
-  clearMessages() {
-    this._messageService.clear();
-  }
+
 }

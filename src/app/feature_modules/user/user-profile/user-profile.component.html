@@ -1,87 +1,31 @@
-<!-- <div [ngClass]="['container bootstrap snippet']">
+<div [ngClass]="['container p-2']">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
       <div [ngClass]="['card p-2']">
-        <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="firstName">First Name</label>
-              <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="First Name">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="lastName">Last Name</label>
-              <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="Last Name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-          </div>
-          <div formGroupName="address" class="form-row">
-            <div class="form-group col-md-12">
-              <h3>Address</h3>
-            </div>
-            <div class=" col-md-4">
-              <label for="country">Country</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" class="form-control-dropdown"
-                [showClear]="true" [options]="countriesDS" [filter]="true" filterBy="label,value.name" placeholder="Select a country"
-                formControlName="country"></p-dropdown>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="state">State</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" class="form-control-dropdown"
-                [showClear]="true" [filter]="true" placeholder="Select a state" filterBy="value" formControlName="state"></p-dropdown>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="city">City</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" class="form-control-dropdown"
-                [showClear]="true" [options]="citiesDS" [filter]="true" filterBy="label, value.name" placeholder="Select a City"
-                formControlName="city"></p-dropdown>
-            </div>
-            <div class="form-group col-md-12">
-              <label for="addressLine">Address Line</label>
-              <input type="text" formControlName="addressLine" class="form-control" id="addressLine" placeholder="1234 Main St">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <h3>Contacts</h3>
-            </div>
-            <div formArrayName="mobileContacts" class="form-group col-md-3" *ngFor="let item of userProfileForm.get('mobileContacts').controls; let i = index;">
-              <div [formGroupName]="i">
-                <label for="mobileNumber">Mobile {{i+1}}</label>
-                <div class="input-group mb-3">
-                  <input type="tel" formControlName="mobileNumber" class="form-control" id="mobileNumber" placeholder="+111111111111">
-                  <div class="input-group-append">
-                    <button *ngIf="i > 0" type="button" for="mobileNumber" [ngClass]="['btn btn-sm btn-danger']"
-                      (click)='removeMobileContact(i)'>-</button>
-                    <button *ngIf="i === 0" type="button" class="btn btn-sm btn-success " (click)='addMobileContact()'>+</button>
-                  </div>
-                </div>
+        <div [ngClass]="['row']">
+          <div [ngClass]="['col-sm-12 col-md-3']">
+            <div [ngClass]="['d-flex flex-row bd-highlight mb-3']">
+              <div [ngClass]="['nav flex-row nav-pills']" [id]="['v-pills-tab']" role="tablist" aria-orientation="vertical">
+                <a [ngClass]="['nav-link active']" [id]="['v-pills-general-profile-tab']" data-toggle="pill" href="#v-pills-general-profile"
+                  role="tab" aria-controls="v-pills-general-profile" aria-selected="true">General Profile</a>
+                <a [ngClass]="['nav-link']" [id]="['v-pills--work-profile-tab']" data-toggle="pill" href="#v-pills-work-profile"
+                  role="tab" aria-controls="v-pills-work-profile" aria-selected="false">Work Profile</a>
               </div>
             </div>
           </div>
-          <div class="form-row">
-            <div formArrayName="landLineContacts" class="form-group col-md-3" *ngFor="let item of userProfileForm.get('landLineContacts').controls; let i = index;">
-              <div [formGroupName]="i">
-                <label for="landLineNumber">LandLine {{i+1}}</label>
-                <div class="input-group mb-3">
-                  <input type="text" formControlName="landLineNumber" class="form-control" id="landLineNumber"
-                    placeholder="+11111111111">
-                  <div class="input-group-append">
-                    <button *ngIf="i > 0" type="button" for="landLineNumber" [ngClass]="['btn btn-sm btn-danger']"
-                      (click)='removeLandLineContact(i)'>-</button>
-                    <button *ngIf="i === 0" type="button" class="btn btn-sm btn-success " (click)='addLandLineContact()'>+</button>
-                  </div>
-                </div>
+          <div [ngClass]="['col-sm-12 col-md-9']">
+            <div [ngClass]="['tab-content']" [id]="['v-pills-tabContent']">
+              <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-profile']" role="tabpanel"
+                aria-labelledby="v-pills-general-profile-tab">
+                <app-user-general-profile></app-user-general-profile>
+              </div>
+              <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-profile']" role="tabpanel" aria-labelledby="v-pills-work-profile-tab">
+                <app-user-work-profile></app-user-work-profile>
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" [disabled]="!userProfileForm.valid">Submit</button>
-        </form>
+        </div>
       </div>
     </div>
   </div>
-</div> -->
-<app-user-general-profile></app-user-general-profile>
-<!-- <app-user-work-profile></app-user-work-profile> -->
+</div>

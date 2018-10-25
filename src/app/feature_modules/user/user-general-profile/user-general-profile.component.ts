@@ -97,19 +97,14 @@ export class UserGeneralProfileComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     if (this.userGeneralProfileForm.status === 'INVALID') {
       this.showValidationError();
-    } else {
-      this.clearMessages();
     }
   }
 
   showValidationError() {
-    this.clearMessages();
     this._messageService.add({
       severity: 'error', summary: 'Error Message',
       detail: this._genericFunctionsService.getErrorMessage()
     });
   }
-  clearMessages() {
-    this._messageService.clear();
-  }
+
 }

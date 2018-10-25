@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { DropdownModule } from 'primeng/dropdown';
-import { MessagesModule } from 'primeng/messages';
-import { MessageService } from 'primeng/components/common/messageservice';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 import { UserRoutingModule } from './user-routing.module';
 
@@ -22,10 +21,10 @@ import { UserWorkProfileComponent } from './user-work-profile/user-work-profile.
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    InputSwitchModule,
     DropdownModule,
-    MessagesModule
   ],
   declarations: [UserProfileComponent, UserGeneralProfileComponent, UserWorkProfileComponent],
-  providers: [UserService, BaseDataSourcesService, MessageService]
+  providers: [UserService, BaseDataSourcesService]
 })
 export class UserModule { }
