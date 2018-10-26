@@ -1,7 +1,7 @@
 <div [ngClass]="['container bootstrap snippet']">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
-      <form [formGroup]="userGeneralProfileForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="userGeneralDetailForm" (ngSubmit)="onSubmit()">
         <div [ngClass]="['alert alert-success']" role="alert">
           <h4 [ngClass]="['alert-heading']">General Profile</h4>
           <hr>
@@ -26,8 +26,8 @@
             <div [ngClass]="['form-group col-md-6']">
               <label for="firstName">First Name</label>
               <input type="text" formControlName="firstName" [ngClass]="['form-control form-control-sm']" id="firstName" placeholder="First Name">
-              <!-- <div *ngIf="userGeneralProfileForm.controls.firstName.errors && userGeneralProfileForm.controls.firstName.invalid && (userGeneralProfileForm.controls.firstName.dirty || userGeneralProfileForm.controls.firstName.touched)" class="alert alert-danger">
-                        <div *ngIf="userGeneralProfileForm.controls.firstName.errors.required">
+              <!-- <div *ngIf="userGeneralDetailForm.controls.firstName.errors && userGeneralDetailForm.controls.firstName.invalid && (userGeneralDetailForm.controls.firstName.dirty || userGeneralDetailForm.controls.firstName.touched)" class="alert alert-danger">
+                        <div *ngIf="userGeneralDetailForm.controls.firstName.errors.required">
                             Name is required.
                           </div>
                     </div> -->
@@ -88,7 +88,7 @@
           <legend [ngClass]="['w-auto']">Contacts</legend>
           <div [ngClass]="['form-row']">
             <div formArrayName="contacts" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-6 col-xlg-4']"
-              *ngFor="let item of userGeneralProfileForm.get('contacts').controls; let i = index;">
+              *ngFor="let item of userGeneralDetailForm.get('contacts').controls; let i = index;">
               <div [formGroupName]="i">
                 <label *ngIf="i==0" for="contactNumber">Contact # {{i+1}}</label>
                 <label *ngIf="i>0" for="contactNumber">Contact # {{i+1}}</label>

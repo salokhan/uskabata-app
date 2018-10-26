@@ -17,7 +17,7 @@
             <div [ngClass]="['tab-content']" [id]="['v-pills-tabContent']">
               <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-profile']" role="tabpanel"
                 aria-labelledby="v-pills-general-profile-tab">
-                <app-user-general-profile [cities]='citiesDS' [countries]='countriesDS'></app-user-general-profile>
+                <app-user-general-detail [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-profile']" role="tabpanel" aria-labelledby="v-pills-work-profile-tab">
                 <app-user-work-profile [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'></app-user-work-profile>

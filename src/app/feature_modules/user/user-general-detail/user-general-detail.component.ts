@@ -6,13 +6,13 @@ import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 
 @Component({
-  selector: 'app-user-general-profile',
-  templateUrl: './user-general-profile.component.html',
-  styleUrls: ['./user-general-profile.component.scss']
+  selector: 'app-user-general-detail',
+  templateUrl: './user-general-detail.component.html',
+  styleUrls: ['./user-general-detail.component.scss']
 })
-export class UserGeneralProfileComponent implements OnInit {
+export class UserGeneralDetailComponent implements OnInit {
 
-  userGeneralProfileForm: FormGroup;
+  userGeneralDetailForm: FormGroup;
   contacts: FormArray;
   landLineContacts: FormArray;
 
@@ -61,7 +61,7 @@ export class UserGeneralProfileComponent implements OnInit {
     this._countries.subscribe(data => {
     });
 
-    this.userGeneralProfileForm = this._formBuilder.group({
+    this.userGeneralDetailForm = this._formBuilder.group({
       title: new FormControl('', Validators.required),
       displayName: new FormControl(''),
       firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
@@ -86,20 +86,20 @@ export class UserGeneralProfileComponent implements OnInit {
   }
 
   addContact(): void {
-    this.contacts = this.userGeneralProfileForm.get('contacts') as FormArray;
+    this.contacts = this.userGeneralDetailForm.get('contacts') as FormArray;
     this.contacts.push(this.createContact());
   }
 
   removeContact(index: number): void {
     if (index !== 0) {
-      this.contacts = this.userGeneralProfileForm.get('contacts') as FormArray;
+      this.contacts = this.userGeneralDetailForm.get('contacts') as FormArray;
       this.contacts.removeAt(index);
     }
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    if (this.userGeneralProfileForm.status === 'INVALID') {
+    if (this.userGeneralDetailForm.status === 'INVALID') {
       this.showValidationError();
     }
   }
