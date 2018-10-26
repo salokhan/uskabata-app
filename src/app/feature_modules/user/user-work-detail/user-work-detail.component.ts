@@ -6,11 +6,11 @@ import { GenericFunctionsService } from '../../../shared_modules/generic-functio
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-user-work-profile',
-  templateUrl: './user-work-profile.component.html',
-  styleUrls: ['./user-work-profile.component.scss']
+  selector: 'app-user-work-detail',
+  templateUrl: './user-work-detail.component.html',
+  styleUrls: ['./user-work-detail.component.scss']
 })
-export class UserWorkProfileComponent implements OnInit {
+export class UserWorkDetailComponent implements OnInit {
 
   userWorkProfileForm: FormGroup;
   contacts: FormArray;

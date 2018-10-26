@@ -12,8 +12,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserGeneralDetailComponent } from './user-general-detail/user-general-detail.component';
 import { UserService } from './service-user/user.service';
 import { BaseDataSourcesService } from '../../shared_modules/base-ds-service';
-import { UserWorkProfileComponent } from './user-work-profile/user-work-profile.component';
 import { UserQualificationDetailComponent } from './user-qualification-detail/user-qualification-detail.component';
+import { UserWorkDetailComponent } from './user-work-detail/user-work-detail.component';
 
 
 
@@ -27,7 +27,7 @@ import { UserQualificationDetailComponent } from './user-qualification-detail/us
     DropdownModule,
     ChipsModule
   ],
-  declarations: [UserProfileComponent, UserGeneralDetailComponent, UserWorkProfileComponent, UserQualificationDetailComponent],
+  declarations: [UserProfileComponent, UserGeneralDetailComponent, UserWorkDetailComponent, UserQualificationDetailComponent],
   providers: [UserService, BaseDataSourcesService]
 })
 export class UserModule { }
