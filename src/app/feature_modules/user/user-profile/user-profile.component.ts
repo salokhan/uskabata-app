@@ -3,6 +3,7 @@ import { UserService } from '../service-user/user.service';
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
+import { IExperty } from '../../../shared_modules/experty';
 
 @Component({
   selector: 'app-user-profile',
@@ -47,10 +48,16 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCategories().subscribe(categories => {
       this.categories = categories;
-      this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: 'Other' } });
       categories.forEach(category => {
+        if (category.experties) {
+          category.experties.push({ id: '', name: 'Other', type: 'Other' });
+        } else {
+          const experty: IExperty = { id: '', name: 'Other', type: 'Other' };
+          category.experties = [experty];
+        }
         this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
       });
+      this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: [{ name: 'Other', value: 'Other' }] } });
     },
       error => {
         this.errorMessage = <any>error;

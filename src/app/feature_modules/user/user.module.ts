@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { DropdownModule } from 'primeng/dropdown';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {ChipsModule} from 'primeng/chips';
 
 import { UserRoutingModule } from './user-routing.module';
 
@@ -23,6 +24,7 @@ import { UserWorkProfileComponent } from './user-work-profile/user-work-profile.
     ReactiveFormsModule,
     InputSwitchModule,
     DropdownModule,
+    ChipsModule
   ],
   declarations: [UserProfileComponent, UserGeneralProfileComponent, UserWorkProfileComponent],
   providers: [UserService, BaseDataSourcesService]

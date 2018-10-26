@@ -25,32 +25,36 @@
         <fieldset [ngClass]="['border p-2']">
           <legend [ngClass]="['w-auto']">Professional Details</legend>
           <div [ngClass]="['form-row']">
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
+            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']">
               <label for="category">Category</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="category" [ngClass]="['form-control-dropdown']"
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="category" [ngClass]="['form-control-sm-dropdown']"
                 [showClear]="true" [options]="categories" [filter]="true" filterBy="label" placeholder="Select a category"
                 formControlName="category" (onChange)='onCategorySelection()'></p-dropdown>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
+            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']" *ngIf="userWorkProfileForm.controls.category.value && userWorkProfileForm.controls.category.value.name == 'Other'">
+              <label for="categoryOther">Add new category</label>
+              <input type="text" formControlName="categoryOther" [ngClass]="['form-control form-control-sm dynamic-form-control']" id="categoryOther"
+                placeholder="Add new category">
+            </div>
+            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']">
               <label for="experty">Experty</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="experty" [ngClass]="['form-control-dropdown']"
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="experty" [ngClass]="['form-control-sm-dropdown']"
                 [showClear]="true" [options]="experties" [filter]="true" filterBy="label" placeholder="Select a experty"
                 formControlName="experty" (onChange)='onExpertySelection()'></p-dropdown>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']" *ngIf="userWorkProfileForm.controls.category.value && userWorkProfileForm.controls.category.value.name == 'Other'">
-              <label for="categoryOther">Add new category</label>
-              <input type="text" formControlName="categoryOther" [ngClass]="['form-control']" id="categoryOther"
-                placeholder="Add new category">
-            </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']" *ngIf="userWorkProfileForm.controls.experty.value && userWorkProfileForm.controls.experty.value == 'Other'">
+            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']" *ngIf="userWorkProfileForm.controls.experty.value && userWorkProfileForm.controls.experty.value == 'Other'">
               <label for="expertyOther">Add new experty</label>
-              <input type="text" formControlName="expertyOther" [ngClass]="['form-control']" id="expertyOther"
+              <input type="text" formControlName="expertyOther" [ngClass]="['form-control form-control-sm dynamic-form-control']" id="expertyOther"
                 placeholder="Add new experty">
             </div>
             <div [ngClass]="['form-group col-md-12']">
               <label for="description">Description</label>
-              <input type="text" formControlName="description" [ngClass]="['form-control']" id="description"
+              <input type="text" formControlName="description" [ngClass]="['form-control form-control-sm']" id="description"
                 placeholder="Description...">
+            </div>
+            <div [ngClass]="['form-group col-md-12']">
+              <label for="description">Tags<small> (Tags will help user in finding you, i.e. Auto Electrition or Dentist or Tutor )</small></label>
+              <p-chips formControlName="tags" styleClass="chip-width" [allowDuplicate]='false' [max] = 5></p-chips>
             </div>
           </div>
         </fieldset>
@@ -59,24 +63,24 @@
           <div formGroupName="workAddress" [ngClass]="['form-row']">
             <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
               <label for="country">Country</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" [ngClass]="['form-control-dropdown']"
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" [ngClass]="['form-control-sm-dropdown']"
                 [showClear]="true" [options]="countries" [filter]="true" filterBy="label,value.name" placeholder="Select a country"
                 formControlName="country"></p-dropdown>
             </div>
             <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
               <label for="state">State</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" [ngClass]="['form-control-dropdown']"
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" [ngClass]="['form-control-sm-dropdown']"
                 [showClear]="true" [filter]="true" placeholder="Select a state" filterBy="value" formControlName="state"></p-dropdown>
             </div>
             <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
               <label for="city">City</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" [ngClass]="['form-control-dropdown']"
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" [ngClass]="['form-control-sm-dropdown']"
                 [showClear]="true" [options]="cities" [filter]="true" filterBy="label, value.name" placeholder="Select a City"
                 formControlName="city"></p-dropdown>
             </div>
             <div [ngClass]="['form-group col-md-12']">
               <label for="addressLine">Work Address Line</label>
-              <input type="text" formControlName="addressLine" [ngClass]="['form-control']" id="addressLine"
+              <input type="text" formControlName="addressLine" [ngClass]="['form-control form-control-sm']" id="addressLine"
                 placeholder="1234 Main St">
             </div>
           </div>
@@ -90,7 +94,7 @@
                 <label *ngIf="i==0" for="contactNumber">Contact # {{i+1}}</label>
                 <label *ngIf="i>0" for="contactNumber">Contact # {{i+1}}</label>
                 <div [ngClass]="['input-group mb-3']">
-                  <input type="tel" formControlName="contactNumber" [ngClass]="['form-control']" id="contactNumber"
+                  <input type="tel" formControlName="contactNumber" [ngClass]="['form-control form-control-sm']" id="contactNumber"
                     placeholder="+111111111111">
                   <div [ngClass]="['input-group-append']">
                     <button *ngIf="i > 0" type="button" for="contactNumber" [ngClass]="['btn btn-sm btn-danger']"

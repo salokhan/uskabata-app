@@ -16,7 +16,7 @@ export class UserWorkProfileComponent implements OnInit {
   contacts: FormArray;
   landLineContacts: FormArray;
   errorMessage: string;
-
+  catExpertyValidation = [Validators.required, Validators.minLength(2), Validators.maxLength(20)];
   titles = [];
   genders = [];
   experties = [];
@@ -80,10 +80,9 @@ export class UserWorkProfileComponent implements OnInit {
 
     this.userWorkProfileForm = this._formBuilder.group({
       description: new FormControl('', Validators.maxLength(200)),
-      category: new FormControl(undefined, Validators.required),
-      experty: new FormControl(undefined, Validators.required),
-      categoryOther: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
-      expertyOther: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
+      category: new FormControl(undefined, this.catExpertyValidation),
+      experty: new FormControl(undefined, this.catExpertyValidation),
+      tags: new FormControl([]),
       activateProfessionProfile: new FormControl(false),
       workAddress: new FormGroup({
         addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -134,44 +133,36 @@ export class UserWorkProfileComponent implements OnInit {
     });
   }
   onCategorySelection(): void {
+    // clear experties array
+    this.experties = [];
+    this.userWorkProfileForm.controls.experty.setValue(undefined);
+
     const selectedCategoryName = this.userWorkProfileForm.value.category;
     // on selection
     if (selectedCategoryName) {
       const categorySelected = this.categories.find(category => category.value.name === selectedCategoryName.name);
       // if category selected has experties
       if (categorySelected && categorySelected.value.experties) {
-        if (categorySelected.value.experties === 'Other') {
-          this.experties.push({ label: 'Other', value: 'Other' });
-          this.userWorkProfileForm.controls.experty.setValue('Other');
+        categorySelected.value.experties.forEach(experty => {
+          this.experties.push({ label: experty.name, value: experty.name });
+        });
+        if (this.userWorkProfileForm.controls.category.value.name === 'Other') {
+          this.userWorkProfileForm.addControl('categoryOther', new FormControl('', this.catExpertyValidation));
         } else {
-          categorySelected.value.experties.forEach(experty => {
-            this.experties.push({ label: experty.name, value: experty.name });
-          });
-          this.userWorkProfileForm.controls.categoryOther.setValue(this.userWorkProfileForm.controls.category.value.name);
+          this.userWorkProfileForm.removeControl('categoryOther');
         }
-      } else {
-        // if selected category has no experies
-        this.experties = [];
-        this.experties.push({ label: 'Other', value: 'Other' });
-        this.userWorkProfileForm.controls.categoryOther.setValue(this.userWorkProfileForm.controls.category.value.name);
-        this.userWorkProfileForm.controls.experty.setValue('Other');
+
       }
-    } else {
-      // on clear selection
-      // clear the array for experties
-      this.experties = [];
-      this.experties.push({ label: 'Other', value: 'Other' });
-      this.userWorkProfileForm.controls.categoryOther.setValue(undefined);
-      this.userWorkProfileForm.controls.expertyOther.setValue(undefined);
     }
   }
 
   onExpertySelection(): void {
-    if (this.userWorkProfileForm.controls.experty.value) {
-      this.userWorkProfileForm.controls.expertyOther.value.setValue(this.userWorkProfileForm.controls.experty.value);
+    if (this.userWorkProfileForm.controls.experty && this.userWorkProfileForm.controls.experty.value === 'Other') {
+      this.userWorkProfileForm.addControl('expertyOther', new FormControl('', this.catExpertyValidation));
     } else {
-      this.userWorkProfileForm.controls.expertyOther.value.setValue(undefined);
+      this.userWorkProfileForm.removeControl('expertyOther');
     }
+
   }
 
 }
