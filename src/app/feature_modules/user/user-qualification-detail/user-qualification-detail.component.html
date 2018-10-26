@@ -1,7 +1,7 @@
 <div [ngClass]="['container bootstrap snippet']">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
-      <form [formGroup]="userQUalificationDetailForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="userQualificationDetailForm" (ngSubmit)="onSubmit()">
         <div [ngClass]="['alert alert-success']" role="alert">
           <h4 [ngClass]="['alert-heading']">Qualification Details</h4>
           <hr>
@@ -10,17 +10,36 @@
         </div>
         <fieldset [ngClass]="['border p-2']">
           <legend [ngClass]="['w-auto']">Education Details</legend>
+          <div [ngClass]="['form-row']">
+            <div formArrayName="educations" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-12 col-xlg-12']"
+              *ngFor="let item of userQualificationDetailForm.get('educations').controls; let i = index;">
+              <div [formGroupName]="i">
+                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                  <div [ngClass]="['input-group mb-3']">
+                    <label for="school">School</label>
+                    <p-autoComplete formControlName="school" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                      [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
+                  </div>
+                </div>
+                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                  <div [ngClass]="['input-group mb-3']">
+                    <label for="school">Degree</label>
+                    <p-autoComplete formControlName="school" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                      [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
+                  </div>
+                </div>
+                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                  <div [ngClass]="['input-group mb-3']">
+                    <label for="school">Field of study</label>
+                    <p-autoComplete formControlName="school" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                      [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
+                  </div>
+                </div>
+              </div>
 
+            </div>
+          </div>
         </fieldset>
-        <fieldset [ngClass]="['border p-2']">
-          <legend [ngClass]="['w-auto']">Certification Details</legend>
-
-        </fieldset>
-        <fieldset [ngClass]="['border p-2']">
-          <legend [ngClass]="['w-auto']">Achievement Details</legend>
-
-        </fieldset>
-
         <div [ngClass]="['form-row p-2']">
           <button type="submit" [ngClass]="['btn btn-primary']">Save</button>
         </div>

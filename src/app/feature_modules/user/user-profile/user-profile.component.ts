@@ -4,6 +4,7 @@ import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
 import { IExperty } from '../../../shared_modules/experty';
+import { ISchool } from '../../../shared_modules/school';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,6 +21,7 @@ export class UserProfileComponent implements OnInit {
   citiesDS = [];
   categories: ICategory[];
   categoryDS = [];
+  schools: ISchool[];
 
   constructor(private _userService: UserService) { }
 
@@ -58,6 +60,13 @@ export class UserProfileComponent implements OnInit {
         this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
       });
       this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: [{ name: 'Other', value: 'Other' }] } });
+    },
+      error => {
+        this.errorMessage = <any>error;
+      });
+
+    this._userService.getSchools().subscribe(schools => {
+      this.schools = schools;
     },
       error => {
         this.errorMessage = <any>error;
