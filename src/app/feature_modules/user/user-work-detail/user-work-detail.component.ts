@@ -12,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserWorkDetailComponent implements OnInit {
 
-  userWorkProfileForm: FormGroup;
+  userWorkDetailForm: FormGroup;
   contacts: FormArray;
   landLineContacts: FormArray;
   errorMessage: string;
@@ -78,7 +78,7 @@ export class UserWorkDetailComponent implements OnInit {
     this._categories.subscribe(data => {
     });
 
-    this.userWorkProfileForm = this._formBuilder.group({
+    this.userWorkDetailForm = this._formBuilder.group({
       description: new FormControl('', Validators.maxLength(200)),
       category: new FormControl(undefined, this.catExpertyValidation),
       experty: new FormControl(undefined, this.catExpertyValidation),
@@ -96,7 +96,7 @@ export class UserWorkDetailComponent implements OnInit {
 
   createContact(): FormGroup {
     // if the first control is creating
-    if (!this.userWorkProfileForm) {
+    if (!this.userWorkDetailForm) {
       return this._formBuilder.group({
         contactNumber: ['', [Validators.required, Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
       });
@@ -108,20 +108,20 @@ export class UserWorkDetailComponent implements OnInit {
   }
 
   addContact(): void {
-    this.contacts = this.userWorkProfileForm.get('contacts') as FormArray;
+    this.contacts = this.userWorkDetailForm.get('contacts') as FormArray;
     this.contacts.push(this.createContact());
   }
 
   removeContact(index: number): void {
     if (index !== 0) {
-      this.contacts = this.userWorkProfileForm.get('contacts') as FormArray;
+      this.contacts = this.userWorkDetailForm.get('contacts') as FormArray;
       this.contacts.removeAt(index);
     }
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    if (this.userWorkProfileForm.status === 'INVALID') {
+    if (this.userWorkDetailForm.status === 'INVALID') {
       this.showValidationError();
     }
   }
@@ -135,9 +135,9 @@ export class UserWorkDetailComponent implements OnInit {
   onCategorySelection(): void {
     // clear experties array
     this.experties = [];
-    this.userWorkProfileForm.controls.experty.setValue(undefined);
+    this.userWorkDetailForm.controls.experty.setValue(undefined);
 
-    const selectedCategoryName = this.userWorkProfileForm.value.category;
+    const selectedCategoryName = this.userWorkDetailForm.value.category;
     // on selection
     if (selectedCategoryName) {
       const categorySelected = this.categories.find(category => category.value.name === selectedCategoryName.name);
@@ -146,10 +146,10 @@ export class UserWorkDetailComponent implements OnInit {
         categorySelected.value.experties.forEach(experty => {
           this.experties.push({ label: experty.name, value: experty.name });
         });
-        if (this.userWorkProfileForm.controls.category.value.name === 'Other') {
-          this.userWorkProfileForm.addControl('categoryOther', new FormControl('', this.catExpertyValidation));
+        if (this.userWorkDetailForm.controls.category.value.name === 'Other') {
+          this.userWorkDetailForm.addControl('categoryOther', new FormControl('', this.catExpertyValidation));
         } else {
-          this.userWorkProfileForm.removeControl('categoryOther');
+          this.userWorkDetailForm.removeControl('categoryOther');
         }
 
       }
@@ -157,10 +157,10 @@ export class UserWorkDetailComponent implements OnInit {
   }
 
   onExpertySelection(): void {
-    if (this.userWorkProfileForm.controls.experty && this.userWorkProfileForm.controls.experty.value === 'Other') {
-      this.userWorkProfileForm.addControl('expertyOther', new FormControl('', this.catExpertyValidation));
+    if (this.userWorkDetailForm.controls.experty && this.userWorkDetailForm.controls.experty.value === 'Other') {
+      this.userWorkDetailForm.addControl('expertyOther', new FormControl('', this.catExpertyValidation));
     } else {
-      this.userWorkProfileForm.removeControl('expertyOther');
+      this.userWorkDetailForm.removeControl('expertyOther');
     }
 
   }
