@@ -6,22 +6,27 @@
           <div [ngClass]="['col-sm-12 col-md-3']">
             <div [ngClass]="['d-flex flex-row bd-highlight mb-3']">
               <div [ngClass]="['nav flex-row nav-pills']" [id]="['v-pills-tab']" role="tablist" aria-orientation="vertical">
-                <a [ngClass]="['nav-link active']" [id]="['v-pills-general-profile-tab']" data-toggle="pill" href="#v-pills-general-profile"
-                  role="tab" aria-controls="v-pills-general-profile" aria-selected="true">General Profile</a>
-                <a [ngClass]="['nav-link']" [id]="['v-pills--work-profile-tab']" data-toggle="pill" href="#v-pills-work-profile"
-                  role="tab" aria-controls="v-pills-work-profile" aria-selected="false">Work Profile</a>
+                <a [ngClass]="['nav-link active']" [id]="['v-pills-general-detail-tab']" data-toggle="pill" href="#v-pills-general-detail"
+                  role="tab" aria-controls="v-pills-general-detail" aria-selected="true">General Details</a>
+                <a [ngClass]="['nav-link']" [id]="['v-pills--work-detail-tab']" data-toggle="pill" href="#v-pills-work-detail"
+                  role="tab" aria-controls="v-pills-work-detail" aria-selected="false">Work Details</a>
+                <a [ngClass]="['nav-link']" [id]="['v-pills--qualification-detail-tab']" data-toggle="pill" href="#v-pills-qualification-detail"
+                  role="tab" aria-controls="v-pills-qualification-detail" aria-selected="false">Qualification Details</a>
               </div>
             </div>
           </div>
           <div [ngClass]="['col-sm-12 col-md-9']">
             <div [ngClass]="['tab-content']" [id]="['v-pills-tabContent']">
-              <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-profile']" role="tabpanel"
-                aria-labelledby="v-pills-general-profile-tab">
+              <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-detail']" role="tabpanel"
+                aria-labelledby="v-pills-general-detail-tab">
                 <app-user-general-detail [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail>
               </div>
-              <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-profile']" role="tabpanel" aria-labelledby="v-pills-work-profile-tab">
+              <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-detail']" role="tabpanel" aria-labelledby="v-pills-work-detail-tab">
                 <app-user-work-detail [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'></app-user-work-detail>
               </div>
+              <div [ngClass]="['tab-pane fade']" [id]="['v-pills-qualification-detail']" role="tabpanel" aria-labelledby="v-pills-qualification-detail-tab">
+                  <app-user-qualification-detail></app-user-qualification-detail>
+                </div>
             </div>
           </div>
         </div>
