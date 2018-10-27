@@ -15,6 +15,8 @@ import { UserService } from './service-user/user.service';
 import { BaseDataSourcesService } from '../../shared_modules/base-ds-service';
 import { UserQualificationDetailComponent } from './user-qualification-detail/user-qualification-detail.component';
 import { UserWorkDetailComponent } from './user-work-detail/user-work-detail.component';
+import { CustomformVaidatorsService } from '../../shared_modules/form-validators/custom-form-validators-service';
+import { StartendyearModule } from '../../shared_modules/startendyear/startendyear.module';
 
 
 
@@ -27,9 +29,10 @@ import { UserWorkDetailComponent } from './user-work-detail/user-work-detail.com
     InputSwitchModule,
     DropdownModule,
     ChipsModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    StartendyearModule
   ],
   declarations: [UserProfileComponent, UserGeneralDetailComponent, UserWorkDetailComponent, UserQualificationDetailComponent],
-  providers: [UserService, BaseDataSourcesService]
+  providers: [UserService, BaseDataSourcesService, CustomformVaidatorsService]
 })
 export class UserModule { }

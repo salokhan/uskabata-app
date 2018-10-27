@@ -25,6 +25,21 @@ export class GenericFunctionsService {
         return 'Please fill the red marked fields and provide the correct format';
     }
 
+    getMonths(): any[] {
+        return ['January', 'February', 'March', 'April',
+            'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    }
+
+    getYears(): any[] {
+        const years: any[] = [];
+        const currentYear = (new Date()).getFullYear();
+        const toBackYear = 80;
+        for (let i = currentYear; i !== (currentYear - toBackYear); i--) {
+            years.push(i);
+        }
+        return years;
+    }
+
 
 
 }

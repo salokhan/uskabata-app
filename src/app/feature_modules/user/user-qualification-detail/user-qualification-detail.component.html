@@ -14,6 +14,11 @@
             <div formArrayName="educations" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-12 col-xlg-12']"
               *ngFor="let item of userQualificationDetailForm.get('educations').controls; let i = index;">
               <div [formGroupName]="i">
+                <div [ngClass]="['d-felx']">
+                  <button type="button" class="btn btn-default btn-sm">
+                    <span class="icon-remove"></span> Remove
+                  </button>
+                </div>
                 <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
                   <div [ngClass]="['input-group mb-3']">
                     <label for="school">School</label>
@@ -35,8 +40,16 @@
                       [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
                   </div>
                 </div>
-              </div>
+                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
 
+                  <app-startendyear *ngIf="item['controls'].duration" [startendyearForm]="item['controls'].duration"></app-startendyear>
+                </div>
+              </div>
+              <hr>
+            </div>
+            <div [ngClass]="['form-group col-md-12']">
+              <button type="button" [ngClass]="['btn btn-secondary btn-sm btn-block']" (click)='addEducation()'>Add
+                other education detail</button>
             </div>
           </div>
         </fieldset>
