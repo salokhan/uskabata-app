@@ -1,0 +1,64 @@
+<form  [formGroup]="startendyearForm">
+  <div [ngClass]="['form-row col-sm-12 p-0']">
+    <div formGroupName="startFrom" [ngClass]="['form-row col-sm-12 m-0']">
+      <div [ngClass]="['col-sm-12 col-md-12 col-lg-12']">
+        <label for="startFrom">From</label>
+      </div>
+      <div [ngClass]="['col-sm-12 col-md-6 col-lg-6']">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="year">Year</label>
+          </div>
+          <select class="custom-select" id="year" [ngClass]="['form-control form-control-sm']" formControlName="year"
+            (change)='startYearSelect($event.target.selectedIndex, i)'>
+            <option *ngFor="let year of startYears">
+              {{year}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div [ngClass]="['col-sm-12 col-md-6 col-lg-6']">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="month">Month</label>
+          </div>
+          <select class="custom-select" id="month" [ngClass]="['form-control form-control-sm']" formControlName="month"
+            (change)='startMonthSelect($event.target.selectedIndex, i)'>
+            <option *ngFor="let month of startMonths">
+              {{month}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div formGroupName="endAt" [ngClass]="['form-row col-sm-12 m-0']">
+      <div [ngClass]="['col-sm-12 col-md-12 col-lg-12']">
+        <label for="startFrom">To</label>
+      </div>
+      <div [ngClass]="['col-sm-12 col-md-6 col-lg-6']">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="year">Year</label>
+          </div>
+          <select class="custom-select" id="year" [ngClass]="['form-control form-control-sm']" formControlName="year" (change)='endYearSelect($event.target.selectedIndex, i)'>
+            <option *ngFor="let year of endYears">
+              {{year}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div [ngClass]="['col-sm-12 col-md-6 col-lg-6']">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="month">Month</label>
+          </div>
+          <select class="custom-select" id="month" [ngClass]="['form-control form-control-sm']" formControlName="month">
+            <option *ngFor="let month of endMonths">
+              {{month}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

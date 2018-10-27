@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserGeneralProfileComponent } from './user-general-profile.component';
+import { StartendyearComponent } from './startendyear.component';
 
-describe('UserGeneralProfileComponent', () => {
-  let component: UserGeneralProfileComponent;
-  let fixture: ComponentFixture<UserGeneralProfileComponent>;
+describe('StartendyearComponent', () => {
+  let component: StartendyearComponent;
+  let fixture: ComponentFixture<StartendyearComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserGeneralProfileComponent ]
+      declarations: [ StartendyearComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserGeneralProfileComponent);
+    fixture = TestBed.createComponent(StartendyearComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

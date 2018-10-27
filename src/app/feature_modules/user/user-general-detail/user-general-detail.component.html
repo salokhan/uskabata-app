@@ -1,0 +1,114 @@
+<div [ngClass]="['container bootstrap snippet']">
+  <div [ngClass]="['row']">
+    <div [ngClass]="['col-sm-12']">
+      <form [formGroup]="userGeneralDetailForm" (ngSubmit)="onSubmit()">
+        <div [ngClass]="['alert alert-success']" role="alert">
+          <h4 [ngClass]="['alert-heading']">General Details</h4>
+          <hr>
+          <p class="mb-0">This information will be needed to complete your profile. The user with the General profile
+            can not be viewed as service provider.</p>
+        </div>
+        <fieldset [ngClass]="['border p-2']">
+          <legend [ngClass]="['w-auto']">Personal Details</legend>
+          <div [ngClass]="['form-row']">
+            <div [ngClass]="['form-group col-md-6']">
+              <label for="title">Gender</label>
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" [options]="genders" id="title" [ngClass]="['form-control-sm-dropdown']"
+                placeholder="Select a gender" optionLabel="name" formControlName="gender"></p-dropdown>
+            </div>
+            <div [ngClass]="['form-group col-md-6']">
+              <label for="title">Title</label>
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" [options]="titles" id="title" [ngClass]="['form-control-sm-dropdown']"
+                placeholder="Select a title" optionLabel="name" formControlName="title"></p-dropdown>
+            </div>
+          </div>
+          <div [ngClass]="['form-row']">
+            <div [ngClass]="['form-group col-md-6']">
+              <label for="firstName">First Name</label>
+              <input type="text" formControlName="firstName" [ngClass]="['form-control form-control-sm']" id="firstName" placeholder="First Name">
+              <!-- <div *ngIf="userGeneralDetailForm.controls.firstName.errors && userGeneralDetailForm.controls.firstName.invalid && (userGeneralDetailForm.controls.firstName.dirty || userGeneralDetailForm.controls.firstName.touched)" class="alert alert-danger">
+                        <div *ngIf="userGeneralDetailForm.controls.firstName.errors.required">
+                            Name is required.
+                          </div>
+                    </div> -->
+            </div>
+            <div [ngClass]="['form-group col-md-6']">
+              <label for="lastName">Last Name</label>
+              <input type="text" formControlName="lastName" [ngClass]="['form-control form-control-sm']" id="lastName" placeholder="Last Name">
+            </div>
+          </div>
+          <div [ngClass]="['form-row']">
+            <div [ngClass]="['form-group col-md-12']">
+              <label for="displayName">Display Name</label>
+              <input type="text" formControlName="displayName" [ngClass]="['form-control form-control-sm']" id="displayName"
+                placeholder="Display Name">
+            </div>
+          </div>
+          <div [ngClass]="['form-row']">
+            <div [ngClass]="['form-group col-md-12']">
+              <label for="email">Email</label>
+              <input type="email" formControlName="email" [ngClass]="['form-control form-control-sm']" id="email" placeholder="Email">
+            </div>
+          </div>
+          <div [ngClass]="['form-row']">
+            <div [ngClass]="['form-group col-md-12']">
+              <label for="about">About</label>
+              <input type="text" formControlName="about" [ngClass]="['form-control form-control-sm']" id="about" placeholder="About...">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset [ngClass]="['border p-2']">
+          <legend [ngClass]="['w-auto']">Address</legend>
+          <div formGroupName="address" [ngClass]="['form-row']">
+            <div [ngClass]="['col-sm-12 col-md-6 col-lg-4']">
+              <label for="country">Country</label>
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" [ngClass]="['form-control-sm-dropdown']"
+                [showClear]="true" [options]="countries" [filter]="true" filterBy="label,value.name" placeholder="Select a country"
+                formControlName="country"></p-dropdown>
+            </div>
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+              <label for="state">State</label>
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" [ngClass]="['form-control-sm-dropdown']"
+                [showClear]="true" [filter]="true" placeholder="Select a state" filterBy="value" formControlName="state"></p-dropdown>
+            </div>
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+              <label for="city">City</label>
+              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" [ngClass]="['form-control-sm-dropdown']"
+                [showClear]="true" [options]="cities" [filter]="true" filterBy="label, value.name" placeholder="Select a City"
+                formControlName="city"></p-dropdown>
+            </div>
+            <div [ngClass]="['form-group col-md-12']">
+              <label for="addressLine">Address Line</label>
+              <input type="text" formControlName="addressLine" [ngClass]="['form-control form-control-sm']" id="addressLine"
+                placeholder="1234 Main St">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset [ngClass]="['border p-2']">
+          <legend [ngClass]="['w-auto']">Contacts</legend>
+          <div [ngClass]="['form-row']">
+            <div formArrayName="contacts" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-6 col-xlg-4']"
+              *ngFor="let item of userGeneralDetailForm.get('contacts').controls; let i = index;">
+              <div [formGroupName]="i">
+                <label *ngIf="i==0" for="contactNumber">Contact # {{i+1}}</label>
+                <label *ngIf="i>0" for="contactNumber">Contact # {{i+1}}</label>
+                <div [ngClass]="['input-group mb-4']">
+                  <input type="tel" formControlName="contactNumber" [ngClass]="['form-control form-control-sm']" id="contactNumber"
+                    placeholder="+111111111111">
+                  <div [ngClass]="['input-group-append']">
+                    <button *ngIf="i > 0" type="button" for="contactNumber" [ngClass]="['btn btn-sm btn-danger']"
+                      (click)='removeContact(i)'>-</button>
+                    <button *ngIf="i === 0" type="button" [ngClass]="['btn btn-sm btn-success'] " (click)='addContact()'>+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div [ngClass]="['form-row p-2']">
+          <button type="submit" [ngClass]="['btn btn-primary']">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

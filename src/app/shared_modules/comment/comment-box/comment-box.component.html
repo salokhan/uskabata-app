@@ -5,11 +5,11 @@
   <div [ngClass]="['small col-12']">
     <div [ngClass]="['container']">
       <div [ngClass]="['row']">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Write your comment here." aria-label="Write your comment here."
+        <div [ngClass]="['input-group mb-3']">
+          <input type="text" [ngClass]="['form-control']" placeholder="Write your comment here." aria-label="Write your comment here."
             aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <span class="input-group-text btn btn-primary" id="basic-addon2">Send</span>
+          <div [ngClass]="['input-group-append']">
+            <span [ngClass]="['input-group-text btn btn-primary']" id="basic-addon2">Send</span>
           </div>
         </div>
       </div>

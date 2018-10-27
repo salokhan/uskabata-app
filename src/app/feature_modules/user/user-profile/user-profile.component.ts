@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../service-user/user.service';
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
+import { ICategory } from '../../../shared_modules/category';
+import { IExperty } from '../../../shared_modules/experty';
+import { ISchool } from '../../../shared_modules/school';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,18 +13,17 @@ import { ICity } from '../../../shared_modules/city';
 })
 export class UserProfileComponent implements OnInit {
 
-  userProfileForm: FormGroup;
-  mobileContacts: FormArray;
-  landLineContacts: FormArray;
-
   errorMessage: string;
 
   countries: ICountry[];
   countriesDS = [];
   cities: ICity[];
   citiesDS = [];
+  categories: ICategory[];
+  categoryDS = [];
+  schools: ISchool[];
 
-  constructor(private _userService: UserService, private _formBuilder: FormBuilder) { }
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
 
@@ -47,67 +48,30 @@ export class UserProfileComponent implements OnInit {
         this.errorMessage = error;
       });
 
-    this.userProfileForm = this._formBuilder.group({
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      address: new FormGroup({
-        addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-        country: new FormControl('', Validators.required),
-        city: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.required)
-      }),
-      mobileContacts: this._formBuilder.array([this.createMobileContact()]),
-      landLineContacts: this._formBuilder.array([this.createLandLineContact()])
-    });
-  }
-
-  createMobileContact(): FormGroup {
-    // if the first control is creating
-    if (!this.userProfileForm) {
-      return this._formBuilder.group({
-        mobileNumber: ['', [Validators.required, Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
+    this._userService.getCategories().subscribe(categories => {
+      this.categories = categories;
+      categories.forEach(category => {
+        if (category.experties) {
+          category.experties.push({ id: '', name: 'Other', type: 'Other' });
+        } else {
+          const experty: IExperty = { id: '', name: 'Other', type: 'Other' };
+          category.experties = [experty];
+        }
+        this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
       });
-    } else {
-      return this._formBuilder.group({
-        mobileNumber: ['', [Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
+      this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: [{ name: 'Other', value: 'Other' }] } });
+    },
+      error => {
+        this.errorMessage = <any>error;
       });
-    }
-  }
 
-  addMobileContact(): void {
-    this.mobileContacts = this.userProfileForm.get('mobileContacts') as FormArray;
-    this.mobileContacts.push(this.createMobileContact());
-  }
+    this._userService.getSchools().subscribe(schools => {
+      this.schools = schools;
+    },
+      error => {
+        this.errorMessage = <any>error;
+      });
 
-  removeMobileContact(index: number): void {
-    if (index !== 0) {
-      this.mobileContacts = this.userProfileForm.get('mobileContacts') as FormArray;
-      this.mobileContacts.removeAt(index);
-    }
-  }
-
-  createLandLineContact(): FormGroup {
-    return this._formBuilder.group({
-      landLineNumber: ['', [Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
-    });
-  }
-
-  addLandLineContact(): void {
-    this.landLineContacts = this.userProfileForm.get('landLineContacts') as FormArray;
-    this.landLineContacts.push(this.createLandLineContact());
-  }
-
-  removeLandLineContact(index: number): void {
-    if (index !== 0) {
-      this.landLineContacts = this.userProfileForm.get('landLineContacts') as FormArray;
-      this.landLineContacts.removeAt(index);
-    }
-  }
-
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.userProfileForm.value);
   }
 
 }

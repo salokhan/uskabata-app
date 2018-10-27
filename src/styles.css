@@ -7,25 +7,67 @@ body {
     /* background-color: #FFFAFA */
     background-color: #FFFAFA !important;
 }
+.form-control-autocomplete-sm {
+    width: 100% !important
+}
+.form-control-autocomplete-sm > span > input {
+    height: calc(1.8125rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+    border: 1px solid #ced4da;
+    
+}
+p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext {
+    border: 1px solid #ced4da !important;
+}
 
+.ng-invalid.form-control-autocomplete-sm{
+    border-left: 4px solid red;
+    border-radius: 0.35rem;
+}
+.ng-valid.form-control-autocomplete-sm{
+    border-left: 4px solid green;
+    border-radius: 0.35rem;
+}
+.form-control-autocomplete{
+    width: 100% !important;
+}
+.ng-invalid.form-control-autocomplete{
+    border-left: 5px solid red;
+}
+.ng-valid.form-control-autocomplete{
+    border-left: 5px solid green;
+}
 .tooltip-custom.ui-tooltip .ui-tooltip-text {
     font-weight: 100;
     font-size: 2.5mm;
 }
-
+.chip-width > ul {
+    width: 100% !important;
+ }
 .comments-panel.ui-panel .ui-panel-titlebar {
     background: #cce5ff;
 }
 
 .ng-invalid.form-control  {
     border-left: 5px solid red;
+    border-radius: 0.33rem;
 }
 .ng-valid.form-control  {
     border-left: 5px solid green;
+    border-radius: 0.33rem;
 }
 
 .ng-invalid.form-control-dropdown  {
     border-left: 5px solid red;
+}
+.ng-invalid.form-control-sm-dropdown  {
+    border-left: 4px solid red;
+}
+.ng-valid.form-control-sm-dropdown  {
+    border-left: 4px solid green;
 }
 .ng-valid.form-control-dropdown  {
     border-left: 5px solid green;
@@ -42,20 +84,24 @@ body {
     background-clip: padding-box;
     /* border: 1px solid #ced4da; */
     /* border-radius: 0.25rem; */
-    border-radius: 1.25rem;
-    transition: border-color .15s 
+    border-radius: 0.38rem;
+    transition: border-color .15s;
 }
-.form-control-no-validation {
-    display: block;
-    width: 100%;
-    height: calc(2.25rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
+.form-control-sm-dropdown{
+    /* height: calc(1.8125rem + 2px); */
+    /* padding: .25rem .5rem; */
+    font-size: .875rem;
     line-height: 1.5;
+    border-radius: .2rem;
+    display: block;
+    width: 99%;    
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s;
 }
+.dynamic-form-control {
+    background: papayawhip !important;
+}
+
+

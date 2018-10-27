@@ -3,6 +3,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/components/common/messageservice';
+
 import { AppComponent } from './app.component';
 import { TopBarModule } from './core_modules/top-bar/top-bar.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,10 +23,11 @@ import { GenericFunctionsService } from './shared_modules/generic-functions-serv
     HttpModule,
     AppRoutingModule,
     TopBarModule,
-    ButtonTopModule
+    ButtonTopModule,
+    ToastModule
   ],
   providers: [
-    GenericFunctionsService
+    GenericFunctionsService, MessageService
   ],
   bootstrap: [AppComponent]
 })
