@@ -5,6 +5,7 @@ import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
 import { ISchool } from '../../../shared_modules/school';
+import { IUserProfile } from '../../../shared_modules/userProfile';
 
 @Injectable()
 export class UserService {
@@ -13,11 +14,19 @@ export class UserService {
   citiesUrl = 'api/cities/cities.json';
   categoriesUrl = 'api/categories/categories.json';
   schoolsUrl = 'api/schools/schools.json';
+  userProfle = 'api/userProfiles/userProfiles.json';
 
   constructor(private _http: Http) { }
 
   private handleError(response: Response) {
     return Observable.throw(response.json().error() || 'Server Error');
+  }
+
+  getUserProfile(): Observable<IUserProfile[]> {
+    return this._http.get(this.userProfle).map((response: Response) =>
+      <IUserProfile[]>response.json()
+    ).do(data => console.log('All : ' + JSON.stringify(data)))
+      .catch(this.handleError);
   }
 
   getCountries(): Observable<ICountry[]> {

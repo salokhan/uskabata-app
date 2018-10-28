@@ -5,6 +5,7 @@ import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
 import { IExperty } from '../../../shared_modules/experty';
 import { ISchool } from '../../../shared_modules/school';
+import { IUserProfile } from '../../../shared_modules/userProfile';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,10 +23,19 @@ export class UserProfileComponent implements OnInit {
   categories: ICategory[];
   categoryDS = [];
   schools: ISchool[];
+  userProfiles: IUserProfile[];
+  userProfile: IUserProfile;
 
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
+    this._userService.getUserProfile().subscribe(userProfiles => {
+      this.userProfiles = userProfiles;
+      this.userProfile = this.userProfiles[0];
+    },
+      error => {
+        this.errorMessage = error;
+      });
 
     this._userService.getCountries().subscribe(countries => {
       this.countries = countries;

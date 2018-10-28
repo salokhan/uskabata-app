@@ -1,0 +1,46 @@
+{
+	"personalDetail": {
+		"gender": "Male",
+		"title": "Mr",
+		"firstName": "salman",
+		"lastName": "khan",
+		"displayName": "Kacho",
+		"emailAddress": "im.solomon@outlook.com",
+		"about": "This is salman hello there",
+		"addressPersonal": {
+			"country": "Pakistan",
+			"state": "Islamabad",
+			"city": "Islamabad"
+		},
+		"contactsPersonal": ["+923338788877"]				
+	},
+	"professionalDetails": {
+		"category": "Automobile",
+		"experty": "Electrician",
+		"description": "i am good at electrician",
+		"tags": ["auto electrician", "cars", "automobile"],
+		"addressesWork": [
+			{
+				"Title": "Khudadad Heights",
+				"country": "Pakistan",
+				"state": "Islamabad",
+				"city": "Islamabad",
+				"addressLine": "House 121 street 20 i-9/1",
+				"startTime": "01:00 AM",
+				"endTime": "9:00 PM"				
+			}
+		],
+		"contactsWork": ["+923338788877"]		
+	},
+	"qualificationDetails": [
+		{
+			"school": "Islamabad School",
+			"degree": "Bscs",
+			"fielsOfStude": "Computer Science",
+			"fromYear": "June 2007",
+			"toYear": "March 2008"
+			
+		}
+	]
+	
+}
