@@ -59,6 +59,10 @@ export class UserQualificationDetailComponent implements OnInit {
     this.educations = this.userQualificationDetailForm.get('educations') as FormArray;
     this.educations.push(this.createEducation());
   }
+  removeEducation(index: number): void {
+    this.educations = this.userQualificationDetailForm.get('educations') as FormArray;
+    this.educations.removeAt(index);
+  }
   createDurationForm(): FormGroup {
     return this._formBuilder.group({
       startFrom: new FormGroup({

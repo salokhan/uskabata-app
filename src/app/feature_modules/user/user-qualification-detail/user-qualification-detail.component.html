@@ -8,32 +8,33 @@
           <p class="mb-0">This information will be needed to complete your profile. The user with the qualification
             details can increse the chance of get contacted.</p>
         </div>
-        <fieldset [ngClass]="['border p-2']">
-          <legend [ngClass]="['w-auto']">Education Details</legend>
-          <div [ngClass]="['form-row']">
-            <div formArrayName="educations" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-12 col-xlg-12']"
-              *ngFor="let item of userQualificationDetailForm.get('educations').controls; let i = index;">
-              <div [formGroupName]="i">
-                <div [ngClass]="['d-felx']">
-                  <button type="button" class="btn btn-default btn-sm">
-                    <span class="icon-remove"></span> Remove
+        <!-- <fieldset [ngClass]="['border p-2']">
+          <legend [ngClass]="['w-auto']">Education Details</legend> -->
+        <div [ngClass]="['form-row']">
+          <div formArrayName="educations" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-12 col-xlg-12']"
+            *ngFor="let item of userQualificationDetailForm.get('educations').controls; let i = index;">
+            <div [formGroupName]="i">
+              <div [ngClass]="['card p-1 m-0']">
+                <div [ngClass]="['col-sm-12']">
+                  <button type="button" class="close" aria-label="Close" (click)='removeEducation(i)'>
+                    <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                <div [ngClass]="['p-1 col-sm-12 col-md-12 col-lg-12']">
                   <div [ngClass]="['input-group mb-3']">
                     <label for="school">School</label>
                     <p-autoComplete formControlName="school" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
                       [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
                   </div>
                 </div>
-                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                <div [ngClass]="['p-1 col-sm-12 col-md-12 col-lg-12']">
                   <div [ngClass]="['input-group mb-3']">
                     <label for="school">Degree</label>
                     <p-autoComplete formControlName="school" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
                       [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
                   </div>
                 </div>
-                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                <div [ngClass]="['p-1 col-sm-12 col-md-12 col-lg-12']">
                   <div [ngClass]="['input-group mb-3']">
                     <label for="school">Field of study</label>
                     <p-autoComplete formControlName="school" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
@@ -41,18 +42,18 @@
                   </div>
                 </div>
                 <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
-
                   <app-startendyear *ngIf="item['controls'].duration" [startendyearForm]="item['controls'].duration"></app-startendyear>
                 </div>
               </div>
-              <hr>
             </div>
-            <div [ngClass]="['form-group col-md-12']">
-              <button type="button" [ngClass]="['btn btn-secondary btn-sm btn-block']" (click)='addEducation()'>Add
-                other education detail</button>
-            </div>
+            <hr>
           </div>
-        </fieldset>
+          <div [ngClass]="['form-group col-md-12']">
+            <button type="button" [ngClass]="['btn btn-secondary btn-sm btn-block']" (click)='addEducation()'>Add
+              other education detail</button>
+          </div>
+        </div>
+        <!-- </fieldset> -->
         <div [ngClass]="['form-row p-2']">
           <button type="submit" [ngClass]="['btn btn-primary']">Save</button>
         </div>
