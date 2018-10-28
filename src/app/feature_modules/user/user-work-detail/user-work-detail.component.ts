@@ -14,6 +14,7 @@ export class UserWorkDetailComponent implements OnInit {
 
   userWorkDetailForm: FormGroup;
   contacts: FormArray;
+  workAddresses: FormArray;
   landLineContacts: FormArray;
   errorMessage: string;
   catExpertyValidation = [Validators.required, Validators.minLength(2), Validators.maxLength(20)];
@@ -84,16 +85,23 @@ export class UserWorkDetailComponent implements OnInit {
       experty: new FormControl(undefined, this.catExpertyValidation),
       tags: new FormControl([]),
       activateProfessionProfile: new FormControl(false),
-      workAddress: new FormGroup({
-        addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-        country: new FormControl(undefined, Validators.required),
-        city: new FormControl(undefined, Validators.required),
-        state: new FormControl(undefined)
-      }),
+      workaddresses: this._formBuilder.array([this.createWorkAddress()]),
       contacts: this._formBuilder.array([this.createContact()])
     });
   }
 
+  createWorkAddress(): FormGroup {
+    return this._formBuilder.group({
+      addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      country: new FormControl(undefined, Validators.required),
+      city: new FormControl(undefined, Validators.required),
+      state: new FormControl(undefined),
+      timming: new FormGroup({
+        startTime: new FormControl('', Validators.required),
+        endTime: new FormControl('', Validators.required)
+      })
+    });
+  }
   createContact(): FormGroup {
     // if the first control is creating
     if (!this.userWorkDetailForm) {
@@ -117,6 +125,14 @@ export class UserWorkDetailComponent implements OnInit {
       this.contacts = this.userWorkDetailForm.get('contacts') as FormArray;
       this.contacts.removeAt(index);
     }
+  }
+  addWorkAddress(): void {
+    this.workAddresses = this.userWorkDetailForm.get('workaddresses') as FormArray;
+    this.workAddresses.push(this.createWorkAddress());
+  }
+  removeWorkAddress(index: number): void {
+    this.workAddresses = this.userWorkDetailForm.get('workaddresses') as FormArray;
+    this.workAddresses.removeAt(index);
   }
 
   onSubmit() {

@@ -17,6 +17,7 @@ import { UserQualificationDetailComponent } from './user-qualification-detail/us
 import { UserWorkDetailComponent } from './user-work-detail/user-work-detail.component';
 import { CustomformVaidatorsService } from '../../shared_modules/form-validators/custom-form-validators-service';
 import { StartendyearModule } from '../../shared_modules/startendyear/startendyear.module';
+import { StartendtimeModule } from '../../shared_modules/startendtime/startendtime.module';
 
 
 
@@ -30,7 +31,8 @@ import { StartendyearModule } from '../../shared_modules/startendyear/startendye
     DropdownModule,
     ChipsModule,
     AutoCompleteModule,
-    StartendyearModule
+    StartendyearModule,
+    StartendtimeModule
   ],
   declarations: [UserProfileComponent, UserGeneralDetailComponent, UserWorkDetailComponent, UserQualificationDetailComponent],
   providers: [UserService, BaseDataSourcesService, CustomformVaidatorsService]

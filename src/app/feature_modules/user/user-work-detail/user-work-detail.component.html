@@ -33,8 +33,8 @@
             </div>
             <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']" *ngIf="userWorkDetailForm.controls.category.value && userWorkDetailForm.controls.category.value.name == 'Other'">
               <label for="categoryOther">Add new category</label>
-              <input type="text" formControlName="categoryOther" [ngClass]="['form-control form-control-sm dynamic-form-control']" id="categoryOther"
-                placeholder="Add new category">
+              <input type="text" formControlName="categoryOther" [ngClass]="['form-control form-control-sm dynamic-form-control']"
+                id="categoryOther" placeholder="Add new category">
             </div>
             <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']">
               <label for="experty">Experty</label>
@@ -44,8 +44,8 @@
             </div>
             <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']" *ngIf="userWorkDetailForm.controls.experty.value && userWorkDetailForm.controls.experty.value == 'Other'">
               <label for="expertyOther">Add new experty</label>
-              <input type="text" formControlName="expertyOther" [ngClass]="['form-control form-control-sm dynamic-form-control']" id="expertyOther"
-                placeholder="Add new experty">
+              <input type="text" formControlName="expertyOther" [ngClass]="['form-control form-control-sm dynamic-form-control']"
+                id="expertyOther" placeholder="Add new experty">
             </div>
             <div [ngClass]="['form-group col-md-12']">
               <label for="description">Description</label>
@@ -53,35 +53,59 @@
                 placeholder="Description...">
             </div>
             <div [ngClass]="['form-group col-md-12']">
-              <label for="description">Tags<small> (Tags will help user in finding you, i.e. Auto Electrition or Dentist or Tutor )</small></label>
-              <p-chips formControlName="tags" styleClass="chip-width" [allowDuplicate]='false' [max] = 5></p-chips>
+              <label for="description">Tags<small> (Tags will help user in finding you, i.e. Auto Electrition or
+                  Dentist or Tutor )</small></label>
+              <p-chips formControlName="tags" styleClass="chip-width" [allowDuplicate]='false' [max]=5></p-chips>
             </div>
           </div>
         </fieldset>
         <fieldset [ngClass]="['border p-2']">
           <legend [ngClass]="['w-auto']">Work Address</legend>
-          <div formGroupName="workAddress" [ngClass]="['form-row']">
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
-              <label for="country">Country</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" [ngClass]="['form-control-sm-dropdown']"
-                [showClear]="true" [options]="countries" [filter]="true" filterBy="label,value.name" placeholder="Select a country"
-                formControlName="country"></p-dropdown>
-            </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
-              <label for="state">State</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" [ngClass]="['form-control-sm-dropdown']"
-                [showClear]="true" [filter]="true" placeholder="Select a state" filterBy="value" formControlName="state"></p-dropdown>
-            </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
-              <label for="city">City</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" [ngClass]="['form-control-sm-dropdown']"
-                [showClear]="true" [options]="cities" [filter]="true" filterBy="label, value.name" placeholder="Select a City"
-                formControlName="city"></p-dropdown>
+          <div [ngClass]="['form-row']">
+            <div formArrayName="workaddresses" [ngClass]="['form-group p-0 sm-12 col-sm-12 col-md-12 col-lg-12 col-xlg-12']"
+              *ngFor="let item of userWorkDetailForm.get('workaddresses').controls; let i = index;">
+              <div [formGroupName]="i">
+                <div [ngClass]="['card p-1 m-0']">
+                  <div [ngClass]="['col-sm-12']" *ngIf="i != 0">
+                    <button type="button" class="close" aria-label="Close" (click)='removeWorkAddress(i)'>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div [ngClass]="['form-row']">
+                    <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+                      <label for="country">Country</label>
+                      <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" [ngClass]="['form-control-sm-dropdown']"
+                        [showClear]="true" [options]="countries" [filter]="true" filterBy="label,value.name"
+                        placeholder="Select a country" formControlName="country"></p-dropdown>
+                    </div>
+                    <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+                      <label for="state">State</label>
+                      <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" [ngClass]="['form-control-sm-dropdown']"
+                        [showClear]="true" [filter]="true" placeholder="Select a state" filterBy="value"
+                        formControlName="state"></p-dropdown>
+                    </div>
+                    <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+                      <label for="city">City</label>
+                      <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" [ngClass]="['form-control-sm-dropdown']"
+                        [showClear]="true" [options]="cities" [filter]="true" filterBy="label, value.name" placeholder="Select a City"
+                        formControlName="city"></p-dropdown>
+                    </div>
+                    <div [ngClass]="['form-group col-md-12']">
+                      <label for="addressLine">Work Address Line</label>
+                      <input type="text" formControlName="addressLine" [ngClass]="['form-control form-control-sm']" id="addressLine"
+                        placeholder="1234 Main St">
+                    </div>
+                    <div [ngClass]="['col-md-12']">
+                      <app-startendtime [timmingForm]="item['controls'].timming"></app-startendtime>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
             </div>
             <div [ngClass]="['form-group col-md-12']">
-              <label for="addressLine">Work Address Line</label>
-              <input type="text" formControlName="addressLine" [ngClass]="['form-control form-control-sm']" id="addressLine"
-                placeholder="1234 Main St">
+              <button type="button" [ngClass]="['btn btn-secondary btn-sm btn-block']" (click)='addWorkAddress()'>Add
+                other work address</button>
             </div>
           </div>
         </fieldset>

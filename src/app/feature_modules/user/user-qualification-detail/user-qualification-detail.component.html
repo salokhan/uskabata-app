@@ -8,8 +8,6 @@
           <p class="mb-0">This information will be needed to complete your profile. The user with the qualification
             details can increse the chance of get contacted.</p>
         </div>
-        <!-- <fieldset [ngClass]="['border p-2']">
-          <legend [ngClass]="['w-auto']">Education Details</legend> -->
         <div [ngClass]="['form-row']">
           <div formArrayName="educations" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-12 col-xlg-12']"
             *ngFor="let item of userQualificationDetailForm.get('educations').controls; let i = index;">
@@ -41,7 +39,7 @@
                       [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredSchool" (completeMethod)="searchSchool($event)"></p-autoComplete>
                   </div>
                 </div>
-                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">
+                <div [ngClass]="['p-0 col-sm-12 col-md-12 col-lg-12']">                  
                   <app-startendyear *ngIf="item['controls'].duration" [startendyearForm]="item['controls'].duration"></app-startendyear>
                 </div>
               </div>
