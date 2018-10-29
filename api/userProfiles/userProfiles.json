@@ -33,6 +33,18 @@
 			"startTime": "01:00 AM",
 			"endTime": "9:00 PM",	
 			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
+		},
+		{
+			"Title": "Khudadad Heights",
+			"addressWorkPlace": {
+				"country": "Pakistan",
+				"state": "Islamabad",
+				"city": "Islamabad",
+				"addressLine": "Khudadad height E-11"
+			},
+			"startTime": "01:00 AM",
+			"endTime": "9:00 PM",	
+			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
 		}
 	],
 	"qualificationDetails": [

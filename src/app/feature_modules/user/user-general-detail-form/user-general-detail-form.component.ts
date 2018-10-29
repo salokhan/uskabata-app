@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
@@ -6,11 +6,13 @@ import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 
 @Component({
-  selector: 'app-user-general-detail',
-  templateUrl: './user-general-detail.component.html',
-  styleUrls: ['./user-general-detail.component.scss']
+  selector: 'app-user-general-detail-form',
+  templateUrl: './user-general-detail-form.component.html',
+  styleUrls: ['./user-general-detail-form.component.scss']
 })
-export class UserGeneralDetailComponent implements OnInit {
+export class UserGeneralDetailFormComponent implements OnInit {
+
+  @Output() saveClicked: EventEmitter<string> = new EventEmitter<string>();
 
   userGeneralDetailForm: FormGroup;
   contacts: FormArray;

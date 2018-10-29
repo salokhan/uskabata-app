@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../service-user/user.service';
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
@@ -6,6 +6,8 @@ import { ICategory } from '../../../shared_modules/category';
 import { IExperty } from '../../../shared_modules/experty';
 import { ISchool } from '../../../shared_modules/school';
 import { IUserProfile } from '../../../shared_modules/userProfile';
+import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
+import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -13,6 +15,11 @@ import { IUserProfile } from '../../../shared_modules/userProfile';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  @ViewChild(UserGeneralDetailFormComponent)
+  private userGeneralDetailFormComponent: UserGeneralDetailFormComponent;
+
+  @ViewChild(UserProfessionalDetailFormComponent)
+  private userProfessionalDetailFormComponent: UserProfessionalDetailFormComponent;
 
   errorMessage: string;
 
@@ -25,6 +32,9 @@ export class UserProfileComponent implements OnInit {
   schools: ISchool[];
   userProfiles: IUserProfile[];
   userProfile: IUserProfile;
+
+  showGeneralDetailForm = false;
+  showProfessionalDetailForm = false;
 
   constructor(private _userService: UserService) { }
 
@@ -82,6 +92,20 @@ export class UserProfileComponent implements OnInit {
         this.errorMessage = <any>error;
       });
 
+  }
+
+  showGeneralDetailFormDialog(): void {
+    this.showGeneralDetailForm = true;
+  }
+  showProfessionalDetailFormDialog(): void {
+    this.showProfessionalDetailForm = true;
+  }
+
+  userGeneralDetailFormComponentSave(): void {
+    this.userGeneralDetailFormComponent.onSubmit();
+  }
+  userProfessionalDetailFormComponentSave(): void {
+    this.userProfessionalDetailFormComponent.onSubmit();
   }
 
 }

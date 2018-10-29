@@ -4,8 +4,19 @@
       <div [ngClass]="['card hovercard']">
         <div [ngClass]="['cardheader']">
         </div>
-        <div [ngClass]="['avatar']">
-          <img alt="" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+        <div [ngClass]="['container']">
+          <div [ngClass]="['row p-1']">
+            <div [ngClass]="['col-10 col-sm-10 col-md-10 col-lg-11']">
+              <div [ngClass]="['avatar']">
+                <img alt="" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+              </div>
+            </div>
+            <div [ngClass]="['col-2 col-sm-2 col-md-2 col-lg-1']">
+              <button type="button" [ngClass]="['btn btn-outline-light']" (click)="showGeneralDetailFormDialog()">
+                <i [ngClass]="['icon-pencil']"></i>
+              </button>
+            </div>
+          </div>
         </div>
         <div [ngClass]="['info']" *ngIf="userProfile">
           <div [ngClass]="['title']">
@@ -56,8 +67,8 @@
               <h5>Professional Details</h5>
             </div>
             <div [ngClass]="['p-1']">
-              <button type="button" [ngClass]="['btn']">
-                <i [ngClass]="['p-1 icon-plus']"></i>
+              <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showProfessionalDetailFormDialog()">
+                <i [ngClass]="userProfile.professionalDetail ? 'icon-pencil' : 'icon-plus'"></i>
               </button>
             </div>
           </div>
@@ -83,21 +94,21 @@
         </div>
       </div>
       <div [ngClass]="['card detailcard p-0']">
-          <div [ngClass]="['card-header p-2 bg-white']">
-            <div [ngClass]="['d-flex']">
-              <div [ngClass]="['mr-auto p-2']">
-                <h5>Work Place Details</h5>
-              </div>
-              <div [ngClass]="['p-1']">
-                <button type="button" [ngClass]="['btn']">
-                  <i [ngClass]="['p-1 icon-plus']"></i>
-                </button>
-              </div>
+        <div [ngClass]="['card-header p-2 bg-white']">
+          <div [ngClass]="['d-flex']">
+            <div [ngClass]="['mr-auto p-2']">
+              <h5>Work Place Details</h5>
+            </div>
+            <div [ngClass]="['p-1']">
+              <button type="button" [ngClass]="['btn']">
+                <i [ngClass]="['p-1 icon-plus']"></i>
+              </button>
             </div>
           </div>
-          <div class="card-body p-2" *ngIf="userProfile && userProfile.workPlaceDetails">
-              <ng-container *ngFor="let workPlaceDetail of userProfile.workPlaceDetails; let i = index;">
-            <div [ngClass]="['info']" >
+        </div>
+        <div class="card-body p-2" *ngIf="userProfile && userProfile.workPlaceDetails">
+          <ng-container *ngFor="let workPlaceDetail of userProfile.workPlaceDetails; let i = index;">
+            <div [ngClass]="['info']">
               <div [ngClass]="['title']">
                 {{workPlaceDetail.Title}}
               </div>
@@ -105,24 +116,44 @@
                 +' | '+
                 workPlaceDetail.addressWorkPlace.state +" | "+workPlaceDetail.addressWorkPlace.city +"
                 | "+ workPlaceDetail.addressWorkPlace.addressLine }}</div>
-                <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
-                  <ng-container *ngFor="let contact of workPlaceDetail.contactsWork; let i = index;">
-                    <ng-container *ngIf="contact && i < workPlaceDetail.contactsWork.length - 1">
-                      {{contact + " | "}}
-                    </ng-container>
-                    <ng-container *ngIf="contact && i == workPlaceDetail.contactsWork.length - 1">
-                      {{contact}}
-                    </ng-container>
+              <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
+                <ng-container *ngFor="let contact of workPlaceDetail.contactsWork; let i = index;">
+                  <ng-container *ngIf="contact && i < workPlaceDetail.contactsWork.length - 1">
+                    {{contact + " | "}}
                   </ng-container>
-                </div>
+                  <ng-container *ngIf="contact && i == workPlaceDetail.contactsWork.length - 1">
+                    {{contact}}
+                  </ng-container>
+                </ng-container>
+              </div>
               <hr>
             </div>
-            </ng-container>
-          </div>
+          </ng-container>
         </div>
+      </div>
     </div>
   </div>
 </div>
+<p-dialog [(visible)]="showGeneralDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true" [responsive]="true"
+  [baseZIndex]="10000">
+  <p-header>
+    Generail Detail
+  </p-header>
+  <app-user-general-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail-form>
+  <p-footer>
+    <button type="button" [ngClass]="['btn btn-primary']" (click)="userGeneralDetailFormComponentSave()">save</button>
+  </p-footer>
+</p-dialog>
+<p-dialog [(visible)]="showProfessionalDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true"
+  [responsive]="true" [baseZIndex]="10000">
+  <p-header>
+    Professional Detail
+  </p-header>
+  <app-user-professional-detail-form [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'></app-user-professional-detail-form>
+  <p-footer>
+    <button type="button" [ngClass]="['btn btn-primary']" (click)="userProfessionalDetailFormComponentSave()">save</button>
+  </p-footer>
+</p-dialog>
 
 <!-- <div [ngClass]="['container p-2']">
   <div [ngClass]="['row']">
@@ -145,10 +176,10 @@
             <div [ngClass]="['tab-content']" [id]="['v-pills-tabContent']">
               <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-detail']" role="tabpanel"
                 aria-labelledby="v-pills-general-detail-tab">
-                <app-user-general-detail [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail>
+                <app-user-general-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail-form>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-detail']" role="tabpanel" aria-labelledby="v-pills-work-detail-tab">
-                <app-user-work-detail [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'></app-user-work-detail>
+                <app-user-professional-detail-form [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'></app-user-professional-detail-form>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-qualification-detail']" role="tabpanel"
                 aria-labelledby="v-pills-qualification-detail-tab">

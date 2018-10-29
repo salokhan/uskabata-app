@@ -6,18 +6,19 @@ import { DropdownModule } from 'primeng/dropdown';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ChipsModule} from 'primeng/chips';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {DialogModule} from 'primeng/dialog';
 
 import { UserRoutingModule } from './user-routing.module';
 
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserGeneralDetailComponent } from './user-general-detail/user-general-detail.component';
 import { UserService } from './service-user/user.service';
 import { BaseDataSourcesService } from '../../shared_modules/base-ds-service';
 import { UserQualificationDetailComponent } from './user-qualification-detail/user-qualification-detail.component';
-import { UserWorkDetailComponent } from './user-work-detail/user-work-detail.component';
 import { CustomformVaidatorsService } from '../../shared_modules/form-validators/custom-form-validators-service';
 import { StartendyearModule } from '../../shared_modules/startendyear/startendyear.module';
 import { StartendtimeModule } from '../../shared_modules/startendtime/startendtime.module';
+import { UserGeneralDetailFormComponent } from './user-general-detail-form/user-general-detail-form.component';
+import { UserProfessionalDetailFormComponent } from './user-professional-detail-form/user-professional-detail-form.component';
 
 
 
@@ -32,9 +33,11 @@ import { StartendtimeModule } from '../../shared_modules/startendtime/startendti
     ChipsModule,
     AutoCompleteModule,
     StartendyearModule,
-    StartendtimeModule
+    StartendtimeModule,
+    DialogModule
   ],
-  declarations: [UserProfileComponent, UserGeneralDetailComponent, UserWorkDetailComponent, UserQualificationDetailComponent],
+  declarations: [UserProfileComponent, UserGeneralDetailFormComponent,
+     UserProfessionalDetailFormComponent, UserQualificationDetailComponent],
   providers: [UserService, BaseDataSourcesService, CustomformVaidatorsService]
 })
 export class UserModule { }
