@@ -68,7 +68,7 @@
             </div>
             <div [ngClass]="['p-1']">
               <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showProfessionalDetailFormDialog()">
-                <i [ngClass]="userProfile.professionalDetail ? 'icon-pencil' : 'icon-plus'"></i>
+                <i [ngClass]="userProfile && userProfile.professionalDetail ? 'icon-pencil' : 'icon-plus'"></i>
               </button>
             </div>
           </div>
@@ -100,8 +100,8 @@
               <h5>Work Place Details</h5>
             </div>
             <div [ngClass]="['p-1']">
-              <button type="button" [ngClass]="['btn']">
-                <i [ngClass]="['p-1 icon-plus']"></i>
+              <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showWorkPlaceDetailFormDialog()">
+                <i [ngClass]="['icon-plus']"></i>
               </button>
             </div>
           </div>
@@ -154,6 +154,17 @@
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userProfessionalDetailFormComponentSave()">save</button>
   </p-footer>
 </p-dialog>
+<p-dialog [(visible)]="showWorkPlaceDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true" [responsive]="true"
+  [baseZIndex]="10000">
+  <p-header>
+    Work Places Detail
+  </p-header>
+  <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-work-place-detail-form>
+  <p-footer>
+    <button type="button" [ngClass]="['btn btn-primary']" (click)="userWorkPlaceDetailFormComponentSave()">save</button>
+  </p-footer>
+</p-dialog>
+
 
 <!-- <div [ngClass]="['container p-2']">
   <div [ngClass]="['row']">
@@ -179,7 +190,8 @@
                 <app-user-general-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail-form>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-detail']" role="tabpanel" aria-labelledby="v-pills-work-detail-tab">
-                <app-user-professional-detail-form [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'></app-user-professional-detail-form>
+                <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'> 
+                <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-work-place-detail-form>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-qualification-detail']" role="tabpanel"
                 aria-labelledby="v-pills-qualification-detail-tab">

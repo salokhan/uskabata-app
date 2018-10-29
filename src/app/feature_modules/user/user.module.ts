@@ -19,6 +19,7 @@ import { StartendyearModule } from '../../shared_modules/startendyear/startendye
 import { StartendtimeModule } from '../../shared_modules/startendtime/startendtime.module';
 import { UserGeneralDetailFormComponent } from './user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from './user-professional-detail-form/user-professional-detail-form.component';
+import { UserWorkPlaceDetailFormComponent } from './user-work-place-detail-form/user-work-place-detail-form.component';
 
 
 
@@ -37,7 +38,8 @@ import { UserProfessionalDetailFormComponent } from './user-professional-detail-
     DialogModule
   ],
   declarations: [UserProfileComponent, UserGeneralDetailFormComponent,
-     UserProfessionalDetailFormComponent, UserQualificationDetailComponent],
+     UserProfessionalDetailFormComponent, UserWorkPlaceDetailFormComponent,
+     UserQualificationDetailComponent],
   providers: [UserService, BaseDataSourcesService, CustomformVaidatorsService]
 })
 export class UserModule { }

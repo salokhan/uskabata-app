@@ -8,6 +8,7 @@ import { ISchool } from '../../../shared_modules/school';
 import { IUserProfile } from '../../../shared_modules/userProfile';
 import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
+import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,6 +21,9 @@ export class UserProfileComponent implements OnInit {
 
   @ViewChild(UserProfessionalDetailFormComponent)
   private userProfessionalDetailFormComponent: UserProfessionalDetailFormComponent;
+
+  @ViewChild(UserWorkPlaceDetailFormComponent)
+  private userWorkPlaceDetailFormComponent: UserWorkPlaceDetailFormComponent;
 
   errorMessage: string;
 
@@ -35,6 +39,7 @@ export class UserProfileComponent implements OnInit {
 
   showGeneralDetailForm = false;
   showProfessionalDetailForm = false;
+  showWorkPlaceDetailForm = false;
 
   constructor(private _userService: UserService) { }
 
@@ -100,12 +105,18 @@ export class UserProfileComponent implements OnInit {
   showProfessionalDetailFormDialog(): void {
     this.showProfessionalDetailForm = true;
   }
+  showWorkPlaceDetailFormDialog(): void {
+    this.showWorkPlaceDetailForm = true;
+  }
 
   userGeneralDetailFormComponentSave(): void {
     this.userGeneralDetailFormComponent.onSubmit();
   }
   userProfessionalDetailFormComponentSave(): void {
     this.userProfessionalDetailFormComponent.onSubmit();
+  }
+  userWorkPlaceDetailFormComponentSave(): void {
+    this.userWorkPlaceDetailFormComponent.onSubmit();
   }
 
 }
