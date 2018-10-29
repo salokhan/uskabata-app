@@ -13,7 +13,6 @@ import { BehaviorSubject } from 'rxjs';
 export class UserProfessionalDetailFormComponent implements OnInit {
 
   userProfessionalDetailForm: FormGroup;
-  contacts: FormArray;
   errorMessage: string;
   catExpertyValidation = [Validators.required, Validators.minLength(2), Validators.maxLength(20)];
   titles = [];
@@ -82,34 +81,8 @@ export class UserProfessionalDetailFormComponent implements OnInit {
       category: new FormControl(undefined, this.catExpertyValidation),
       experty: new FormControl(undefined, this.catExpertyValidation),
       tags: new FormControl([]),
-      activateProfessionProfile: new FormControl(false),
-      contacts: this._formBuilder.array([this.createContact()])
+      activateProfessionProfile: new FormControl(false)
     });
-  }
-
-  createContact(): FormGroup {
-    // if the first control is creating
-    if (!this.userProfessionalDetailForm) {
-      return this._formBuilder.group({
-        contactNumber: ['', [Validators.required, Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
-      });
-    } else {
-      return this._formBuilder.group({
-        contactNumber: ['', [Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
-      });
-    }
-  }
-
-  addContact(): void {
-    this.contacts = this.userProfessionalDetailForm.get('contacts') as FormArray;
-    this.contacts.push(this.createContact());
-  }
-
-  removeContact(index: number): void {
-    if (index !== 0) {
-      this.contacts = this.userProfessionalDetailForm.get('contacts') as FormArray;
-      this.contacts.removeAt(index);
-    }
   }
 
   onSubmit() {
