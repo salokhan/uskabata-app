@@ -10,28 +10,31 @@
 		"addressPersonal": {
 			"country": "Pakistan",
 			"state": "Islamabad",
-			"city": "Islamabad"
+			"city": "Islamabad",
+			"addressLine": "Khudadad height E-11"
 		},
-		"contactsPersonal": ["+923338788877"]				
+		"contactsPersonal": ["+923338788877", "+923338788877", "+923338788877", "+923338788888"]				
 	},
-	"professionalDetails": {
+	"professionalDetail": {
 		"category": "Automobile",
 		"experty": "Electrician",
 		"description": "i am good at electrician",
-		"tags": ["auto electrician", "cars", "automobile"],
-		"addressesWork": [
-			{
-				"Title": "Khudadad Heights",
+		"tags": ["auto electrician", "cars", "automobile"]		
+	},
+	"workPlaceDetails": [
+		{
+			"Title": "Khudadad Heights",
+			"addressWorkPlace": {
 				"country": "Pakistan",
 				"state": "Islamabad",
 				"city": "Islamabad",
-				"addressLine": "House 121 street 20 i-9/1",
-				"startTime": "01:00 AM",
-				"endTime": "9:00 PM"				
-			}
-		],
-		"contactsWork": ["+923338788877"]		
-	},
+				"addressLine": "Khudadad height E-11"
+			},
+			"startTime": "01:00 AM",
+			"endTime": "9:00 PM",	
+			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
+		}
+	],
 	"qualificationDetails": [
 		{
 			"school": "Islamabad School",

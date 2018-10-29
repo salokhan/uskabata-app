@@ -1,7 +1,8 @@
-export class IPersoanlAddress {
+export class IAddress {
     country: string;
     state: string;
     city: string;
+    addressLine: string;
 }
 export class IPersonalDetail {
     gender: string;
@@ -11,25 +12,21 @@ export class IPersonalDetail {
     displayName: string;
     emailAddress: string;
     about: string;
-    addressPersonal: IPersoanlAddress;
+    addressPersonal: IAddress;
     contactsPersonal: any[];
 }
-export class IWorkAddress {
+export class IWorkPlaceDetail {
     Title: string;
-    country: string;
-    state: string;
-    city: string;
-    addressLine: string;
+    addressWorkPlace: IAddress;
     startTime: string;
     endTime: string;
+    contactsWork: any[];
 }
 export class IProfessionalDetail {
     category: string;
     experty: string;
     description: string;
     tags: any[];
-    addressesWork: IWorkAddress[];
-    contactsWork: any[];
 }
 export class IQualificationDetail {
     school: string;
@@ -41,6 +38,7 @@ export class IQualificationDetail {
 }
 export class IUserProfile {
     personalDetail: IPersonalDetail;
-    professionalDetails: IProfessionalDetail;
-    qualificationDetails: IQualificationDetail;
+    professionalDetail: IProfessionalDetail;
+    workPlaceDetails: IWorkPlaceDetail[];
+    qualificationDetails: IQualificationDetail[];
 }

@@ -1,109 +1,125 @@
-<div [ngClass]="['container bootstrap snippet']">
+<div [ngClass]="['container']">
   <div [ngClass]="['row']">
-    <div [ngClass]="['col-sm-12']">
-      <div [ngClass]="['card p-2']">
-        <div [ngClass]="['alert alert-primary text-center m-0 p-0']" role="alert">
-          <img [ngClass]="['mx-auto d-block rounded-circle thumb96']" src="https://bootdey.com/img/Content/avatar/avatar1.png"
-            alt="Card image cap">
-          <h2 [ngClass]="['m-0 text-bold']">
-            {{userProfile.personalDetail.firstName + ' ' + userProfile.personalDetail.lastName}}
-          </h2>
-          <div [ngClass]="['row p-1']">
-            <div [ngClass]="['small col-sm-4 col-lg-4']">
-              <div [ngClass]="['container p-1']">
-                <div [ngClass]="['row p-1']">
-                  <div [ngClass]="['col-sm-12 col-lg-12 bg-light text-muted d-flex  align-items-center']">
-                    <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Title</p>
-                  </div>
-                </div>
-                <div [ngClass]="['row p-1']">
-                  <div [ngClass]="['small col-sm-12 col-lg-12 bg-light text-dark']">
-                    <div [ngClass]="['col-sm-12 ']">
-                      <p [ngClass]="['mx-auto d-block font-weight-light text-sm-center text-lg-left']">Khan</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div [ngClass]="['col-lg-12 col-sm-12']">
+      <div [ngClass]="['card hovercard']">
+        <div [ngClass]="['cardheader']">
+        </div>
+        <div [ngClass]="['avatar']">
+          <img alt="" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+        </div>
+        <div [ngClass]="['info']" *ngIf="userProfile">
+          <div [ngClass]="['title']">
+            <a target="_blank" href="https://scripteden.com/">{{userProfile.personalDetail.title +'. ' +
+              userProfile.personalDetail.firstName + ' ' + userProfile.personalDetail.lastName + ' | ' +
+              userProfile.personalDetail.displayName +" | " }}<i [ngClass]="userProfile.personalDetail.gender && userProfile.personalDetail.gender == 'Male' ? 'fa icon-male' : 'fa icon-female'"
+                aria-hidden="true"></i></a>
+          </div>
+          <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-envelope']"></i>{{userProfile.personalDetail.emailAddress}}</div>
+          <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{userProfile.personalDetail.addressPersonal.country
+            +' | '+
+            userProfile.personalDetail.addressPersonal.state +" | "+ userProfile.personalDetail.addressPersonal.city +"
+            | "+ userProfile.personalDetail.addressPersonal.addressLine }}</div>
+          <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
+            <ng-container *ngFor="let contact of userProfile.personalDetail.contactsPersonal; let i = index;">
+              <ng-container *ngIf="contact && i < userProfile.personalDetail.contactsPersonal.length - 1">
+                {{contact + " | "}}
+              </ng-container>
+              <ng-container *ngIf="contact && i == userProfile.personalDetail.contactsPersonal.length - 1">
+                {{contact}}
+              </ng-container>
+            </ng-container>
+          </div>
+          <hr>
+          <div [ngClass]="['desc']">{{userProfile.personalDetail.about}}</div>
+        </div>
+        <!-- <div class="bottom">
+                <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" rel="publisher"
+                   href="https://plus.google.com/+ahmshahnuralam">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+                <a class="btn btn-primary btn-sm" rel="publisher"
+                   href="https://plus.google.com/shahnuralam">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                    <i class="fa fa-behance"></i>
+                </a>
+            </div> -->
+      </div>
+      <div [ngClass]="['card detailcard p-0']">
+        <div [ngClass]="['card-header p-2 bg-white']">
+          <div [ngClass]="['d-flex']">
+            <div [ngClass]="['mr-auto p-2']">
+              <h5>Professional Details</h5>
+            </div>
+            <div [ngClass]="['p-1']">
+              <button type="button" [ngClass]="['btn']">
+                <i [ngClass]="['p-1 icon-plus']"></i>
+              </button>
             </div>
           </div>
         </div>
-        <div [ngClass]="['card-body p-1']">
-          <div [ngClass]="['container p-1']">
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['col-sm-12 col-lg-12 bg-light text-muted d-flex  align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Description</p>
-              </div>
+        <div class="card-body p-2" *ngIf="userProfile && userProfile.professionalDetail">
+          <div [ngClass]="['info']" *ngIf="userProfile">
+            <div [ngClass]="['title']">
+              {{userProfile.professionalDetail.category +' | ' + userProfile.professionalDetail.experty}}
             </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-12 col-lg-12 bg-light text-dark']">
-                <div [ngClass]="['col-sm-12 ']">
-                  <p [ngClass]="['mx-auto d-block font-weight-light text-sm-center text-lg-left']">{{result.description}}</p>
-                </div>
-              </div>
+            <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-tags']"></i>
+              <ng-container *ngFor="let tag of userProfile.professionalDetail.tags; let i = index;">
+                <ng-container *ngIf="tag && i < userProfile.professionalDetail.tags.length - 1">
+                  {{tag + ", "}}
+                </ng-container>
+                <ng-container *ngIf="contact && i == userProfile.professionalDetail.tags.length - 1">
+                  {{tag}}
+                </ng-container>
+              </ng-container>
             </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-5 col-lg-5  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Type</p>
-              </div>
-              <div [ngClass]="['small col-sm-12 col-lg-7  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block text-sm-center text-lg-right']">{{result.type}}</p>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Sub Type</p>
-              </div>
-              <div [ngClass]="['small col-sm-12 col-lg-7  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block text-sm-center text-lg-right']">{{result.subtype}}</p>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['col-sm-12 col-lg-12 bg-light text-muted d-flex  align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Address</p>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Address line</p>
-              </div>
-              <div [ngClass]="['small col-sm-12 col-lg-7  bg-light text-dark']">
-                <div [ngClass]="['col-sm-12']">
-                  <p [ngClass]="['mx-auto d-block font-weight-light text-sm-center text-lg-left']">{{result.address.addressline}}</p>
-                </div>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Country</p>
-              </div>
-              <div [ngClass]="['small col-sm-12 col-lg-7  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block text-sm-center text-lg-right']">{{result.address.country}}</p>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">City</p>
-              </div>
-              <div [ngClass]="['small col-sm-12 col-lg-7  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block text-sm-center text-lg-right']">{{result.address.city}}</p>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['col-sm-12 col-lg-12 bg-light text-muted d-flex  align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Contact</p>
-              </div>
-            </div>
-            <div [ngClass]="['row p-1']">
-              <div [ngClass]="['small col-sm-12 col-lg-5  bg-light text-dark d-flex align-items-center']">
-                <p [ngClass]="['small mx-auto d-block font-weight-bold text-sm-center text-lg-right']">Mobile</p>
-              </div>
-              <div [ngClass]="['small col-sm-12 col-lg-7  bg-light text-dark d-flex align-items-center align-items-center']">
-                <p [ngClass]="['small mx-auto d-block text-sm-center text-lg-right']">03338788877</p>
-              </div>
-            </div>
+            <hr>
+            <div [ngClass]="['desc']">{{userProfile.professionalDetail.description}}</div>
           </div>
         </div>
       </div>
+      <div [ngClass]="['card detailcard p-0']">
+          <div [ngClass]="['card-header p-2 bg-white']">
+            <div [ngClass]="['d-flex']">
+              <div [ngClass]="['mr-auto p-2']">
+                <h5>Work Place Details</h5>
+              </div>
+              <div [ngClass]="['p-1']">
+                <button type="button" [ngClass]="['btn']">
+                  <i [ngClass]="['p-1 icon-plus']"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-2" *ngIf="userProfile && userProfile.workPlaceDetails">
+              <ng-container *ngFor="let workPlaceDetail of userProfile.workPlaceDetails; let i = index;">
+            <div [ngClass]="['info']" >
+              <div [ngClass]="['title']">
+                {{workPlaceDetail.Title}}
+              </div>
+              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country
+                +' | '+
+                workPlaceDetail.addressWorkPlace.state +" | "+workPlaceDetail.addressWorkPlace.city +"
+                | "+ workPlaceDetail.addressWorkPlace.addressLine }}</div>
+                <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
+                  <ng-container *ngFor="let contact of workPlaceDetail.contactsWork; let i = index;">
+                    <ng-container *ngIf="contact && i < workPlaceDetail.contactsWork.length - 1">
+                      {{contact + " | "}}
+                    </ng-container>
+                    <ng-container *ngIf="contact && i == workPlaceDetail.contactsWork.length - 1">
+                      {{contact}}
+                    </ng-container>
+                  </ng-container>
+                </div>
+              <hr>
+            </div>
+            </ng-container>
+          </div>
+        </div>
     </div>
   </div>
 </div>
