@@ -52,17 +52,17 @@
 		{
 			"title": "Khudadad Heights",
 			"addressWorkPlace": {
-				"country": {
+				"country": {				
 					"name": "Pakistan",
 					"code": "PK"
 				},
 				"state": {
-					"id": "1",
-					"name": "Islamabad"
+					"id": "2",
+					"name": "KPK"
 				},
 				"city": {
-					"id": "1",
-					"name": "Karachi",
+					"id": "5",
+					"name": "Peshawar",
 					"type": "Popular"
 				},
 				"addressLine": "Khudadad height E-11"
