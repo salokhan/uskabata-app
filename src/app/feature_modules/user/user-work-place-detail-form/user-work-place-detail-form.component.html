@@ -9,15 +9,15 @@
           <hr>
         </div>
         <div [ngClass]="['form-row']">
-          <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']">
+          <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
             <label for="title">Title</label>
             <input type="text" formControlName="title" [ngClass]="['form-control form-control-sm']" id="title"
               placeholder="Title">
           </div>
-        </div>
-        <div [ngClass]="['form-row p-1']">
-          <app-startendtime [timmingForm]="userWorkPlaceDetailForm.get('timming')"></app-startendtime>
-        </div>
+          <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6 p-0']">
+              <app-startendtime [timmingForm]="userWorkPlaceDetailForm.get('timming')"></app-startendtime>
+            </div>
+        </div>   
         <div formGroupName="workaddresses" [ngClass]="['form-row']">
           <div [ngClass]="['col-sm-12 col-md-6 col-lg-4']">
             <label for="country">Country</label>

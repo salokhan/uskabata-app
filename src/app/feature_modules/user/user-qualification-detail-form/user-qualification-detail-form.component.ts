@@ -5,17 +5,15 @@ import { BehaviorSubject } from 'rxjs';
 import { ISchool } from '../../../shared_modules/school';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 import { CustomformVaidatorsService } from '../../../shared_modules/form-validators/custom-form-validators-service';
-import { IStartEndYear } from '../../../shared_modules/startendyear';
 
 @Component({
-  selector: 'app-user-qualification-detail',
-  templateUrl: './user-qualification-detail.component.html',
-  styleUrls: ['./user-qualification-detail.component.scss']
+  selector: 'app-user-qualification-detail-form',
+  templateUrl: './user-qualification-detail-form.component.html',
+  styleUrls: ['./user-qualification-detail-form.component.scss']
 })
-export class UserQualificationDetailComponent implements OnInit {
+export class UserQualificationDetailFormComponent implements OnInit {
 
   userQualificationDetailForm: FormGroup;
-  educations: FormArray;
   filteredSchool: any[];
 
   // initialize a private variable schools, it's a BehaviorSubject
@@ -42,39 +40,12 @@ export class UserQualificationDetailComponent implements OnInit {
     });
 
     this.userQualificationDetailForm = this._formBuilder.group({
-      educations: this._formBuilder.array([this.createEducation()])
-    });
-  }
-
-  createEducation(): FormGroup {
-    return this._formBuilder.group({
       school: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      duration: this.createDurationForm(),
-      // degree: new FormControl('', Validators.required),
-      // fielOfStudy: new FormControl('', Validators.required),
-      // description: new FormControl('', Validators.maxLength(200))
-    });
-  }
-  addEducation(): void {
-    this.educations = this.userQualificationDetailForm.get('educations') as FormArray;
-    this.educations.push(this.createEducation());
-  }
-  removeEducation(index: number): void {
-    this.educations = this.userQualificationDetailForm.get('educations') as FormArray;
-    this.educations.removeAt(index);
-  }
-  createDurationForm(): FormGroup {
-    return this._formBuilder.group({
-      startFrom: new FormGroup({
-        month: new FormControl('', [Validators.required, this._customeFormValidatorService.validateMonth]),
-        year: new FormControl('', [Validators.required, Validators.pattern(/^(0|[1-9][0-9]*)$/)]),
-
-      }),
-      endAt: new FormGroup({
-        month: new FormControl('', [Validators.required, this._customeFormValidatorService.validateMonth]),
-        year: new FormControl('', [Validators.required, Validators.pattern(/^(0|[1-9][0-9]*)$/)]),
-
+      duration: new FormGroup({
+        startDate: new FormControl('', Validators.required),
+        endDate: new FormControl('', Validators.required)
       })
+
     });
   }
 

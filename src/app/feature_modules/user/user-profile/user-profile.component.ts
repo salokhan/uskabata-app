@@ -9,6 +9,7 @@ import { IUserProfile } from '../../../shared_modules/userProfile';
 import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
+import { UserQualificationDetailFormComponent } from '../user-qualification-detail-form/user-qualification-detail-form.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -25,6 +26,9 @@ export class UserProfileComponent implements OnInit {
   @ViewChild(UserWorkPlaceDetailFormComponent)
   private userWorkPlaceDetailFormComponent: UserWorkPlaceDetailFormComponent;
 
+  @ViewChild(UserQualificationDetailFormComponent)
+  private userQualificationDetailFormComponent: UserQualificationDetailFormComponent;
+
   errorMessage: string;
 
   countries: ICountry[];
@@ -40,6 +44,7 @@ export class UserProfileComponent implements OnInit {
   showGeneralDetailForm = false;
   showProfessionalDetailForm = false;
   showWorkPlaceDetailForm = false;
+  showQualificationDetailForm = false;
 
   constructor(private _userService: UserService) { }
 
@@ -108,6 +113,9 @@ export class UserProfileComponent implements OnInit {
   showWorkPlaceDetailFormDialog(): void {
     this.showWorkPlaceDetailForm = true;
   }
+  showQualificationDetailFormDialog(): void {
+    this.showQualificationDetailForm = true;
+  }
 
   userGeneralDetailFormComponentSave(): void {
     this.userGeneralDetailFormComponent.onSubmit();
@@ -117,6 +125,9 @@ export class UserProfileComponent implements OnInit {
   }
   userWorkPlaceDetailFormComponentSave(): void {
     this.userWorkPlaceDetailFormComponent.onSubmit();
+  }
+  userQualificationDetailFormComponentSave(): void {
+    this.userQualificationDetailFormComponent.onSubmit();
   }
 
 }

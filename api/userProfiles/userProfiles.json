@@ -23,7 +23,7 @@
 	},
 	"workPlaceDetails": [
 		{
-			"Title": "Khudadad Heights",
+			"title": "Khudadad Heights",
 			"addressWorkPlace": {
 				"country": "Pakistan",
 				"state": "Islamabad",
@@ -35,7 +35,7 @@
 			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
 		},
 		{
-			"Title": "Khudadad Heights",
+			"title": "Khudadad Heights",
 			"addressWorkPlace": {
 				"country": "Pakistan",
 				"state": "Islamabad",
@@ -52,8 +52,8 @@
 			"school": "Islamabad School",
 			"degree": "Bscs",
 			"fielsOfStude": "Computer Science",
-			"fromYear": "June 2007",
-			"toYear": "March 2008"
+			"startDate": "June 2007",
+			"endDate": "March 2008"
 			
 		}
 	]

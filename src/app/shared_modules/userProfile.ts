@@ -16,7 +16,7 @@ export class IPersonalDetail {
     contactsPersonal: any[];
 }
 export class IWorkPlaceDetail {
-    Title: string;
+    title: string;
     addressWorkPlace: IAddress;
     startTime: string;
     endTime: string;
@@ -32,8 +32,8 @@ export class IQualificationDetail {
     school: string;
     degree: string;
     fielsOfStude: string;
-    fromYear: string;
-    toYear: string;
+    startDate: string;
+    endDate: string;
 
 }
 export class IUserProfile {

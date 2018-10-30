@@ -110,7 +110,7 @@
           <ng-container *ngFor="let workPlaceDetail of userProfile.workPlaceDetails; let i = index;">
             <div [ngClass]="['info']">
               <div [ngClass]="['title']">
-                {{workPlaceDetail.Title}}
+                {{workPlaceDetail.title}}
               </div>
               <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country
                 +' | '+
@@ -131,6 +131,33 @@
           </ng-container>
         </div>
       </div>
+      <div [ngClass]="['card detailcard p-0']">
+          <div [ngClass]="['card-header p-2 bg-white']">
+            <div [ngClass]="['d-flex']">
+              <div [ngClass]="['mr-auto p-2']">
+                <h5>Qualification Details</h5>
+              </div>
+              <div [ngClass]="['p-1']">
+                <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showQualificationDetailFormDialog()">
+                  <i [ngClass]="['icon-plus']"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-2" *ngIf="userProfile && userProfile.qualificationDetails">
+            <ng-container *ngFor="let qualificationDetail of userProfile.qualificationDetails; let i = index;">
+              <div [ngClass]="['info']">
+                <div [ngClass]="['title']">
+                    <i [ngClass]="['p-1 icon-building']"></i>
+                  {{qualificationDetail.school}}
+                </div>
+                <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-check']"></i>{{qualificationDetail.degree + " - "+ qualificationDetail.fielsOfStude}}</div>
+                <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate + " - "+ qualificationDetail.endDate}}</div>
+                <hr>
+              </div>
+            </ng-container>
+          </div>
+        </div>
     </div>
   </div>
 </div>
@@ -164,6 +191,16 @@
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userWorkPlaceDetailFormComponentSave()">save</button>
   </p-footer>
 </p-dialog>
+<p-dialog [(visible)]="showQualificationDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true" [responsive]="true"
+  [baseZIndex]="10000">
+  <p-header>
+    Qualification Detail
+  </p-header>
+  <app-user-qualification-detail-form [schools]='schools'></app-user-qualification-detail-form>
+  <p-footer>
+    <button type="button" [ngClass]="['btn btn-primary']" (click)="userQualificationDetailFormComponentSave()">save</button>
+  </p-footer>
+</p-dialog>
 
 
 <!-- <div [ngClass]="['container p-2']">
@@ -190,12 +227,11 @@
                 <app-user-general-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail-form>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-detail']" role="tabpanel" aria-labelledby="v-pills-work-detail-tab">
-                <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS' [categories]='categoryDS'> 
                 <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-work-place-detail-form>
               </div>
               <div [ngClass]="['tab-pane fade']" [id]="['v-pills-qualification-detail']" role="tabpanel"
                 aria-labelledby="v-pills-qualification-detail-tab">
-                <app-user-qualification-detail [schools]='schools'></app-user-qualification-detail>
+                <app-user-qualification-detail-form [schools]='schools'></app-user-qualification-detail-form>
               </div>
             </div>
           </div>
