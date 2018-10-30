@@ -10,6 +10,9 @@ body {
 .form-control-autocomplete-sm {
     width: 100% !important
 }
+.form-control-autocomplete-sm .ui-autocomplete-loader {
+    top: 50% !important;
+}
 .form-control-autocomplete-sm > span > input {
     height: calc(1.8125rem + 2px);
     padding: .25rem .5rem;
@@ -36,13 +39,15 @@ p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext {
     border: 1px solid #ced4da !important;
 }
 
-.ng-invalid.form-control-autocomplete-sm > span > input {
-    border-left: 4px solid red;
+.ng-invalid.form-control-autocomplete-sm > span {
+    border-left: 4px solid red !important;
     border-radius: 0.35rem;
+    height: calc(1.8125rem + 2px) !important;
 }
-.ng-valid.form-control-autocomplete-sm > span > input {
-    border-left: 4px solid green;
+.ng-valid.form-control-autocomplete-sm > span {
+    border-left: 4px solid green !important;
     border-radius: 0.35rem;
+    height: calc(1.8125rem + 2px) !important;
 }
 .form-control-autocomplete{
     width: 100% !important;

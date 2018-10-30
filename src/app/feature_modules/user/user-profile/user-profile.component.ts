@@ -85,16 +85,16 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCategories().subscribe(categories => {
       this.categories = categories;
-      categories.forEach(category => {
-        if (category.experties) {
-          category.experties.push({ id: '', name: 'Other', type: 'Other' });
-        } else {
-          const experty: IExperty = { id: '', name: 'Other', type: 'Other' };
-          category.experties = [experty];
-        }
-        this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
-      });
-      this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: [{ name: 'Other', value: 'Other' }] } });
+      // categories.forEach(category => {
+      //   if (category.experties) {
+      //     category.experties.push({ id: '', name: 'Other', type: 'Other' });
+      //   } else {
+      //     const experty: IExperty = { id: '', name: 'Other', type: 'Other' };
+      //     category.experties = [experty];
+      //   }
+      //   this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
+      // });
+      // this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: [{ name: 'Other', value: 'Other' }] } });
     },
       error => {
         this.errorMessage = <any>error;

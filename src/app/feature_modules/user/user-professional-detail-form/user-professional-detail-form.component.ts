@@ -4,6 +4,8 @@ import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service'
 import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 import { BehaviorSubject } from 'rxjs';
+import { IExperty } from '../../../shared_modules/experty';
+import { ICategory } from '../../../shared_modules/category';
 
 @Component({
   selector: 'app-user-professional-detail-form',
@@ -15,38 +17,13 @@ export class UserProfessionalDetailFormComponent implements OnInit {
   userProfessionalDetailForm: FormGroup;
   errorMessage: string;
   catExpertyValidation = [Validators.required, Validators.minLength(2), Validators.maxLength(20)];
-  titles = [];
-  genders = [];
-  experties = [];
+  experties: IExperty[];
 
-  // initialize a private variable cities, it's a BehaviorSubject
-  private _cities = new BehaviorSubject<any[]>([]);
-  // change data to use getter and setter
-  @Input()
-  set cities(value) {
-    // set the latest value for _cities BehaviorSubject
-    this._cities.next(value);
-  }
-  get cities() {
-    // get the latest value from _cities BehaviorSubject
-    return this._cities.getValue();
-  }
-
-  // initialize a private variable countries, it's a BehaviorSubject
-  private _countries = new BehaviorSubject<any[]>([]);
-  // change data to use getter and setter
-  @Input()
-  set countries(value) {
-    // set the latest value for _countries BehaviorSubject
-    this._countries.next(value);
-  }
-  get countries() {
-    // get the latest value from _countries BehaviorSubject
-    return this._countries.getValue();
-  }
+  filteredCategories: ICategory[];
+  filteredExperties: IExperty[];
 
   // initialize a private variable categories, it's a BehaviorSubject
-  private _categories = new BehaviorSubject<any[]>([]);
+  private _categories = new BehaviorSubject<ICategory[]>([]);
   // change data to use getter and setter
   @Input()
   set categories(value) {
@@ -64,15 +41,6 @@ export class UserProfessionalDetailFormComponent implements OnInit {
 
   ngOnInit() {
 
-    this.titles = this._basedsService.getTitles();
-    this.genders = this._basedsService.getGender();
-
-    this._cities.subscribe(data => {
-    });
-
-    this._countries.subscribe(data => {
-    });
-
     this._categories.subscribe(data => {
     });
 
@@ -83,6 +51,11 @@ export class UserProfessionalDetailFormComponent implements OnInit {
       tags: new FormControl([]),
       activateProfessionProfile: new FormControl(false)
     });
+  }
+  categorySelected(category: ICategory): void {
+    if (category && category.experties.length > 0) {
+      this.experties = category.experties;
+    }
   }
 
   onSubmit() {
@@ -98,37 +71,38 @@ export class UserProfessionalDetailFormComponent implements OnInit {
       detail: this._genericFunctionsService.getErrorMessage()
     });
   }
-  onCategorySelection(): void {
-    // clear experties array
-    this.experties = [];
-    this.userProfessionalDetailForm.controls.experty.setValue(undefined);
 
-    const selectedCategoryName = this.userProfessionalDetailForm.value.category;
-    // on selection
-    if (selectedCategoryName) {
-      const categorySelected = this.categories.find(category => category.value.name === selectedCategoryName.name);
-      // if category selected has experties
-      if (categorySelected && categorySelected.value.experties) {
-        categorySelected.value.experties.forEach(experty => {
-          this.experties.push({ label: experty.name, value: experty.name });
-        });
-        if (this.userProfessionalDetailForm.controls.category.value.name === 'Other') {
-          this.userProfessionalDetailForm.addControl('categoryOther', new FormControl('', this.catExpertyValidation));
-        } else {
-          this.userProfessionalDetailForm.removeControl('categoryOther');
-        }
-
+  /* Search Functiontions for autocomplete */
+  searchCategory(event) {
+    const query = event.query;
+    this.filteredCategories = this.filterCategory(query, this.categories);
+  }
+  filterCategory(query, categories: ICategory[]): ICategory[] {
+    // in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+    const filtered: ICategory[] = [];
+    for (let i = 0; i < categories.length; i++) {
+      const category = categories[i];
+      if (category.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+        filtered.push(category);
       }
     }
+    return filtered;
   }
 
-  onExpertySelection(): void {
-    if (this.userProfessionalDetailForm.controls.experty && this.userProfessionalDetailForm.controls.experty.value === 'Other') {
-      this.userProfessionalDetailForm.addControl('expertyOther', new FormControl('', this.catExpertyValidation));
-    } else {
-      this.userProfessionalDetailForm.removeControl('expertyOther');
+  searchExperty(event) {
+    const query = event.query;
+    this.filteredExperties = this.filterExperty(query, this.experties);
+  }
+  filterExperty(query, experties: IExperty[]): IExperty[] {
+    // in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+    const filtered: IExperty[] = [];
+    for (let i = 0; i < experties.length; i++) {
+      const experty = experties[i];
+      if (experty.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+        filtered.push(experty);
+      }
     }
-
+    return filtered;
   }
 
 }
