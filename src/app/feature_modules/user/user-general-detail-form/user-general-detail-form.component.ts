@@ -4,6 +4,10 @@ import { BehaviorSubject } from 'rxjs';
 import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
+import { IGeneralDetail, IUserProfile } from '../../../shared_modules/userProfile';
+import { ICountry } from '../../../shared_modules/country';
+import { ICity } from '../../../shared_modules/city';
+import { IState } from '../../../shared_modules/state';
 
 @Component({
   selector: 'app-user-general-detail-form',
@@ -22,21 +26,19 @@ export class UserGeneralDetailFormComponent implements OnInit {
   titles = [];
   genders = [];
 
-  // initialize a private variable cities, it's a BehaviorSubject
-  private _cities = new BehaviorSubject<any[]>([]);
-  // change data to use getter and setter
-  @Input()
-  set cities(value) {
-    // set the latest value for _cities BehaviorSubject
-    this._cities.next(value);
-  }
-  get cities() {
-    // get the latest value from _cities BehaviorSubject
-    return this._cities.getValue();
-  }
+  filteredCities: ICity[];
+  filteredCountries: ICountry[];
+  filteredStates: IState[];
 
   // initialize a private variable cities, it's a BehaviorSubject
-  private _countries = new BehaviorSubject<any[]>([]);
+  private _countries = new BehaviorSubject<ICountry[]>([]);
+
+  // initialize a private variable cities, it's a BehaviorSubject
+  private _cities = new BehaviorSubject<ICity[]>([]);
+
+  // initialize a private variable states, it's a BehaviorSubject
+  private _states = new BehaviorSubject<IState[]>([]);
+
   // change data to use getter and setter
   @Input()
   set countries(value) {
@@ -48,6 +50,43 @@ export class UserGeneralDetailFormComponent implements OnInit {
     return this._countries.getValue();
   }
 
+  // change data to use getter and setter
+  @Input()
+  set states(value) {
+    // set the latest value for _state BehaviorSubject
+    this._states.next(value);
+  }
+  get states() {
+    // get the latest value from _states BehaviorSubject
+    return this._states.getValue();
+  }
+
+  // change data to use getter and setter
+  @Input()
+  set cities(value) {
+    // set the latest value for _cities BehaviorSubject
+    this._cities.next(value);
+  }
+  get cities() {
+    // get the latest value from _cities BehaviorSubject
+    return this._cities.getValue();
+  }
+
+  // initialize a private variable userProfile, it's a BehaviorSubject
+  private _userProfile = new BehaviorSubject<IUserProfile[]>([]);
+  // change data to use getter and setter
+  @Input()
+  set userProfile(value) {
+    // set the latest value for _userProfile BehaviorSubject
+    this._userProfile.next(value);
+  }
+  get userProfile() {
+    // get the latest value from _userProfile BehaviorSubject
+    return this._userProfile.getValue();
+  }
+
+
+
   constructor(private _basedsService: BaseDataSourcesService,
     private _formBuilder: FormBuilder, private _messageService: MessageService,
     public _genericFunctionsService: GenericFunctionsService) { }
@@ -55,6 +94,13 @@ export class UserGeneralDetailFormComponent implements OnInit {
   ngOnInit() {
 
     this.titles = this._basedsService.getTitles();
+
+    this._userProfile.subscribe(data => {
+      if (this.userProfile && this.userProfile['generalDetail']) {
+        this.setGeneralDetailFormData(this.userProfile['generalDetail']);
+      }
+    });
+
     this.genders = this._basedsService.getGender();
 
     this._cities.subscribe(data => {
@@ -63,21 +109,24 @@ export class UserGeneralDetailFormComponent implements OnInit {
     this._countries.subscribe(data => {
     });
 
+    this._states.subscribe(data => {
+    });
+
     this.userGeneralDetailForm = this._formBuilder.group({
       title: new FormControl('', Validators.required),
       displayName: new FormControl(''),
       firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.email]),
       gender: new FormControl('', Validators.required),
       about: new FormControl('', Validators.maxLength(200)),
-      address: new FormGroup({
+      addressPersonal: new FormGroup({
         addressLine: new FormControl('', [Validators.maxLength(100)]),
         country: new FormControl(undefined),
         city: new FormControl(undefined),
         state: new FormControl(undefined)
       }),
-      contacts: this._formBuilder.array([this.createContact()])
+      contactsPersonal: this._formBuilder.array([this.createContact()])
     });
   }
 
@@ -88,13 +137,13 @@ export class UserGeneralDetailFormComponent implements OnInit {
   }
 
   addContact(): void {
-    this.contacts = this.userGeneralDetailForm.get('contacts') as FormArray;
+    this.contacts = this.userGeneralDetailForm.get('contactsPersonal') as FormArray;
     this.contacts.push(this.createContact());
   }
 
   removeContact(index: number): void {
     if (index !== 0) {
-      this.contacts = this.userGeneralDetailForm.get('contacts') as FormArray;
+      this.contacts = this.userGeneralDetailForm.get('contactsPersonal') as FormArray;
       this.contacts.removeAt(index);
     }
   }
@@ -111,6 +160,63 @@ export class UserGeneralDetailFormComponent implements OnInit {
       severity: 'error', summary: 'Error Message',
       detail: this._genericFunctionsService.getErrorMessage()
     });
+  }
+
+  setGeneralDetailFormData(generalDetail: IGeneralDetail): void {
+    if (generalDetail) {
+      generalDetail.contactsPersonal.forEach(contact => {
+        this.addContact();
+      });
+    }
+    this.userGeneralDetailForm.patchValue(generalDetail);
+  }
+
+  /* Search Functiontions for autocomplete */
+  searchCountry(event) {
+    const query = event.query;
+    this.filteredCountries = this.filterCountry(query, this.countries);
+  }
+  filterCountry(query, countries: ICountry[]): ICountry[] {
+    // in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+    const filtered: ICountry[] = [];
+    for (let i = 0; i < countries.length; i++) {
+      const country = countries[i];
+      if (country.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+        filtered.push(country);
+      }
+    }
+    return filtered;
+  }
+  searchState(event) {
+    const query = event.query;
+    this.filteredStates = this.filterState(query, this.states);
+  }
+  filterState(query, states: IState[]): IState[] {
+    // in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+    const filtered: IState[] = [];
+    for (let i = 0; i < states.length; i++) {
+      const state = states[i];
+      if (state.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+        filtered.push(state);
+      }
+    }
+    return filtered;
+  }
+
+  searchCity(event) {
+    const query = event.query;
+    this.filteredCities = this.filterCity(query, this.cities);
+  }
+  filterCity(query, cities: ICity[]): ICity[] {
+    // in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+    const filtered: ICity[] = [];
+    for (let i = 0; i < cities.length; i++) {
+      const city = cities[i];
+      if (city.name.toLowerCase().indexOf(query.toLowerCase()) === 0) {
+        filtered.push(city);
+      }
+    }
+    return filtered;
   }
 
 }

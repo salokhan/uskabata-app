@@ -1,6 +1,6 @@
 <div [ngClass]="['container']">
   <div [ngClass]="['row']">
-    <div [ngClass]="['col-lg-12 col-sm-12']">
+    <div [ngClass]="['col-lg-12 col-sm-12']" *ngIf="userProfile">
       <div [ngClass]="['card hovercard']">
         <div [ngClass]="['cardheader']">
         </div>
@@ -18,30 +18,30 @@
             </div>
           </div>
         </div>
-        <div [ngClass]="['info']" *ngIf="userProfile">
+        <div [ngClass]="['info']" *ngIf="userProfile && userProfile.generalDetail">
           <div [ngClass]="['title']">
-            <a target="_blank" href="https://scripteden.com/">{{userProfile.personalDetail.title +'. ' +
-              userProfile.personalDetail.firstName + ' ' + userProfile.personalDetail.lastName + ' | ' +
-              userProfile.personalDetail.displayName +" | " }}<i [ngClass]="userProfile.personalDetail.gender && userProfile.personalDetail.gender == 'Male' ? 'fa icon-male' : 'fa icon-female'"
+            <a target="_blank" href="https://scripteden.com/">{{userProfile.generalDetail.title.name +'. ' +
+              userProfile.generalDetail.firstName + ' ' + userProfile.generalDetail.lastName + ' | ' +
+              userProfile.generalDetail.displayName +" | " }}<i [ngClass]="userProfile.generalDetail.gender && userProfile.generalDetail.gender.name == 'Male' ? 'fa icon-male' : 'fa icon-female'"
                 aria-hidden="true"></i></a>
           </div>
-          <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-envelope']"></i>{{userProfile.personalDetail.emailAddress}}</div>
-          <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{userProfile.personalDetail.addressPersonal.country
+          <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-envelope']"></i>{{userProfile.generalDetail.emailAddress}}</div>
+          <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{userProfile.generalDetail.addressPersonal.country.name
             +' | '+
-            userProfile.personalDetail.addressPersonal.state +" | "+ userProfile.personalDetail.addressPersonal.city +"
-            | "+ userProfile.personalDetail.addressPersonal.addressLine }}</div>
+            userProfile.generalDetail.addressPersonal.state.name +" | "+ userProfile.generalDetail.addressPersonal.city.name +"
+            | "+ userProfile.generalDetail.addressPersonal.addressLine }}</div>
           <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
-            <ng-container *ngFor="let contact of userProfile.personalDetail.contactsPersonal; let i = index;">
-              <ng-container *ngIf="contact && i < userProfile.personalDetail.contactsPersonal.length - 1">
-                {{contact + " | "}}
+            <ng-container *ngFor="let contact of userProfile.generalDetail.contactsPersonal; let i = index;">
+              <ng-container *ngIf="contact && i < userProfile.generalDetail.contactsPersonal.length - 1">
+                {{contact.contactNumber + " | "}}
               </ng-container>
-              <ng-container *ngIf="contact && i == userProfile.personalDetail.contactsPersonal.length - 1">
-                {{contact}}
+              <ng-container *ngIf="contact && i == userProfile.generalDetail.contactsPersonal.length - 1">
+                {{contact.contactNumber}}
               </ng-container>
             </ng-container>
           </div>
           <hr>
-          <div [ngClass]="['desc']">{{userProfile.personalDetail.about}}</div>
+          <div [ngClass]="['desc']">{{userProfile.generalDetail.about}}</div>
         </div>
         <!-- <div class="bottom">
                 <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
@@ -83,7 +83,7 @@
                 <ng-container *ngIf="tag && i < userProfile.professionalDetail.tags.length - 1">
                   {{tag + ", "}}
                 </ng-container>
-                <ng-container *ngIf="contact && i == userProfile.professionalDetail.tags.length - 1">
+                <ng-container *ngIf="tag && i == userProfile.professionalDetail.tags.length - 1">
                   {{tag}}
                 </ng-container>
               </ng-container>
@@ -112,17 +112,17 @@
               <div [ngClass]="['title']">
                 <i [ngClass]="['p-1 icon-building']"></i>{{workPlaceDetail.title}}
               </div>
-              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country
+              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country.name
                 +' | '+
-                workPlaceDetail.addressWorkPlace.state +" | "+workPlaceDetail.addressWorkPlace.city +"
+                workPlaceDetail.addressWorkPlace.state.name +" | "+workPlaceDetail.addressWorkPlace.city.name +"
                 | "+ workPlaceDetail.addressWorkPlace.addressLine }}</div>
               <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
                 <ng-container *ngFor="let contact of workPlaceDetail.contactsWork; let i = index;">
                   <ng-container *ngIf="contact && i < workPlaceDetail.contactsWork.length - 1">
-                    {{contact + " | "}}
+                    {{contact.contactNumber + " | "}}
                   </ng-container>
                   <ng-container *ngIf="contact && i == workPlaceDetail.contactsWork.length - 1">
-                    {{contact}}
+                    {{contact.contactNumber}}
                   </ng-container>
                 </ng-container>
               </div>
@@ -166,7 +166,7 @@
   <p-header>
     Generail Detail
   </p-header>
-  <app-user-general-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail-form>
+  <app-user-general-detail-form  [userProfile]='userProfile' [countries]='countries' [states]='states' [cities]='cities'></app-user-general-detail-form>
   <p-footer>
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userGeneralDetailFormComponentSave()">save</button>
   </p-footer>

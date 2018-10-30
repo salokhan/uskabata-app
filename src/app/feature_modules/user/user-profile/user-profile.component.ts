@@ -10,6 +10,7 @@ import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
 import { UserQualificationDetailFormComponent } from '../user-qualification-detail-form/user-qualification-detail-form.component';
+import { IState } from '../../../shared_modules/state';
 
 @Component({
   selector: 'app-user-profile',
@@ -32,13 +33,11 @@ export class UserProfileComponent implements OnInit {
   errorMessage: string;
 
   countries: ICountry[];
-  countriesDS = [];
   cities: ICity[];
-  citiesDS = [];
+  states: IState[];
   categories: ICategory[];
   categoryDS = [];
   schools: ISchool[];
-  userProfiles: IUserProfile[];
   userProfile: IUserProfile;
 
   showGeneralDetailForm = false;
@@ -49,9 +48,8 @@ export class UserProfileComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
-    this._userService.getUserProfile().subscribe(userProfiles => {
-      this.userProfiles = userProfiles;
-      this.userProfile = this.userProfiles[0];
+    this._userService.getUserProfile().subscribe(userProfile => {
+      this.userProfile = userProfile;
     },
       error => {
         this.errorMessage = error;
@@ -59,9 +57,16 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCountries().subscribe(countries => {
       this.countries = countries;
-      countries.forEach(country => {
-        this.countriesDS.push({ label: country.name, value: { name: country.name, code: country.code } });
+      // countries.forEach(country => {
+      //   this.countriesDS.push({ label: country.name, value: { name: country.name, code: country.code } });
+      // });
+    },
+      error => {
+        this.errorMessage = error;
       });
+
+    this._userService.getStates().subscribe(states => {
+      this.states = states;
     },
       error => {
         this.errorMessage = error;
@@ -69,9 +74,9 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCities().subscribe(cities => {
       this.cities = cities;
-      cities.forEach(city => {
-        this.citiesDS.push({ label: city.name, value: { name: city.name } });
-      });
+      // cities.forEach(city => {
+      //   this.citiesDS.push({ label: city.name, value: { name: city.name } });
+      // });
 
     },
       error => {

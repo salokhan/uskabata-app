@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "Islamabad",
+        "type": "Popular"
+    },
+    {
+        "id": "2",
+        "name": "KPK"
+    },
+    {
+        "id": "3",
+        "name": "Punjab"
+    },
+    {
+        "id": "4",
+        "name": "Baluchistan"
+    },
+    {
+        "id": "5",
+        "name": "Sindh"
+    }
+]

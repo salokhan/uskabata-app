@@ -1,38 +1,88 @@
-[{
-	"personalDetail": {
-		"gender": "Male",
-		"title": "Mr",
+{
+	"generalDetail": {
+		"gender": {"name": "Male"},
+		"title": {"name": "Mr"},
 		"firstName": "salman",
 		"lastName": "khan",
 		"displayName": "Kacho",
 		"emailAddress": "im.solomon@outlook.com",
 		"about": "This is salman hello there",
 		"addressPersonal": {
-			"country": "Pakistan",
-			"state": "Islamabad",
-			"city": "Islamabad",
+			"country": {				
+				"name": "Pakistan",
+				"code": "PK"
+			},
+			"state": {
+				"id": "2",
+				"name": "KPK"
+			},
+			"city": {
+				"id": "5",
+				"name": "Peshawar",
+				"type": "Popular"
+			},
 			"addressLine": "Khudadad height E-11"
 		},
-		"contactsPersonal": ["+923338788877", "+923338788877", "+923338788877", "+923338788888"]				
+		"contactsPersonal": [
+			{
+				"contactNumber": "+923338788877"
+			},
+			{
+				"contactNumber":"+923338788877"
+			},
+			{
+				"contactNumber":"+923338788877"
+			},
+			{
+				"contactNumber":"+923338788888"
+			}
+		]
 	},
 	"professionalDetail": {
 		"category": "Automobile",
 		"experty": "Electrician",
 		"description": "i am good at electrician",
-		"tags": ["auto electrician", "cars", "automobile"]		
+		"tags": [
+			"auto electrician",
+			"cars",
+			"automobile"
+		]
 	},
 	"workPlaceDetails": [
 		{
 			"title": "Khudadad Heights",
 			"addressWorkPlace": {
-				"country": "Pakistan",
-				"state": "Islamabad",
-				"city": "Islamabad",
+				"country": {
+					"name": "Pakistan",
+					"code": "PK"
+				},
+				"state": {
+					"id": "1",
+					"name": "Islamabad"
+				},
+				"city": {
+					"id": "1",
+					"name": "Karachi",
+					"type": "Popular"
+				},
 				"addressLine": "Khudadad height E-11"
 			},
 			"startTime": "01:00 AM",
-			"endTime": "9:00 PM",	
-			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
+			"endTime": "9:00 PM",
+			"contactsWork": [
+				{
+					"contactNumber": "+923338788877"
+				},
+				{
+					"contactNumber":"+923338788877"
+				},
+				{
+					"contactNumber":"+923338788877"
+				},
+				{
+					"contactNumber":"+923338788888"
+				}
+			]
 		},
 		{
 			"title": "Khudadad Heights",
@@ -43,8 +93,12 @@
 				"addressLine": "Khudadad height E-11"
 			},
 			"startTime": "01:00 AM",
-			"endTime": "9:00 PM",	
-			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
+			"endTime": "9:00 PM",
+			"contactsWork": [
+				"+923338788877",
+				"+9233312311145",
+				"+9236363235"
+			]
 		}
 	],
 	"qualificationDetails": [
@@ -54,8 +108,6 @@
 			"fielsOfStude": "Computer Science",
 			"startDate": "June 2007",
 			"endDate": "March 2008"
-			
 		}
 	]
-	
-}]
+}
