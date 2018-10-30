@@ -49,13 +49,6 @@
                 placeholder="Email">
             </div>
           </div>
-          <!-- <div [ngClass]="['form-row']">
-            <div [ngClass]="['form-group col-md-12']">
-              <label for="email">Email</label>
-              <input type="email" formControlName="email" [ngClass]="['form-control form-control-sm']" id="email"
-                placeholder="Email">
-            </div>
-          </div> -->
           <div [ngClass]="['form-row']">
             <div [ngClass]="['form-group col-md-12']">
               <label for="about">About</label>
@@ -64,22 +57,23 @@
             </div>
           </div>
           <div formGroupName="addressPersonal" [ngClass]="['form-row']">
-            <div [ngClass]="['col-sm-12 col-md-6 col-lg-4']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4 m-0']">
               <label for="country">Country</label>
-              <p-autoComplete formControlName="country" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+              <p-autoComplete formControlName="country" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
                 [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredCountries" field="name"
                 (completeMethod)="searchCountry($event)"></p-autoComplete>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4 m-0']">
               <label for="state">State</label>
-              <p-autoComplete formControlName="state" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+              <p-autoComplete formControlName="state" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
                 [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredStates" field="name"
                 (completeMethod)="searchState($event)"></p-autoComplete>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4 m-0']">
               <label for="city">City</label>
-              <p-autoComplete formControlName="city" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
-                [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredCities" field="name" (completeMethod)="searchCity($event)"></p-autoComplete>
+              <p-autoComplete formControlName="city" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredCities" field="name"
+                (completeMethod)="searchCity($event)"></p-autoComplete>
             </div>
             <div [ngClass]="['form-group col-md-12']">
               <label for="addressLine">Address Line</label>
