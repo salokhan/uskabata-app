@@ -87,17 +87,36 @@
 		{
 			"title": "Khudadad Heights",
 			"addressWorkPlace": {
-				"country": "Pakistan",
-				"state": "Islamabad",
-				"city": "Islamabad",
+				"country": {				
+					"name": "Pakistan",
+					"code": "PK"
+				},
+				"state": {
+					"id": "2",
+					"name": "KPK"
+				},
+				"city": {
+					"id": "5",
+					"name": "Peshawar",
+					"type": "Popular"
+				},
 				"addressLine": "Khudadad height E-11"
 			},
 			"startTime": "01:00 AM",
 			"endTime": "9:00 PM",
 			"contactsWork": [
-				"+923338788877",
-				"+9233312311145",
-				"+9236363235"
+				{
+					"contactNumber": "+923338788877"
+				},
+				{
+					"contactNumber":"+923338788877"
+				},
+				{
+					"contactNumber":"+923338788877"
+				},
+				{
+					"contactNumber":"+923338788888"
+				}
 			]
 		}
 	],
