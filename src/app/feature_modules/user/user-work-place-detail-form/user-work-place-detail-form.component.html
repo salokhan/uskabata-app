@@ -1,0 +1,65 @@
+<div [ngClass]="['container bootstrap snippet']">
+  <div [ngClass]="['row']">
+    <div [ngClass]="['col-sm-12']">
+      <form [formGroup]="userWorkPlaceDetailForm" (ngSubmit)="onSubmit()">
+        <div [ngClass]="['alert alert-success']" role="alert">
+          <p class="mb-0">This information will be needed to create a service provider profile. This user will appear
+            in
+            search if a general user want to search for specific professional.</p>
+          <hr>
+        </div>
+        <div [ngClass]="['form-row']">
+          <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" [ngClass]="['form-control form-control-sm']" id="title"
+              placeholder="Title">
+          </div>
+          <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6 p-0']">
+              <app-startendtime [timmingForm]="userWorkPlaceDetailForm.get('timming')"></app-startendtime>
+            </div>
+        </div>   
+        <div formGroupName="workaddresses" [ngClass]="['form-row']">
+          <div [ngClass]="['col-sm-12 col-md-6 col-lg-4']">
+            <label for="country">Country</label>
+            <p-dropdown [style]="{'width':'100%','height':'100%'}" id="country" [ngClass]="['form-control-sm-dropdown']"
+              [showClear]="true" [options]="countries" [filter]="true" filterBy="label,value.name" placeholder="Select a country"
+              formControlName="country"></p-dropdown>
+          </div>
+          <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+            <label for="state">State</label>
+            <p-dropdown [style]="{'width':'100%','height':'100%'}" id="state" [ngClass]="['form-control-sm-dropdown']"
+              [showClear]="true" [filter]="true" placeholder="Select a state" filterBy="value" formControlName="state"></p-dropdown>
+          </div>
+          <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-4']">
+            <label for="city">City</label>
+            <p-dropdown [style]="{'width':'100%','height':'100%'}" id="city" [ngClass]="['form-control-sm-dropdown']"
+              [showClear]="true" [options]="cities" [filter]="true" filterBy="label, value.name" placeholder="Select a City"
+              formControlName="city"></p-dropdown>
+          </div>
+          <div [ngClass]="['form-group col-md-12']">
+            <label for="addressLine">Address Line</label>
+            <input type="text" formControlName="addressLine" [ngClass]="['form-control form-control-sm']" id="addressLine"
+              placeholder="1234 Main St">
+          </div>
+        </div>
+        <div [ngClass]="['form-row']">
+          <div formArrayName="contactsWork" [ngClass]="['form-group sm-12 col-sm-12 col-md-12 col-lg-6 col-xlg-4']"
+            *ngFor="let item of userWorkPlaceDetailForm.get('contactsWork').controls; let i = index;">
+            <div [formGroupName]="i">
+              <label *ngIf="i==0" for="contactNumber">Contact # {{i+1}}</label>
+              <label *ngIf="i>0" for="contactNumber">Contact # {{i+1}}</label>
+              <div [ngClass]="['input-group mb-3']">
+                <input type="tel" formControlName="contactNumber" [ngClass]="['form-control form-control-sm']" id="contactNumber"
+                  placeholder="+111111111111">
+                <div [ngClass]="['input-group-append']">
+                  <button *ngIf="i > 0" type="button" for="contactNumber" [ngClass]="['btn btn-sm btn-danger']" (click)='removeContact(i)'>-</button>
+                  <button *ngIf="i === 0" type="button" [ngClass]="['btn btn-sm btn-success'] " (click)='addContact()'>+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

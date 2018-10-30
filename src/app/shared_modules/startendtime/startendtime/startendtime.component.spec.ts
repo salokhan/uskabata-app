@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserWorkDetailComponent } from './user-work-detail.component';
+import { StartendtimeComponent } from './startendtime.component';
 
-describe('UserWorkDetailComponent', () => {
-  let component: UserWorkDetailComponent;
-  let fixture: ComponentFixture<UserWorkDetailComponent>;
+describe('StartendtimeComponent', () => {
+  let component: StartendtimeComponent;
+  let fixture: ComponentFixture<StartendtimeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserWorkDetailComponent ]
+      declarations: [ StartendtimeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserWorkDetailComponent);
+    fixture = TestBed.createComponent(StartendtimeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

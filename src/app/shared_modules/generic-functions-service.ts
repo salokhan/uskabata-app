@@ -40,6 +40,32 @@ export class GenericFunctionsService {
         return years;
     }
 
+    getHour(): any[] {
+        const hours: any[] = [];
+        for (let i = 1; i <= 12; i++) {
+            if (i < 10) {
+                hours.push('0' + i.toString());
+            } else {
+                hours.push(i.toString());
+            }
+        }
+        return hours;
+    }
+    getMinute(): any[] {
+        const minutes: any[] = [];
+        for (let i = 0; i < 60; i++) {
+            if (i < 10) {
+                minutes.push('0' + i.toString());
+            } else {
+                minutes.push(i.toString());
+            }
+        }
+        return minutes;
+    }
+    getAPMeridiem(): any[] {
+        return ['AM', 'PM'];
+    }
+
 
 
 }

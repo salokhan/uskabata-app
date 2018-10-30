@@ -1,0 +1,61 @@
+[{
+	"personalDetail": {
+		"gender": "Male",
+		"title": "Mr",
+		"firstName": "salman",
+		"lastName": "khan",
+		"displayName": "Kacho",
+		"emailAddress": "im.solomon@outlook.com",
+		"about": "This is salman hello there",
+		"addressPersonal": {
+			"country": "Pakistan",
+			"state": "Islamabad",
+			"city": "Islamabad",
+			"addressLine": "Khudadad height E-11"
+		},
+		"contactsPersonal": ["+923338788877", "+923338788877", "+923338788877", "+923338788888"]				
+	},
+	"professionalDetail": {
+		"category": "Automobile",
+		"experty": "Electrician",
+		"description": "i am good at electrician",
+		"tags": ["auto electrician", "cars", "automobile"]		
+	},
+	"workPlaceDetails": [
+		{
+			"title": "Khudadad Heights",
+			"addressWorkPlace": {
+				"country": "Pakistan",
+				"state": "Islamabad",
+				"city": "Islamabad",
+				"addressLine": "Khudadad height E-11"
+			},
+			"startTime": "01:00 AM",
+			"endTime": "9:00 PM",	
+			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
+		},
+		{
+			"title": "Khudadad Heights",
+			"addressWorkPlace": {
+				"country": "Pakistan",
+				"state": "Islamabad",
+				"city": "Islamabad",
+				"addressLine": "Khudadad height E-11"
+			},
+			"startTime": "01:00 AM",
+			"endTime": "9:00 PM",	
+			"contactsWork": ["+923338788877", "+9233312311145", "+9236363235"]
+		}
+	],
+	"qualificationDetails": [
+		{
+			"school": "Islamabad School",
+			"degree": "Bscs",
+			"fielsOfStude": "Computer Science",
+			"startDate": "June 2007",
+			"endDate": "March 2008"
+			
+		}
+	]
+	
+}]

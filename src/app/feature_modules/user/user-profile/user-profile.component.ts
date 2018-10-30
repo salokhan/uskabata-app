@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../service-user/user.service';
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
 import { IExperty } from '../../../shared_modules/experty';
 import { ISchool } from '../../../shared_modules/school';
+import { IUserProfile } from '../../../shared_modules/userProfile';
+import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
+import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
+import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
+import { UserQualificationDetailFormComponent } from '../user-qualification-detail-form/user-qualification-detail-form.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,6 +17,17 @@ import { ISchool } from '../../../shared_modules/school';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  @ViewChild(UserGeneralDetailFormComponent)
+  private userGeneralDetailFormComponent: UserGeneralDetailFormComponent;
+
+  @ViewChild(UserProfessionalDetailFormComponent)
+  private userProfessionalDetailFormComponent: UserProfessionalDetailFormComponent;
+
+  @ViewChild(UserWorkPlaceDetailFormComponent)
+  private userWorkPlaceDetailFormComponent: UserWorkPlaceDetailFormComponent;
+
+  @ViewChild(UserQualificationDetailFormComponent)
+  private userQualificationDetailFormComponent: UserQualificationDetailFormComponent;
 
   errorMessage: string;
 
@@ -22,10 +38,24 @@ export class UserProfileComponent implements OnInit {
   categories: ICategory[];
   categoryDS = [];
   schools: ISchool[];
+  userProfiles: IUserProfile[];
+  userProfile: IUserProfile;
+
+  showGeneralDetailForm = false;
+  showProfessionalDetailForm = false;
+  showWorkPlaceDetailForm = false;
+  showQualificationDetailForm = false;
 
   constructor(private _userService: UserService) { }
 
   ngOnInit() {
+    this._userService.getUserProfile().subscribe(userProfiles => {
+      this.userProfiles = userProfiles;
+      this.userProfile = this.userProfiles[0];
+    },
+      error => {
+        this.errorMessage = error;
+      });
 
     this._userService.getCountries().subscribe(countries => {
       this.countries = countries;
@@ -72,6 +102,32 @@ export class UserProfileComponent implements OnInit {
         this.errorMessage = <any>error;
       });
 
+  }
+
+  showGeneralDetailFormDialog(): void {
+    this.showGeneralDetailForm = true;
+  }
+  showProfessionalDetailFormDialog(): void {
+    this.showProfessionalDetailForm = true;
+  }
+  showWorkPlaceDetailFormDialog(): void {
+    this.showWorkPlaceDetailForm = true;
+  }
+  showQualificationDetailFormDialog(): void {
+    this.showQualificationDetailForm = true;
+  }
+
+  userGeneralDetailFormComponentSave(): void {
+    this.userGeneralDetailFormComponent.onSubmit();
+  }
+  userProfessionalDetailFormComponentSave(): void {
+    this.userProfessionalDetailFormComponent.onSubmit();
+  }
+  userWorkPlaceDetailFormComponentSave(): void {
+    this.userWorkPlaceDetailFormComponent.onSubmit();
+  }
+  userQualificationDetailFormComponentSave(): void {
+    this.userQualificationDetailFormComponent.onSubmit();
   }
 
 }

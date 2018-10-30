@@ -6,15 +6,13 @@ import { GenericFunctionsService } from '../../../shared_modules/generic-functio
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-user-work-detail',
-  templateUrl: './user-work-detail.component.html',
-  styleUrls: ['./user-work-detail.component.scss']
+  selector: 'app-user-professional-detail-form',
+  templateUrl: './user-professional-detail-form.component.html',
+  styleUrls: ['./user-professional-detail-form.component.scss']
 })
-export class UserWorkDetailComponent implements OnInit {
+export class UserProfessionalDetailFormComponent implements OnInit {
 
-  userWorkDetailForm: FormGroup;
-  contacts: FormArray;
-  landLineContacts: FormArray;
+  userProfessionalDetailForm: FormGroup;
   errorMessage: string;
   catExpertyValidation = [Validators.required, Validators.minLength(2), Validators.maxLength(20)];
   titles = [];
@@ -78,50 +76,18 @@ export class UserWorkDetailComponent implements OnInit {
     this._categories.subscribe(data => {
     });
 
-    this.userWorkDetailForm = this._formBuilder.group({
+    this.userProfessionalDetailForm = this._formBuilder.group({
       description: new FormControl('', Validators.maxLength(200)),
       category: new FormControl(undefined, this.catExpertyValidation),
       experty: new FormControl(undefined, this.catExpertyValidation),
       tags: new FormControl([]),
-      activateProfessionProfile: new FormControl(false),
-      workAddress: new FormGroup({
-        addressLine: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-        country: new FormControl(undefined, Validators.required),
-        city: new FormControl(undefined, Validators.required),
-        state: new FormControl(undefined)
-      }),
-      contacts: this._formBuilder.array([this.createContact()])
+      activateProfessionProfile: new FormControl(false)
     });
-  }
-
-  createContact(): FormGroup {
-    // if the first control is creating
-    if (!this.userWorkDetailForm) {
-      return this._formBuilder.group({
-        contactNumber: ['', [Validators.required, Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
-      });
-    } else {
-      return this._formBuilder.group({
-        contactNumber: ['', [Validators.pattern(/^\+[1-9]{1}[0-9]{3,14}$/)]],
-      });
-    }
-  }
-
-  addContact(): void {
-    this.contacts = this.userWorkDetailForm.get('contacts') as FormArray;
-    this.contacts.push(this.createContact());
-  }
-
-  removeContact(index: number): void {
-    if (index !== 0) {
-      this.contacts = this.userWorkDetailForm.get('contacts') as FormArray;
-      this.contacts.removeAt(index);
-    }
   }
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    if (this.userWorkDetailForm.status === 'INVALID') {
+    if (this.userProfessionalDetailForm.status === 'INVALID') {
       this.showValidationError();
     }
   }
@@ -135,9 +101,9 @@ export class UserWorkDetailComponent implements OnInit {
   onCategorySelection(): void {
     // clear experties array
     this.experties = [];
-    this.userWorkDetailForm.controls.experty.setValue(undefined);
+    this.userProfessionalDetailForm.controls.experty.setValue(undefined);
 
-    const selectedCategoryName = this.userWorkDetailForm.value.category;
+    const selectedCategoryName = this.userProfessionalDetailForm.value.category;
     // on selection
     if (selectedCategoryName) {
       const categorySelected = this.categories.find(category => category.value.name === selectedCategoryName.name);
@@ -146,10 +112,10 @@ export class UserWorkDetailComponent implements OnInit {
         categorySelected.value.experties.forEach(experty => {
           this.experties.push({ label: experty.name, value: experty.name });
         });
-        if (this.userWorkDetailForm.controls.category.value.name === 'Other') {
-          this.userWorkDetailForm.addControl('categoryOther', new FormControl('', this.catExpertyValidation));
+        if (this.userProfessionalDetailForm.controls.category.value.name === 'Other') {
+          this.userProfessionalDetailForm.addControl('categoryOther', new FormControl('', this.catExpertyValidation));
         } else {
-          this.userWorkDetailForm.removeControl('categoryOther');
+          this.userProfessionalDetailForm.removeControl('categoryOther');
         }
 
       }
@@ -157,10 +123,10 @@ export class UserWorkDetailComponent implements OnInit {
   }
 
   onExpertySelection(): void {
-    if (this.userWorkDetailForm.controls.experty && this.userWorkDetailForm.controls.experty.value === 'Other') {
-      this.userWorkDetailForm.addControl('expertyOther', new FormControl('', this.catExpertyValidation));
+    if (this.userProfessionalDetailForm.controls.experty && this.userProfessionalDetailForm.controls.experty.value === 'Other') {
+      this.userProfessionalDetailForm.addControl('expertyOther', new FormControl('', this.catExpertyValidation));
     } else {
-      this.userWorkDetailForm.removeControl('expertyOther');
+      this.userProfessionalDetailForm.removeControl('expertyOther');
     }
 
   }

@@ -1,0 +1,12 @@
+<form [formGroup]="timmingForm">
+  <div [ngClass]="['p-0 form-row col-sm-12']">
+    <div [ngClass]="['form-group col-md-6']">
+      <label for="title">Start Time</label>
+      <input type="time" [ngClass]="['form-control form-control-sm']" id="startTime" formControlName='startTime' />
+    </div>
+    <div [ngClass]="['form-group col-md-6']">
+      <label for="title">End Time</label>
+      <input type="time" [ngClass]="['form-control form-control-sm']" id="endTime" formControlName='endTime' />
+    </div>
+  </div>
+</form>
