@@ -76,7 +76,7 @@
         <div class="card-body p-2" *ngIf="userProfile && userProfile.professionalDetail">
           <div [ngClass]="['info']" *ngIf="userProfile">
             <div [ngClass]="['title']">
-              {{userProfile.professionalDetail.category +' | ' + userProfile.professionalDetail.experty}}
+              <i [ngClass]="['p-1 icon-cogs']"></i>{{userProfile.professionalDetail.category +' | ' + userProfile.professionalDetail.experty}}
             </div>
             <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-tags']"></i>
               <ng-container *ngFor="let tag of userProfile.professionalDetail.tags; let i = index;">
@@ -110,7 +110,7 @@
           <ng-container *ngFor="let workPlaceDetail of userProfile.workPlaceDetails; let i = index;">
             <div [ngClass]="['info']">
               <div [ngClass]="['title']">
-                {{workPlaceDetail.title}}
+                <i [ngClass]="['p-1 icon-building']"></i>{{workPlaceDetail.title}}
               </div>
               <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country
                 +' | '+
@@ -201,42 +201,3 @@
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userQualificationDetailFormComponentSave()">save</button>
   </p-footer>
 </p-dialog>
-
-
-<!-- <div [ngClass]="['container p-2']">
-  <div [ngClass]="['row']">
-    <div [ngClass]="['col-sm-12']">
-      <div [ngClass]="['card p-2']">
-        <div [ngClass]="['row']">
-          <div [ngClass]="['col-sm-12 col-md-3']">
-            <div [ngClass]="['d-flex flex-row bd-highlight mb-3']">
-              <div [ngClass]="['nav flex-row nav-pills']" [id]="['v-pills-tab']" role="tablist" aria-orientation="vertical">
-                <a [ngClass]="['nav-link active']" [id]="['v-pills-general-detail-tab']" data-toggle="pill" href="#v-pills-general-detail"
-                  role="tab" aria-controls="v-pills-general-detail" aria-selected="true">General Details</a>
-                <a [ngClass]="['nav-link']" [id]="['v-pills--work-detail-tab']" data-toggle="pill" href="#v-pills-work-detail"
-                  role="tab" aria-controls="v-pills-work-detail" aria-selected="false">Work Details</a>
-                <a [ngClass]="['nav-link']" [id]="['v-pills--qualification-detail-tab']" data-toggle="pill" href="#v-pills-qualification-detail"
-                  role="tab" aria-controls="v-pills-qualification-detail" aria-selected="false">Qualification Details</a>
-              </div>
-            </div>
-          </div>
-          <div [ngClass]="['col-sm-12 col-md-9']">
-            <div [ngClass]="['tab-content']" [id]="['v-pills-tabContent']">
-              <div [ngClass]="['tab-pane fade show active']" [id]="['v-pills-general-detail']" role="tabpanel"
-                aria-labelledby="v-pills-general-detail-tab">
-                <app-user-general-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-general-detail-form>
-              </div>
-              <div [ngClass]="['tab-pane fade']" [id]="['v-pills-work-detail']" role="tabpanel" aria-labelledby="v-pills-work-detail-tab">
-                <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-work-place-detail-form>
-              </div>
-              <div [ngClass]="['tab-pane fade']" [id]="['v-pills-qualification-detail']" role="tabpanel"
-                aria-labelledby="v-pills-qualification-detail-tab">
-                <app-user-qualification-detail-form [schools]='schools'></app-user-qualification-detail-form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->

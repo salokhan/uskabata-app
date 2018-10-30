@@ -23,11 +23,11 @@ p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext {
     border: 1px solid #ced4da !important;
 }
 
-.ng-invalid.form-control-autocomplete-sm{
+.ng-invalid.form-control-autocomplete-sm > span {
     border-left: 4px solid red;
     border-radius: 0.35rem;
 }
-.ng-valid.form-control-autocomplete-sm{
+.ng-valid.form-control-autocomplete-sm > span {
     border-left: 4px solid green;
     border-radius: 0.35rem;
 }
