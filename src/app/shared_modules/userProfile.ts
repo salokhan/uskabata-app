@@ -1,6 +1,8 @@
 import { ICountry } from './country';
 import { ICity } from './city';
 import { IState } from './state';
+import { ICategory } from './category';
+import { IExperty } from './experty';
 
 export class IAddress {
     country: ICountry;
@@ -30,8 +32,8 @@ export class IWorkPlaceDetail {
     contactsWork: IContactNumber[];
 }
 export class IProfessionalDetail {
-    category: string;
-    experty: string;
+    category: ICategory;
+    experty: IExperty;
     description: string;
     tags: any[];
 }

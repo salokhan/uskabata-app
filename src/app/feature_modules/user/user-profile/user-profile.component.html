@@ -76,7 +76,7 @@
         <div class="card-body p-2" *ngIf="userProfile && userProfile.professionalDetail">
           <div [ngClass]="['info']" *ngIf="userProfile">
             <div [ngClass]="['title']">
-              <i [ngClass]="['p-1 icon-cogs']"></i>{{userProfile.professionalDetail.category +' | ' + userProfile.professionalDetail.experty}}
+              <i [ngClass]="['p-1 icon-cogs']"></i>{{userProfile.professionalDetail.category.name +' | ' + userProfile.professionalDetail.experty.name}}
             </div>
             <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-tags']"></i>
               <ng-container *ngFor="let tag of userProfile.professionalDetail.tags; let i = index;">
@@ -176,7 +176,7 @@
   <p-header>
     Professional Detail
   </p-header>
-  <app-user-professional-detail-form [categories]='categories'></app-user-professional-detail-form>
+  <app-user-professional-detail-form *ngIf='userProfile'  [professionalDetail]="userProfile.professionalDetail"></app-user-professional-detail-form>
   <p-footer>
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userProfessionalDetailFormComponentSave()">save</button>
   </p-footer>

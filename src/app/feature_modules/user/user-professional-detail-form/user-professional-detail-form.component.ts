@@ -3,9 +3,10 @@ import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@ang
 import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
-import { BehaviorSubject } from 'rxjs';
 import { IExperty } from '../../../shared_modules/experty';
 import { ICategory } from '../../../shared_modules/category';
+import { IProfessionalDetail } from '../../../shared_modules/userProfile';
+import { UserService } from '../service-user/user.service';
 
 @Component({
   selector: 'app-user-professional-detail-form',
@@ -17,40 +18,19 @@ export class UserProfessionalDetailFormComponent implements OnInit {
   userProfessionalDetailForm: FormGroup;
   errorMessage: string;
   catExpertyValidation = [Validators.required, Validators.minLength(2), Validators.maxLength(20)];
-  experties: IExperty[];
 
+  categories: ICategory[];
+  experties: IExperty[];
+  @Input() professionalDetail: IProfessionalDetail;
   filteredCategories: ICategory[];
   filteredExperties: IExperty[];
 
-  // initialize a private variable categories, it's a BehaviorSubject
-  private _categories = new BehaviorSubject<ICategory[]>([]);
-  // change data to use getter and setter
-  @Input()
-  set categories(value) {
-    // set the latest value for _categories BehaviorSubject
-    this._categories.next(value);
-  }
-  get categories() {
-    // get the latest value from _categories BehaviorSubject
-    return this._categories.getValue();
-  }
-
-  constructor(private _basedsService: BaseDataSourcesService,
+  constructor(private _userService: UserService, private _basedsService: BaseDataSourcesService,
     private _formBuilder: FormBuilder, private _messageService: MessageService,
     public _genericFunctionsService: GenericFunctionsService) { }
 
   ngOnInit() {
 
-    this._categories.subscribe(data => {
-    });
-
-    this.userProfessionalDetailForm = this._formBuilder.group({
-      description: new FormControl('', Validators.maxLength(200)),
-      category: new FormControl(undefined, this.catExpertyValidation),
-      experty: new FormControl(undefined, this.catExpertyValidation),
-      tags: new FormControl([]),
-      activateProfessionProfile: new FormControl(false)
-    });
   }
   categorySelected(category: ICategory): void {
     if (category && category.experties.length > 0) {
@@ -103,6 +83,33 @@ export class UserProfessionalDetailFormComponent implements OnInit {
       }
     }
     return filtered;
+  }
+
+  setProfessionalDetailFormData(): void {
+    if (this.professionalDetail) {
+      this.userProfessionalDetailForm.patchValue(this.professionalDetail);
+    }
+  }
+
+  initializeFormOnPopUp(): void {
+    this._userService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    },
+      error => {
+        this.errorMessage = <any>error;
+      });
+
+    this.userProfessionalDetailForm = this._formBuilder.group({
+      description: new FormControl('', Validators.maxLength(200)),
+      category: new FormControl(undefined, this.catExpertyValidation),
+      experty: new FormControl(undefined, this.catExpertyValidation),
+      tags: new FormControl([]),
+      activateProfessionProfile: new FormControl(false)
+    });
+
+    if (this.professionalDetail) {
+      this.setProfessionalDetailFormData();
+    }
   }
 
 }

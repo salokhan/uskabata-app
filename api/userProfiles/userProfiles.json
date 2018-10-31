@@ -1,14 +1,18 @@
 {
 	"generalDetail": {
-		"gender": {"name": "Male"},
-		"title": {"name": "Mr"},
+		"gender": {
+			"name": "Male"
+		},
+		"title": {
+			"name": "Mr"
+		},
 		"firstName": "salman",
 		"lastName": "khan",
 		"displayName": "Kacho",
 		"emailAddress": "im.solomon@outlook.com",
 		"about": "This is salman hello there",
 		"addressPersonal": {
-			"country": {				
+			"country": {
 				"name": "Pakistan",
 				"code": "PK"
 			},
@@ -28,19 +32,27 @@
 				"contactNumber": "+923338788877"
 			},
 			{
-				"contactNumber":"+923338788877"
+				"contactNumber": "+923338788877"
 			},
 			{
-				"contactNumber":"+923338788877"
+				"contactNumber": "+923338788877"
 			},
 			{
-				"contactNumber":"+923338788888"
+				"contactNumber": "+923338788888"
 			}
 		]
 	},
 	"professionalDetail": {
-		"category": "Automobile",
-		"experty": "Electrician",
+		"category": {
+			"id": "1",
+			"name": "Automobile",
+			"type": "Popular"
+		},
+		"experty": {
+			"id": "1",
+			"name": "Electrician",
+			"type": "Popular"
+		},
 		"description": "i am good at electrician",
 		"tags": [
 			"auto electrician",
@@ -52,7 +64,7 @@
 		{
 			"title": "Khudadad Heights",
 			"addressWorkPlace": {
-				"country": {				
+				"country": {
 					"name": "Pakistan",
 					"code": "PK"
 				},
@@ -74,20 +86,20 @@
 					"contactNumber": "+923338788877"
 				},
 				{
-					"contactNumber":"+923338788877"
+					"contactNumber": "+923338788877"
 				},
 				{
-					"contactNumber":"+923338788877"
+					"contactNumber": "+923338788877"
 				},
 				{
-					"contactNumber":"+923338788888"
+					"contactNumber": "+923338788888"
 				}
 			]
 		},
 		{
 			"title": "Khudadad Heights",
 			"addressWorkPlace": {
-				"country": {				
+				"country": {
 					"name": "Pakistan",
 					"code": "PK"
 				},
@@ -109,13 +121,13 @@
 					"contactNumber": "+923338788877"
 				},
 				{
-					"contactNumber":"+923338788877"
+					"contactNumber": "+923338788877"
 				},
 				{
-					"contactNumber":"+923338788877"
+					"contactNumber": "+923338788877"
 				},
 				{
-					"contactNumber":"+923338788888"
+					"contactNumber": "+923338788888"
 				}
 			]
 		}

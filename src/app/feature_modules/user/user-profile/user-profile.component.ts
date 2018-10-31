@@ -98,6 +98,7 @@ export class UserProfileComponent implements OnInit {
   }
   showProfessionalDetailFormDialog(): void {
     this.showProfessionalDetailForm = true;
+    this.userProfessionalDetailFormComponent.initializeFormOnPopUp();
   }
   showWorkPlaceDetailFormDialog(): void {
     this.showWorkPlaceDetailForm = true;

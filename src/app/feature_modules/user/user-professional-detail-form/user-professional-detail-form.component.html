@@ -1,4 +1,4 @@
-<div [ngClass]="['container bootstrap snippet']">
+<div [ngClass]="['container bootstrap snippet']" *ngIf="userProfessionalDetailForm">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
       <div [ngClass]="['p-1']">
@@ -24,29 +24,34 @@
             </div>
           </div>
           <div [ngClass]="['form-row']">
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6 m-0']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
               <label for="category">Category</label>
               <p-autoComplete formControlName="category" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
                 [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredCategories" field="name"
                 (completeMethod)="searchCategory($event)" (onSelect)="categorySelected($event)"></p-autoComplete>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6 m-0']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
               <label for="experty">Experty</label>
               <p-autoComplete formControlName="experty" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
                 [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredExperties" field="name"
                 (completeMethod)="searchExperty($event)"></p-autoComplete>
             </div>
+          </div>
+          <div [ngClass]="['form-row']">
             <div [ngClass]="['form-group col-md-12']">
               <label for="description">Description</label>
               <input type="text" formControlName="description" [ngClass]="['form-control form-control-sm']" id="description"
                 placeholder="Description...">
             </div>
+          </div>
+          <div [ngClass]="['form-row']">
             <div [ngClass]="['form-group col-md-12']">
               <label for="description">Tags<small> (Tags will help user in finding you, i.e. Auto Electrition or
                   Dentist or Tutor )</small></label>
               <p-chips formControlName="tags" styleClass="chip-width" [allowDuplicate]='false' [max]=5></p-chips>
             </div>
           </div>
+
         </form>
       </div>
     </div>
