@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
+import { BaseDataSourcesService } from '../../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
-import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
-import { IExperty } from '../../../shared_modules/experty';
-import { ICategory } from '../../../shared_modules/category';
-import { IProfessionalDetail } from '../../../shared_modules/userProfile';
-import { UserService } from '../service-user/user.service';
+import { GenericFunctionsService } from '../../../../shared_modules/generic-functions-service';
+import { IExperty } from '../../../../shared_modules/experty';
+import { ICategory } from '../../../../shared_modules/category';
+import { IProfessionalDetail } from '../../../../shared_modules/userProfile';
+import { UserService } from '../../service-user/user.service';
 
 @Component({
   selector: 'app-user-professional-detail-form',

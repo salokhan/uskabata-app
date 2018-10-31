@@ -15,7 +15,7 @@ import { GenericFunctionsService } from './shared_modules/generic-functions-serv
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { ISchool } from '../../../shared_modules/school';
-import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
-import { CustomformVaidatorsService } from '../../../shared_modules/form-validators/custom-form-validators-service';
-import { UserService } from '../service-user/user.service';
-import { IQualificationDetail } from '../../../shared_modules/userProfile';
+import { ISchool } from '../../../../shared_modules/school';
+import { GenericFunctionsService } from '../../../../shared_modules/generic-functions-service';
+import { CustomformVaidatorsService } from '../../../../shared_modules/form-validators/custom-form-validators-service';
+import { UserService } from '../../service-user/user.service';
+import { IQualificationDetail } from '../../../../shared_modules/userProfile';
 
 @Component({
   selector: 'app-user-qualification-detail-form',

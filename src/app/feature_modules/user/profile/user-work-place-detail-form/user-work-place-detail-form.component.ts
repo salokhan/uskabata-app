@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
+import { BaseDataSourcesService } from '../../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
-import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
-import { ICity } from '../../../shared_modules/city';
-import { ICountry } from '../../../shared_modules/country';
-import { IState } from '../../../shared_modules/state';
-import { UserService } from '../service-user/user.service';
-import { IWorkPlaceDetail } from '../../../shared_modules/userProfile';
+import { GenericFunctionsService } from '../../../../shared_modules/generic-functions-service';
+import { ICity } from '../../../../shared_modules/city';
+import { ICountry } from '../../../../shared_modules/country';
+import { IState } from '../../../../shared_modules/state';
+import { UserService } from '../../service-user/user.service';
+import { IWorkPlaceDetail } from '../../../../shared_modules/userProfile';
 
 @Component({
   selector: 'app-user-work-place-detail-form',
