@@ -166,7 +166,7 @@
   <p-header>
     Generail Detail
   </p-header>
-  <app-user-general-detail-form  [userProfile]='userProfile' [countries]='countries' [states]='states' [cities]='cities'></app-user-general-detail-form>
+  <app-user-general-detail-form *ngIf='userProfile'  [generalDetail]="userProfile.generalDetail"></app-user-general-detail-form>
   <p-footer>
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userGeneralDetailFormComponentSave()">save</button>
   </p-footer>

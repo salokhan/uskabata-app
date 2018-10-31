@@ -57,9 +57,6 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCountries().subscribe(countries => {
       this.countries = countries;
-      // countries.forEach(country => {
-      //   this.countriesDS.push({ label: country.name, value: { name: country.name, code: country.code } });
-      // });
     },
       error => {
         this.errorMessage = error;
@@ -74,10 +71,6 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCities().subscribe(cities => {
       this.cities = cities;
-      // cities.forEach(city => {
-      //   this.citiesDS.push({ label: city.name, value: { name: city.name } });
-      // });
-
     },
       error => {
         this.errorMessage = error;
@@ -85,16 +78,6 @@ export class UserProfileComponent implements OnInit {
 
     this._userService.getCategories().subscribe(categories => {
       this.categories = categories;
-      // categories.forEach(category => {
-      //   if (category.experties) {
-      //     category.experties.push({ id: '', name: 'Other', type: 'Other' });
-      //   } else {
-      //     const experty: IExperty = { id: '', name: 'Other', type: 'Other' };
-      //     category.experties = [experty];
-      //   }
-      //   this.categoryDS.push({ label: category.name, value: { name: category.name, experties: category.experties } });
-      // });
-      // this.categoryDS.push({ label: 'Other', value: { name: 'Other', experties: [{ name: 'Other', value: 'Other' }] } });
     },
       error => {
         this.errorMessage = <any>error;
@@ -111,6 +94,7 @@ export class UserProfileComponent implements OnInit {
 
   showGeneralDetailFormDialog(): void {
     this.showGeneralDetailForm = true;
+    this.userGeneralDetailFormComponent.initializeFormOnPopUp();
   }
   showProfessionalDetailFormDialog(): void {
     this.showProfessionalDetailForm = true;

@@ -8,6 +8,7 @@ import { IGeneralDetail, IUserProfile } from '../../../shared_modules/userProfil
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { IState } from '../../../shared_modules/state';
+import { UserService } from '../service-user/user.service';
 
 @Component({
   selector: 'app-user-general-detail-form',
@@ -15,12 +16,16 @@ import { IState } from '../../../shared_modules/state';
   styleUrls: ['./user-general-detail-form.component.scss']
 })
 export class UserGeneralDetailFormComponent implements OnInit {
-
+  @Input() generalDetail: IGeneralDetail;
   @Output() saveClicked: EventEmitter<string> = new EventEmitter<string>();
 
   userGeneralDetailForm: FormGroup;
   contacts: FormArray;
   landLineContacts: FormArray;
+
+  countries: ICountry[];
+  cities: ICity[];
+  states: IState[];
 
   errorMessage: string;
   titles = [];
@@ -30,104 +35,13 @@ export class UserGeneralDetailFormComponent implements OnInit {
   filteredCountries: ICountry[];
   filteredStates: IState[];
 
-  // initialize a private variable cities, it's a BehaviorSubject
-  private _countries = new BehaviorSubject<ICountry[]>([]);
-
-  // initialize a private variable cities, it's a BehaviorSubject
-  private _cities = new BehaviorSubject<ICity[]>([]);
-
-  // initialize a private variable states, it's a BehaviorSubject
-  private _states = new BehaviorSubject<IState[]>([]);
-
-  // change data to use getter and setter
-  @Input()
-  set countries(value) {
-    // set the latest value for _cities BehaviorSubject
-    this._countries.next(value);
-  }
-  get countries() {
-    // get the latest value from _cities BehaviorSubject
-    return this._countries.getValue();
-  }
-
-  // change data to use getter and setter
-  @Input()
-  set states(value) {
-    // set the latest value for _state BehaviorSubject
-    this._states.next(value);
-  }
-  get states() {
-    // get the latest value from _states BehaviorSubject
-    return this._states.getValue();
-  }
-
-  // change data to use getter and setter
-  @Input()
-  set cities(value) {
-    // set the latest value for _cities BehaviorSubject
-    this._cities.next(value);
-  }
-  get cities() {
-    // get the latest value from _cities BehaviorSubject
-    return this._cities.getValue();
-  }
-
-  // initialize a private variable userProfile, it's a BehaviorSubject
-  private _userProfile = new BehaviorSubject<IUserProfile[]>([]);
-  // change data to use getter and setter
-  @Input()
-  set userProfile(value) {
-    // set the latest value for _userProfile BehaviorSubject
-    this._userProfile.next(value);
-  }
-  get userProfile() {
-    // get the latest value from _userProfile BehaviorSubject
-    return this._userProfile.getValue();
-  }
-
-
-
-  constructor(private _basedsService: BaseDataSourcesService,
+  constructor(private _userService: UserService, private _basedsService: BaseDataSourcesService,
     private _formBuilder: FormBuilder, private _messageService: MessageService,
     public _genericFunctionsService: GenericFunctionsService) { }
 
   ngOnInit() {
 
-    this.titles = this._basedsService.getTitles();
 
-    this._userProfile.subscribe(data => {
-      if (this.userProfile && this.userProfile['generalDetail']) {
-        this.setGeneralDetailFormData(this.userProfile['generalDetail']);
-      }
-    });
-
-    this.genders = this._basedsService.getGender();
-
-    this._cities.subscribe(data => {
-    });
-
-    this._countries.subscribe(data => {
-    });
-
-    this._states.subscribe(data => {
-    });
-
-    this.userGeneralDetailForm = this._formBuilder.group({
-      title: new FormControl('', Validators.required),
-      displayName: new FormControl(''),
-      firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.email]),
-      gender: new FormControl('', Validators.required),
-      about: new FormControl('', Validators.maxLength(200)),
-      addressPersonal: new FormGroup({
-        addressLine: new FormControl('', [Validators.maxLength(100)]),
-        country: new FormControl(undefined),
-        city: new FormControl(undefined),
-        state: new FormControl(undefined)
-      }),
-      contactsPersonal: this._formBuilder.array([this.createContact()])
-    });
   }
 
   createContact(): FormGroup {
@@ -162,13 +76,13 @@ export class UserGeneralDetailFormComponent implements OnInit {
     });
   }
 
-  setGeneralDetailFormData(generalDetail: IGeneralDetail): void {
-    if (generalDetail) {
-      generalDetail.contactsPersonal.forEach(contact => {
+  setGeneralDetailFormData(): void {
+    if (this.generalDetail) {
+      this.generalDetail.contactsPersonal.forEach(contact => {
         this.addContact();
       });
+      this.userGeneralDetailForm.patchValue(this.generalDetail);
     }
-    this.userGeneralDetailForm.patchValue(generalDetail);
   }
 
   /* Search Functiontions for autocomplete */
@@ -217,6 +131,54 @@ export class UserGeneralDetailFormComponent implements OnInit {
       }
     }
     return filtered;
+  }
+
+  initializeFormOnPopUp(): void {
+    this.titles = this._basedsService.getTitles();
+
+    this.genders = this._basedsService.getGender();
+
+    this._userService.getCountries().subscribe(countries => {
+      this.countries = countries;
+    },
+      error => {
+        this.errorMessage = error;
+      });
+
+    this._userService.getStates().subscribe(states => {
+      this.states = states;
+    },
+      error => {
+        this.errorMessage = error;
+      });
+
+    this._userService.getCities().subscribe(cities => {
+      this.cities = cities;
+    },
+      error => {
+        this.errorMessage = error;
+      });
+
+    this.userGeneralDetailForm = this._formBuilder.group({
+      title: new FormControl('', Validators.required),
+      displayName: new FormControl(''),
+      firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      email: new FormControl('', [Validators.email]),
+      gender: new FormControl('', Validators.required),
+      about: new FormControl('', Validators.maxLength(200)),
+      addressPersonal: new FormGroup({
+        addressLine: new FormControl('', [Validators.maxLength(100)]),
+        country: new FormControl(undefined),
+        city: new FormControl(undefined),
+        state: new FormControl(undefined)
+      }),
+      contactsPersonal: this._formBuilder.array([this.createContact()])
+    });
+
+    if (this.generalDetail) {
+      this.setGeneralDetailFormData();
+    }
   }
 
 }
