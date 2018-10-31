@@ -1,4 +1,4 @@
-<div [ngClass]="['container bootstrap snippet']">
+<div [ngClass]="['container bootstrap snippet']" *ngIf="userQualificationDetailForm">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
       <form [formGroup]="userQualificationDetailForm" (ngSubmit)="onSubmit()">

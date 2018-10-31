@@ -68,8 +68,7 @@
               <h5>Professional Details</h5>
             </div>
             <div [ngClass]="['p-1']">
-              <button type="button"
-               [ngClass]="userProfile && userProfile.professionalDetail ? 'btn btn-sm btn-outline-info' : 'btn btn-sm btn-outline-primary'"
+              <button type="button" [ngClass]="userProfile && userProfile.professionalDetail ? 'btn btn-sm btn-outline-info' : 'btn btn-sm btn-outline-primary'"
                 (click)="showProfessionalDetailFormDialog()">
                 <i [ngClass]="userProfile && userProfile.professionalDetail ? 'icon-pencil' : 'icon-plus'"></i>
               </button>
@@ -162,17 +161,30 @@
         </div>
         <div class="card-body p-2" *ngIf="userProfile && userProfile.qualificationDetails">
           <ng-container *ngFor="let qualificationDetail of userProfile.qualificationDetails; let i = index;">
-            <div [ngClass]="['info']">
-              <div [ngClass]="['title']">
-                <i [ngClass]="['p-1 icon-building']"></i>
-                {{qualificationDetail.school}}
+            <div [ngClass]="['container']">
+              <div [ngClass]="['row p-0']">
+                <div [ngClass]="['info col-12 col-sm-12 col-md-12 col-lg-11']">
+                  <div [ngClass]="['title']">
+                    <i [ngClass]="['p-1 icon-building']"></i>
+                    {{qualificationDetail.school}}
+                  </div>
+                  <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-check']"></i>{{qualificationDetail.degree + " - "+
+                    qualificationDetail.fielsOfStude}}</div>
+                  <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate +
+                    " -
+                    "+ qualificationDetail.endDate}}</div>
+                </div>
+                <div [ngClass]="['col-12 col-sm-12 col-md-12 col-lg-1 p-0']">
+                  <button type="button" [ngClass]="['m-1 btn btn-sm btn-outline-info float-right']" (click)="showQualificationDetailFormDialog(qualificationDetail)">
+                    <i [ngClass]="['icon-pencil']"></i>
+                  </button>
+                  <button type="button" [ngClass]="['m-1 btn btn-sm btn-outline-danger float-right']" (click)="showQualificationDetailFormDialog(qualificationDetail)">
+                    <i [ngClass]="['icon-trash']"></i>
+                  </button>
+                </div>
               </div>
-              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-check']"></i>{{qualificationDetail.degree + " - "+
-                qualificationDetail.fielsOfStude}}</div>
-              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate + " -
-                "+ qualificationDetail.endDate}}</div>
-              <hr>
             </div>
+            <hr>
           </ng-container>
         </div>
       </div>
@@ -214,7 +226,7 @@
   <p-header>
     Qualification Detail
   </p-header>
-  <app-user-qualification-detail-form [schools]='schools'></app-user-qualification-detail-form>
+  <app-user-qualification-detail-form *ngIf='userProfile'></app-user-qualification-detail-form>
   <p-footer>
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userQualificationDetailFormComponentSave()">save</button>
   </p-footer>

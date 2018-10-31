@@ -5,7 +5,7 @@ import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
 import { IExperty } from '../../../shared_modules/experty';
 import { ISchool } from '../../../shared_modules/school';
-import { IUserProfile, IProfessionalDetail, IWorkPlaceDetail } from '../../../shared_modules/userProfile';
+import { IUserProfile, IProfessionalDetail, IWorkPlaceDetail, IQualificationDetail } from '../../../shared_modules/userProfile';
 import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
@@ -55,41 +55,6 @@ export class UserProfileComponent implements OnInit {
         this.errorMessage = error;
       });
 
-    this._userService.getCountries().subscribe(countries => {
-      this.countries = countries;
-    },
-      error => {
-        this.errorMessage = error;
-      });
-
-    this._userService.getStates().subscribe(states => {
-      this.states = states;
-    },
-      error => {
-        this.errorMessage = error;
-      });
-
-    this._userService.getCities().subscribe(cities => {
-      this.cities = cities;
-    },
-      error => {
-        this.errorMessage = error;
-      });
-
-    this._userService.getCategories().subscribe(categories => {
-      this.categories = categories;
-    },
-      error => {
-        this.errorMessage = <any>error;
-      });
-
-    this._userService.getSchools().subscribe(schools => {
-      this.schools = schools;
-    },
-      error => {
-        this.errorMessage = <any>error;
-      });
-
   }
 
   showGeneralDetailFormDialog(): void {
@@ -104,8 +69,9 @@ export class UserProfileComponent implements OnInit {
     this.showWorkPlaceDetailForm = true;
     this.userWorkPlaceDetailFormComponent.initializeFormOnPopUp(workPlaceDetail);
   }
-  showQualificationDetailFormDialog(): void {
+  showQualificationDetailFormDialog(qualificationDetail: IQualificationDetail): void {
     this.showQualificationDetailForm = true;
+    this.userQualificationDetailFormComponent.initializeFormOnPopUp(qualificationDetail);
   }
 
   userGeneralDetailFormComponentSave(): void {
