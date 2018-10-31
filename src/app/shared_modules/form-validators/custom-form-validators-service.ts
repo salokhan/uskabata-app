@@ -1,4 +1,4 @@
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { GenericFunctionsService } from '../generic-functions-service';
 import { Injectable } from '@angular/core';
 
@@ -19,7 +19,14 @@ export class CustomformVaidatorsService extends Validators {
                 const month = months[indexOfmonth];
                 return null;
             }
-            return {'month': false};
+            return { 'month': false };
         }
+    }
+
+    validatePassword(password: FormGroup) {
+        if (password['controls']['password'].value !== password['controls']['confirmPassword'].value) {
+            return {invalid: true};
+        }
+        return null;
     }
 }
