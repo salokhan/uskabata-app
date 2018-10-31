@@ -1,16 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../service-user/user.service';
-import { ICountry } from '../../../shared_modules/country';
-import { ICity } from '../../../shared_modules/city';
-import { ICategory } from '../../../shared_modules/category';
-import { IExperty } from '../../../shared_modules/experty';
-import { ISchool } from '../../../shared_modules/school';
-import { IUserProfile, IProfessionalDetail, IWorkPlaceDetail, IQualificationDetail } from '../../../shared_modules/userProfile';
+import { IUserProfile, IWorkPlaceDetail, IQualificationDetail } from '../../../shared_modules/userProfile';
 import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
 import { UserQualificationDetailFormComponent } from '../user-qualification-detail-form/user-qualification-detail-form.component';
-import { IState } from '../../../shared_modules/state';
 
 @Component({
   selector: 'app-user-profile',
@@ -31,13 +25,6 @@ export class UserProfileComponent implements OnInit {
   private userQualificationDetailFormComponent: UserQualificationDetailFormComponent;
 
   errorMessage: string;
-
-  countries: ICountry[];
-  cities: ICity[];
-  states: IState[];
-  categories: ICategory[];
-  categoryDS = [];
-  schools: ISchool[];
   userProfile: IUserProfile;
 
   showGeneralDetailForm = false;

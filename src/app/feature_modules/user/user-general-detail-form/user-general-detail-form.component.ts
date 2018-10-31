@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
 import { BaseDataSourcesService } from '../../../shared_modules/base-ds-service';
 import { MessageService } from 'primeng/api';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
-import { IGeneralDetail, IUserProfile } from '../../../shared_modules/userProfile';
+import { IGeneralDetail } from '../../../shared_modules/userProfile';
 import { ICountry } from '../../../shared_modules/country';
 import { ICity } from '../../../shared_modules/city';
 import { IState } from '../../../shared_modules/state';

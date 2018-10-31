@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { BehaviorSubject } from 'rxjs';
 import { ISchool } from '../../../shared_modules/school';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 import { CustomformVaidatorsService } from '../../../shared_modules/form-validators/custom-form-validators-service';
