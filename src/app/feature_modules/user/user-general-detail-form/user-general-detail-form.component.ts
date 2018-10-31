@@ -16,7 +16,7 @@ import { UserService } from '../service-user/user.service';
   styleUrls: ['./user-general-detail-form.component.scss']
 })
 export class UserGeneralDetailFormComponent implements OnInit {
-  @Input() generalDetail: IGeneralDetail;
+  generalDetail: IGeneralDetail;
   @Output() saveClicked: EventEmitter<string> = new EventEmitter<string>();
 
   userGeneralDetailForm: FormGroup;
@@ -133,7 +133,10 @@ export class UserGeneralDetailFormComponent implements OnInit {
     return filtered;
   }
 
-  initializeFormOnPopUp(): void {
+  initializeFormOnPopUp(generalDetail: IGeneralDetail): void {
+
+    this.generalDetail = generalDetail;
+
     this.titles = this._basedsService.getTitles();
 
     this.genders = this._basedsService.getGender();

@@ -91,7 +91,10 @@ export class UserProfessionalDetailFormComponent implements OnInit {
     }
   }
 
-  initializeFormOnPopUp(): void {
+  initializeFormOnPopUp(professionalDetail: IProfessionalDetail): void {
+
+    this.professionalDetail = professionalDetail;
+
     this._userService.getCategories().subscribe(categories => {
       this.categories = categories;
     },

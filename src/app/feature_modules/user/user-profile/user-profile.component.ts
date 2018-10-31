@@ -5,7 +5,7 @@ import { ICity } from '../../../shared_modules/city';
 import { ICategory } from '../../../shared_modules/category';
 import { IExperty } from '../../../shared_modules/experty';
 import { ISchool } from '../../../shared_modules/school';
-import { IUserProfile } from '../../../shared_modules/userProfile';
+import { IUserProfile, IProfessionalDetail, IWorkPlaceDetail } from '../../../shared_modules/userProfile';
 import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
@@ -94,14 +94,15 @@ export class UserProfileComponent implements OnInit {
 
   showGeneralDetailFormDialog(): void {
     this.showGeneralDetailForm = true;
-    this.userGeneralDetailFormComponent.initializeFormOnPopUp();
+    this.userGeneralDetailFormComponent.initializeFormOnPopUp(this.userProfile.generalDetail);
   }
   showProfessionalDetailFormDialog(): void {
     this.showProfessionalDetailForm = true;
-    this.userProfessionalDetailFormComponent.initializeFormOnPopUp();
+    this.userProfessionalDetailFormComponent.initializeFormOnPopUp(this.userProfile.professionalDetail);
   }
-  showWorkPlaceDetailFormDialog(): void {
+  showWorkPlaceDetailFormDialog(workPlaceDetail: IWorkPlaceDetail): void {
     this.showWorkPlaceDetailForm = true;
+    this.userWorkPlaceDetailFormComponent.initializeFormOnPopUp(workPlaceDetail);
   }
   showQualificationDetailFormDialog(): void {
     this.showQualificationDetailForm = true;

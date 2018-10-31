@@ -4,7 +4,7 @@
       <div [ngClass]="['card hovercard']">
         <div [ngClass]="['cardheader']">
         </div>
-        <div [ngClass]="['container']">
+        <div [ngClass]="['container p-1']">
           <div [ngClass]="['row p-1']">
             <div [ngClass]="['col-10 col-sm-10 col-md-10 col-lg-11']">
               <div [ngClass]="['avatar']">
@@ -12,7 +12,7 @@
               </div>
             </div>
             <div [ngClass]="['col-2 col-sm-2 col-md-2 col-lg-1']">
-              <button type="button" [ngClass]="['btn btn-outline-light']" (click)="showGeneralDetailFormDialog()">
+              <button type="button" [ngClass]="['btn btn-sm btn-outline-info float-right']" (click)="showGeneralDetailFormDialog()">
                 <i [ngClass]="['icon-pencil']"></i>
               </button>
             </div>
@@ -28,7 +28,8 @@
           <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-envelope']"></i>{{userProfile.generalDetail.emailAddress}}</div>
           <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{userProfile.generalDetail.addressPersonal.country.name
             +' | '+
-            userProfile.generalDetail.addressPersonal.state.name +" | "+ userProfile.generalDetail.addressPersonal.city.name +"
+            userProfile.generalDetail.addressPersonal.state.name +" | "+
+            userProfile.generalDetail.addressPersonal.city.name +"
             | "+ userProfile.generalDetail.addressPersonal.addressLine }}</div>
           <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
             <ng-container *ngFor="let contact of userProfile.generalDetail.contactsPersonal; let i = index;">
@@ -67,7 +68,9 @@
               <h5>Professional Details</h5>
             </div>
             <div [ngClass]="['p-1']">
-              <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showProfessionalDetailFormDialog()">
+              <button type="button"
+               [ngClass]="userProfile && userProfile.professionalDetail ? 'btn btn-sm btn-outline-info' : 'btn btn-sm btn-outline-primary'"
+                (click)="showProfessionalDetailFormDialog()">
                 <i [ngClass]="userProfile && userProfile.professionalDetail ? 'icon-pencil' : 'icon-plus'"></i>
               </button>
             </div>
@@ -76,7 +79,8 @@
         <div class="card-body p-2" *ngIf="userProfile && userProfile.professionalDetail">
           <div [ngClass]="['info']" *ngIf="userProfile">
             <div [ngClass]="['title']">
-              <i [ngClass]="['p-1 icon-cogs']"></i>{{userProfile.professionalDetail.category.name +' | ' + userProfile.professionalDetail.experty.name}}
+              <i [ngClass]="['p-1 icon-cogs']"></i>{{userProfile.professionalDetail.category.name +' | ' +
+              userProfile.professionalDetail.experty.name}}
             </div>
             <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-tags']"></i>
               <ng-container *ngFor="let tag of userProfile.professionalDetail.tags; let i = index;">
@@ -100,7 +104,7 @@
               <h5>Work Place Details</h5>
             </div>
             <div [ngClass]="['p-1']">
-              <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showWorkPlaceDetailFormDialog()">
+              <button type="button" [ngClass]="['btn btn-sm btn-outline-primary']" (click)="showWorkPlaceDetailFormDialog()">
                 <i [ngClass]="['icon-plus']"></i>
               </button>
             </div>
@@ -108,56 +112,70 @@
         </div>
         <div class="card-body p-2" *ngIf="userProfile && userProfile.workPlaceDetails">
           <ng-container *ngFor="let workPlaceDetail of userProfile.workPlaceDetails; let i = index;">
+            <div [ngClass]="['container']">
+              <div [ngClass]="['row p-0']">
+                <div [ngClass]="['info col-12 col-sm-12 col-md-12 col-lg-11']">
+                  <div [ngClass]="['title']">
+                    <i [ngClass]="['p-1 icon-building']"></i>{{workPlaceDetail.title}}
+                  </div>
+                  <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country.name
+                    +' | '+
+                    workPlaceDetail.addressWorkPlace.state.name +" | "+workPlaceDetail.addressWorkPlace.city.name +"
+                    | "+ workPlaceDetail.addressWorkPlace.addressLine }}</div>
+                  <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
+                    <ng-container *ngFor="let contact of workPlaceDetail.contactsWork; let i = index;">
+                      <ng-container *ngIf="contact && i < workPlaceDetail.contactsWork.length - 1">
+                        {{contact.contactNumber + " | "}}
+                      </ng-container>
+                      <ng-container *ngIf="contact && i == workPlaceDetail.contactsWork.length - 1">
+                        {{contact.contactNumber}}
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
+                <div [ngClass]="['col-12 col-sm-12 col-md-12 col-lg-1 p-0']">
+                  <button type="button" [ngClass]="['m-1 btn btn-sm btn-outline-info float-right']" (click)="showWorkPlaceDetailFormDialog(workPlaceDetail)">
+                    <i [ngClass]="['icon-pencil']"></i>
+                  </button>
+                  <button type="button" [ngClass]="['m-1 btn btn-sm btn-outline-danger float-right']" (click)="showWorkPlaceDetailFormDialog(workPlaceDetail)">
+                    <i [ngClass]="['icon-trash']"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </ng-container>
+        </div>
+      </div>
+      <div [ngClass]="['card detailcard p-0']">
+        <div [ngClass]="['card-header p-2 bg-white']">
+          <div [ngClass]="['d-flex']">
+            <div [ngClass]="['mr-auto p-2']">
+              <h5>Qualification Details</h5>
+            </div>
+            <div [ngClass]="['p-1']">
+              <button type="button" [ngClass]="['btn btn-sm btn-outline-primary']" (click)="showQualificationDetailFormDialog()">
+                <i [ngClass]="['icon-plus']"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body p-2" *ngIf="userProfile && userProfile.qualificationDetails">
+          <ng-container *ngFor="let qualificationDetail of userProfile.qualificationDetails; let i = index;">
             <div [ngClass]="['info']">
               <div [ngClass]="['title']">
-                <i [ngClass]="['p-1 icon-building']"></i>{{workPlaceDetail.title}}
+                <i [ngClass]="['p-1 icon-building']"></i>
+                {{qualificationDetail.school}}
               </div>
-              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-map-marker']"></i>{{workPlaceDetail.addressWorkPlace.country.name
-                +' | '+
-                workPlaceDetail.addressWorkPlace.state.name +" | "+workPlaceDetail.addressWorkPlace.city.name +"
-                | "+ workPlaceDetail.addressWorkPlace.addressLine }}</div>
-              <div [ngClass]="['desc']"> <i [ngClass]="['p-1 icon-phone']"></i>
-                <ng-container *ngFor="let contact of workPlaceDetail.contactsWork; let i = index;">
-                  <ng-container *ngIf="contact && i < workPlaceDetail.contactsWork.length - 1">
-                    {{contact.contactNumber + " | "}}
-                  </ng-container>
-                  <ng-container *ngIf="contact && i == workPlaceDetail.contactsWork.length - 1">
-                    {{contact.contactNumber}}
-                  </ng-container>
-                </ng-container>
-              </div>
+              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-check']"></i>{{qualificationDetail.degree + " - "+
+                qualificationDetail.fielsOfStude}}</div>
+              <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate + " -
+                "+ qualificationDetail.endDate}}</div>
               <hr>
             </div>
           </ng-container>
         </div>
       </div>
-      <div [ngClass]="['card detailcard p-0']">
-          <div [ngClass]="['card-header p-2 bg-white']">
-            <div [ngClass]="['d-flex']">
-              <div [ngClass]="['mr-auto p-2']">
-                <h5>Qualification Details</h5>
-              </div>
-              <div [ngClass]="['p-1']">
-                <button type="button" [ngClass]="['btn btn-outline-dark']" (click)="showQualificationDetailFormDialog()">
-                  <i [ngClass]="['icon-plus']"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="card-body p-2" *ngIf="userProfile && userProfile.qualificationDetails">
-            <ng-container *ngFor="let qualificationDetail of userProfile.qualificationDetails; let i = index;">
-              <div [ngClass]="['info']">
-                <div [ngClass]="['title']">
-                    <i [ngClass]="['p-1 icon-building']"></i>
-                  {{qualificationDetail.school}}
-                </div>
-                <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-check']"></i>{{qualificationDetail.degree + " - "+ qualificationDetail.fielsOfStude}}</div>
-                <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate + " - "+ qualificationDetail.endDate}}</div>
-                <hr>
-              </div>
-            </ng-container>
-          </div>
-        </div>
     </div>
   </div>
 </div>
@@ -166,9 +184,9 @@
   <p-header>
     Generail Detail
   </p-header>
-  <app-user-general-detail-form *ngIf='userProfile'  [generalDetail]="userProfile.generalDetail"></app-user-general-detail-form>
+  <app-user-general-detail-form *ngIf='userProfile'></app-user-general-detail-form>
   <p-footer>
-    <button type="button" [ngClass]="['btn btn-primary']" (click)="userGeneralDetailFormComponentSave()">save</button>
+    <button type="button" [ngClass]="['btn btn-sm btn-primary']" (click)="userGeneralDetailFormComponentSave()">save</button>
   </p-footer>
 </p-dialog>
 <p-dialog [(visible)]="showProfessionalDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true"
@@ -176,9 +194,9 @@
   <p-header>
     Professional Detail
   </p-header>
-  <app-user-professional-detail-form *ngIf='userProfile'  [professionalDetail]="userProfile.professionalDetail"></app-user-professional-detail-form>
+  <app-user-professional-detail-form *ngIf='userProfile'></app-user-professional-detail-form>
   <p-footer>
-    <button type="button" [ngClass]="['btn btn-primary']" (click)="userProfessionalDetailFormComponentSave()">save</button>
+    <button type="button" [ngClass]="['btn btn-sm btn-primary']" (click)="userProfessionalDetailFormComponentSave()">save</button>
   </p-footer>
 </p-dialog>
 <p-dialog [(visible)]="showWorkPlaceDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true" [responsive]="true"
@@ -186,13 +204,13 @@
   <p-header>
     Work Places Detail
   </p-header>
-  <app-user-work-place-detail-form [cities]='citiesDS' [countries]='countriesDS'></app-user-work-place-detail-form>
+  <app-user-work-place-detail-form *ngIf='userProfile'></app-user-work-place-detail-form>
   <p-footer>
     <button type="button" [ngClass]="['btn btn-primary']" (click)="userWorkPlaceDetailFormComponentSave()">save</button>
   </p-footer>
 </p-dialog>
-<p-dialog [(visible)]="showQualificationDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true" [responsive]="true"
-  [baseZIndex]="10000">
+<p-dialog [(visible)]="showQualificationDetailForm" [focusOnShow]="false" [modal]="true" [blockScroll]="true"
+  [responsive]="true" [baseZIndex]="10000">
   <p-header>
     Qualification Detail
   </p-header>
