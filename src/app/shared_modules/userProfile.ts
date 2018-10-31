@@ -1,10 +1,19 @@
+import { ICountry } from './country';
+import { ICity } from './city';
+import { IState } from './state';
+import { ICategory } from './category';
+import { IExperty } from './experty';
+
 export class IAddress {
-    country: string;
-    state: string;
-    city: string;
+    country: ICountry;
+    state: IState;
+    city: ICity;
     addressLine: string;
 }
-export class IPersonalDetail {
+export class IContactNumber {
+    contactNumber: string;
+}
+export class IGeneralDetail {
     gender: string;
     title: string;
     firstName: string;
@@ -13,18 +22,18 @@ export class IPersonalDetail {
     emailAddress: string;
     about: string;
     addressPersonal: IAddress;
-    contactsPersonal: any[];
+    contactsPersonal: IContactNumber[];
 }
 export class IWorkPlaceDetail {
     title: string;
     addressWorkPlace: IAddress;
     startTime: string;
     endTime: string;
-    contactsWork: any[];
+    contactsWork: IContactNumber[];
 }
 export class IProfessionalDetail {
-    category: string;
-    experty: string;
+    category: ICategory;
+    experty: IExperty;
     description: string;
     tags: any[];
 }
@@ -37,7 +46,7 @@ export class IQualificationDetail {
 
 }
 export class IUserProfile {
-    personalDetail: IPersonalDetail;
+    generalDetail: IGeneralDetail;
     professionalDetail: IProfessionalDetail;
     workPlaceDetails: IWorkPlaceDetail[];
     qualificationDetails: IQualificationDetail[];

@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { BehaviorSubject } from 'rxjs';
 import { ISchool } from '../../../shared_modules/school';
 import { GenericFunctionsService } from '../../../shared_modules/generic-functions-service';
 import { CustomformVaidatorsService } from '../../../shared_modules/form-validators/custom-form-validators-service';
+import { UserService } from '../service-user/user.service';
+import { IQualificationDetail } from '../../../shared_modules/userProfile';
 
 @Component({
   selector: 'app-user-qualification-detail-form',
@@ -15,38 +16,20 @@ export class UserQualificationDetailFormComponent implements OnInit {
 
   userQualificationDetailForm: FormGroup;
   filteredSchool: any[];
+  schools: ISchool[];
+  errorMessage: string;
 
-  // initialize a private variable schools, it's a BehaviorSubject
-  private _schools = new BehaviorSubject<ISchool[]>([]);
-  // change data to use getter and setter
-  @Input()
-  set schools(value) {
-    // set the latest value for _schools BehaviorSubject
-    this._schools.next(value);
-  }
-  get schools() {
-    // get the latest value from _schools BehaviorSubject
-    return this._schools.getValue();
-  }
+  qualificationDetail: IQualificationDetail;
 
-  constructor(private _formBuilder: FormBuilder, private _customeFormValidatorService: CustomformVaidatorsService,
+  constructor(private _userService: UserService, private _formBuilder: FormBuilder,
+    private _customeFormValidatorService: CustomformVaidatorsService,
     private _genericFunctionsService: GenericFunctionsService,
     private _messageService: MessageService) {
 
   }
 
   ngOnInit() {
-    this._schools.subscribe(data => {
-    });
 
-    this.userQualificationDetailForm = this._formBuilder.group({
-      school: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      duration: new FormGroup({
-        startDate: new FormControl('', Validators.required),
-        endDate: new FormControl('', Validators.required)
-      })
-
-    });
   }
 
   searchSchool(event) {
@@ -77,6 +60,40 @@ export class UserQualificationDetailFormComponent implements OnInit {
       severity: 'error', summary: 'Error Message',
       detail: this._genericFunctionsService.getErrorMessage()
     });
+  }
+
+  initializeFormOnPopUp(qualificationDetail: IQualificationDetail): void {
+
+    this.qualificationDetail = qualificationDetail;
+
+    this._userService.getSchools().subscribe(schools => {
+      this.schools = schools;
+    },
+      error => {
+        this.errorMessage = <any>error;
+      });
+
+    this.userQualificationDetailForm = this._formBuilder.group({
+      school: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      duration: new FormGroup({
+        startDate: new FormControl('', Validators.required),
+        endDate: new FormControl('', Validators.required)
+      })
+    });
+
+    if (this.qualificationDetail) {
+      this.setQualificationDetailFormData();
+    }
+
+  }
+  setQualificationDetailFormData(): void {
+    if (this.qualificationDetail) {
+      this.userQualificationDetailForm.controls['duration'].patchValue({
+        'startDate': this.qualificationDetail.startDate,
+        'endDate': this.qualificationDetail.endDate
+      });
+      this.userQualificationDetailForm.patchValue(this.qualificationDetail);
+    }
   }
 
 }

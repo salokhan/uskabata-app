@@ -1,4 +1,4 @@
-<div [ngClass]="['container bootstrap snippet']">
+<div [ngClass]="['container bootstrap snippet']" *ngIf="userProfessionalDetailForm">
   <div [ngClass]="['row']">
     <div [ngClass]="['col-sm-12']">
       <div [ngClass]="['p-1']">
@@ -24,39 +24,34 @@
             </div>
           </div>
           <div [ngClass]="['form-row']">
-            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
               <label for="category">Category</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="category" [ngClass]="['form-control-sm-dropdown']"
-                [showClear]="true" [options]="categories" [filter]="true" filterBy="label" placeholder="Select a category"
-                formControlName="category" (onChange)='onCategorySelection()'></p-dropdown>
+              <p-autoComplete formControlName="category" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredCategories" field="name"
+                (completeMethod)="searchCategory($event)" (onSelect)="categorySelected($event)"></p-autoComplete>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']" *ngIf="userProfessionalDetailForm.controls.category.value && userProfessionalDetailForm.controls.category.value.name == 'Other'">
-              <label for="categoryOther">Add new category</label>
-              <input type="text" formControlName="categoryOther" [ngClass]="['form-control form-control-sm dynamic-form-control']"
-                id="categoryOther" placeholder="Add new category">
-            </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']">
+            <div [ngClass]="['form-group col-sm-12 col-md-6 col-lg-6']">
               <label for="experty">Experty</label>
-              <p-dropdown [style]="{'width':'100%','height':'100%'}" id="experty" [ngClass]="['form-control-sm-dropdown']"
-                [showClear]="true" [options]="experties" [filter]="true" filterBy="label" placeholder="Select a experty"
-                formControlName="experty" (onChange)='onExpertySelection()'></p-dropdown>
+              <p-autoComplete formControlName="experty" [dropdown]="true" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+                [ngClass]="['form-control-autocomplete-sm']" [suggestions]="filteredExperties" field="name"
+                (completeMethod)="searchExperty($event)"></p-autoComplete>
             </div>
-            <div [ngClass]="['form-group col-sm-12 col-md-12 col-lg-12']" *ngIf="userProfessionalDetailForm.controls.experty.value && userProfessionalDetailForm.controls.experty.value == 'Other'">
-              <label for="expertyOther">Add new experty</label>
-              <input type="text" formControlName="expertyOther" [ngClass]="['form-control form-control-sm dynamic-form-control']"
-                id="expertyOther" placeholder="Add new experty">
-            </div>
+          </div>
+          <div [ngClass]="['form-row']">
             <div [ngClass]="['form-group col-md-12']">
               <label for="description">Description</label>
               <input type="text" formControlName="description" [ngClass]="['form-control form-control-sm']" id="description"
                 placeholder="Description...">
             </div>
+          </div>
+          <div [ngClass]="['form-row']">
             <div [ngClass]="['form-group col-md-12']">
               <label for="description">Tags<small> (Tags will help user in finding you, i.e. Auto Electrition or
                   Dentist or Tutor )</small></label>
               <p-chips formControlName="tags" styleClass="chip-width" [allowDuplicate]='false' [max]=5></p-chips>
             </div>
           </div>
+
         </form>
       </div>
     </div>
