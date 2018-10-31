@@ -139,6 +139,13 @@
 			"fielsOfStude": "Computer Science",
 			"startDate": "2017-02-01",
 			"endDate": "2016-01-01"
+		},
+		{
+			"school": "Islamabad School",
+			"degree": "Bscs",
+			"fielsOfStude": "Computer Science",
+			"startDate": "2017-02-01",
+			"endDate": "2016-01-01"
 		}
 	]
 }

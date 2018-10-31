@@ -170,9 +170,7 @@
                   </div>
                   <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-check']"></i>{{qualificationDetail.degree + " - "+
                     qualificationDetail.fielsOfStude}}</div>
-                  <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate +
-                    " -
-                    "+ qualificationDetail.endDate}}</div>
+                  <div [ngClass]="['desc']"><i [ngClass]="['p-1 icon-calendar']"></i>{{qualificationDetail.startDate | date: 'MMM d, y'}}   - {{qualificationDetail.endDate | date: 'MMM d, y'}}</div>
                 </div>
                 <div [ngClass]="['col-12 col-sm-12 col-md-12 col-lg-1 p-0']">
                   <button type="button" [ngClass]="['m-1 btn btn-sm btn-outline-info float-right']" (click)="showQualificationDetailFormDialog(qualificationDetail)">
