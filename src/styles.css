@@ -77,7 +77,14 @@ p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext {
     border-left: 5px solid green;
     border-radius: 0.33rem;
 }
-
+.ng-valid.customGroupValidator input {
+    border-left: 5px solid green;
+    border-radius: 0.33rem; 
+}
+.ng-invalid.customGroupValidator input  {
+    border-left: 5px solid red;
+    border-radius: 0.33rem; 
+}
 .ng-invalid.form-control-dropdown  {
     border-left: 5px solid red;
 }

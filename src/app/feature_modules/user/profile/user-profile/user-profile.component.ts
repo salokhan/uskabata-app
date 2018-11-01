@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../service-user/user.service';
-import { IUserProfile, IWorkPlaceDetail, IQualificationDetail } from '../../../shared_modules/userProfile';
+import { UserService } from '../../service-user/user.service';
+import { IUserProfile, IWorkPlaceDetail, IQualificationDetail } from '../../../../shared_modules/userProfile';
 import { UserGeneralDetailFormComponent } from '../user-general-detail-form/user-general-detail-form.component';
 import { UserProfessionalDetailFormComponent } from '../user-professional-detail-form/user-professional-detail-form.component';
 import { UserWorkPlaceDetailFormComponent } from '../user-work-place-detail-form/user-work-place-detail-form.component';
