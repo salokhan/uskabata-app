@@ -25,11 +25,13 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
 
     this.signupForm = this._formBuilder.group({
+      firstName: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(15)]),
       userName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]),
       emailAddress: new FormControl('', [Validators.required, Validators.email]),
       passwords: new FormGroup({
-        password: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-        confirmPassword: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+        password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
+        confirmPassword: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
       }, this._customformVaidatorsService.validatePassword)
     });
   }
@@ -40,10 +42,8 @@ export class SignupComponent implements OnInit {
     }
   }
   showValidationError() {
-    this._messageService.add({
-      severity: 'error', summary: 'Error Message',
-      detail: this._genericFunctionsService.getErrorMessage()
-    });
+    const messages: any[] = this._customformVaidatorsService.createMessagesArray(this.signupForm);
+    this._messageService.addAll(messages);
   }
 
 
